@@ -1,4 +1,10 @@
+<%link_to "Return Home", home_path%>
+
+<ul>
 <% @songs.each do |song| %>
+<li>
   <%= link_to song.name, song_path(song) %>
-  <%= song.artist_name %>
+  By: <%= song.artist_name %>
+</li>
 <% end %>
+</ul>

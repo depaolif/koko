@@ -1,0 +1,15 @@
+<h1><%= @song.name %></h1>
+<h2><%= @song.artist_name %></h2>
+
+<iframe src="https://embed.spotify.com/?uri=<%=@song.play_url%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<%if @song.reviews.count == 0%>
+<p>
+  No one has reviewed this song yet. <%= link_to "Be the first.", new_song_review_path(@song) %>
+</p>
+<%else%>
+<h4><%= link_to "Add Your Own Review", new_song_review_path(@song) %></h4>
+<%@song.reviews.each do |review|%>
+<%= review.content%>
+<%= review.account.user_name %>
+<%end%>
+<%end%>

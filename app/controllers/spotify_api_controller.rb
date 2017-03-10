@@ -1,7 +1,6 @@
 class SpotifyApiController < ApplicationController
 
   def search
-    # binding.pry
     search_obj = SpotifyApi.new(spotify_params[:query])
     x = search_obj.search
     if x.length > 0
