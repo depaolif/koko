@@ -1,1 +1,5 @@
-hi
+Show Me the Stuff!
+<%= form_tag('/search') do %>
+  <%= text_field_tag "query" %>
+  <%= submit_tag "Search It!" %>
+<% end %>
