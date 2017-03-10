@@ -8,4 +8,15 @@ class SongsController < ApplicationController
   end
 
 
+  def vote
+    vote = Vote.new(score: vote_attributes[:vote], review_id: vote_attributes[:review_id].to_i)
+    vote.account_id = current_user.id
+    # redirect_to song_path()
+  end
+
+  private
+  def vote_attributes
+    params.permit(:vote, :review_id, :account_id)
+  end
+
 end

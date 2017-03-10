@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :songs, only: [:create,:show] do
-    resources :reviews
+    resources :reviews do
+      post '/vote', to: 'songs#vote'
+    end
   end
 
   resources :registrations, only: [:new,:create]
