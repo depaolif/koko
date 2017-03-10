@@ -1,26 +1,53 @@
 class ReviewsController < ApplicationController
+
   def new
-    @song = Song.find(params[:song_id])
+    set_song
     if @song
       @review = Review.new
       render 'new'
     end
   end
+
   def create
     @review = Review.new(review_params)
-    @song = Song.find(params[:song_id])
+    set_song
     @review.song = @song
     @review.account = current_user
     if @review.save
       redirect_to song_path(@song)
     else
-      flash[:error] = "Something went wrong with creating your review."
-      redirect_to new_song_review_path
+      redirect_to new_song_review_path, alert: "Something went horribly wrong with creating your review."
     end
+  end
+
+  def edit
+    set_review
+    set_song
+  end
+
+  def update
+    set_review
+    @review.update(review_params)
+    redirect_to song_path(params[:song_id])
+  end
+
+  def destroy
+    set_review
+    set_song
+    @review.destroy
+    redirect_to song_path(params[:song_id])
   end
 
   private
   def review_params
     params.require('review').permit('account_id','song_id','content','song_score')
+  end
+
+  def set_song
+    @song = Song.find_by(id: params[:song_id])
+  end
+
+  def set_review
+    @review = Review.find_by(id: params[:id])
   end
 end
