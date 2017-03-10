@@ -1,0 +1,10 @@
+<% if flash[:error] %>
+  <h2><%= flash[:error] %></h1><br><br>
+<% end %>
+
+<%= form_for [@song, @review] do |f| %>
+  <h2>Review for "<%= @song.name %>":</h2>
+  <p>Score: <%= f.select :song_score, [['1',1],['2',2],['3',3],['4',4],['5',5]] %></p>
+  <p>Review: <%= f.text_area :content %></p>
+  <%= f.submit %>
+<% end %>

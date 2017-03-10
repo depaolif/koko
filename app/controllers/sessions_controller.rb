@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
     @account = Account.find_by(user_name: params[:account][:user_name])
     if @account.authenticate(params[:account][:password])
       session[:account_id] = @account.id
