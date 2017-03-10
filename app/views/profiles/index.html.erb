@@ -1,0 +1,21 @@
+<h1>Your Profile</h1>
+<h3>Name</h3>
+<%= @profile.name %>
+<br />
+<h3>About Me:</h3>
+<%= @profile.bio %>
+<br />
+<h3>Interests: </h3>
+<%= @profile.interests %>
+<br />
+<h3>Review History</h3>
+<%if @profile.account.reviews.count > 0 %>
+<%@reviews.each do |review|%>
+<%=review.content%>
+<%end%>
+<%else%>
+You have not reviewed anything.
+<%end%>
+<br />
+<br />
+<h4><%=link_to "Edit Profile", edit_profile_path(current_user) %></h4>
