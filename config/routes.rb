@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   resources :songs, only: [:create,:show] do
     resources :reviews
   end
+  
   resources :registrations, only: [:new,:create]
-  resources :sessions, only: [:new,:create,:destroy]
+  resources :sessions, only: [:new,:create]
+  get '/login', to: 'sessions#new', as: 'login'
+  delete 'sessions/delete', to: 'sessions#destroy', as: 'session'
   get '/home', to: 'application#home', as: 'home'
   post '/search', to: 'spotify_api#search'
 
