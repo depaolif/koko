@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @song = Song.find(params[:song_id])
     @review.song = @song
-    @review.account = ApplicationController.current_user(session)
+    @review.account = current_user
     if @review.save
       redirect_to song_path(@song)
     else

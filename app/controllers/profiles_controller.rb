@@ -14,6 +14,8 @@ class ProfilesController < ApplicationController
   def show
     if !@profile
       redirect_to root_path, alert: "This user does not exist."
+    elsif @profile.account.id == current_user.id
+      redirect_to myprofile_path
     else
       render :show
     end
