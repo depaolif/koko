@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   def home
   end
 
-  def logged_in?(session)
+
+  def logged_in?
     !!session[:account_id]
   end
 

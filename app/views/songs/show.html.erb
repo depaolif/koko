@@ -8,8 +8,10 @@
 </p>
 <%else%>
 <h4><%= link_to "Add Your Own Review", new_song_review_path(@song) %></h4>
+Reviews: <br>
 <%@song.reviews.each do |review|%>
-<%= review.content%>
-<%= review.account.user_name %>
+  <%= review.song_score %> Stars <br>
+  Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <br>
+  <%= review.content%> <br><br>
 <%end%>
 <%end%>
