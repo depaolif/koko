@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :songs, only: [:create,:show] do
     resources :reviews
   end
-  
+
   resources :registrations, only: [:new,:create]
   resources :sessions, only: [:new,:create]
   get '/login', to: 'sessions#new', as: 'login'
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/myprofile', to: 'profiles#index'
   get '/profile/edit', to: 'profiles#edit'
   get '/profile/:id', to: 'profiles#show', as: 'show_profile'
-  post '/profile/:id', to: "profiles#update"
+  patch '/profile/:id', to: "profiles#update"
 
+  root 'application#home'
 end
