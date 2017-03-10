@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand navbar-text" href="/" data-turbolinks="false">Yelpify</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <!-- <ul class="nav navbar-nav">
+      <li <%= 'class=active' if request.path.split('/')[1] == 'topics' || request.path == '/' %>><a href="/topics">Message Board</a></li>
+    </ul> -->
+
+    <ul class="nav navbar-nav navbar-right">
+
+      <% if logged_in? %>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= Profile.find_by(account_id: current_user.id) ? current_user.user_name : current_user.profile.name %><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/myprofile">View Profile</a></li>
+          <li role="separator" class="divider"></li>
+          <li><%= link_to "Log Out", session_path, method: :delete %></li>
+        </ul>
+      </li>
+      <% else %>
+      <li><a href="<%= new_registration_path %>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="<%= login_path %>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+</nav>
