@@ -1,0 +1,23 @@
+<h1><%= @profile.account.username %>'s Profile</h1>
+<h3>Name</h3>
+<%= @profile.name %>
+<br />
+<h3>Biography:</h3>
+<%= @profile.bio %>
+<br />
+<h3>Interests: </h3>
+<%= @profile.interests %>
+<br />
+<%if current_user == @profile.account%>
+<h4><a href = '/account/edit'>Edit Profile</a></h4>
+<%end%>
+<h3>Review History</h3>
+<%if @profile.account.reviews %>
+<%@reviews.each do |review|%>
+<%=review.content%>
+<%end%>
+<%else%>
+You have not reviewed anything.
+<%end%>
+<br />
+<br />

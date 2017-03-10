@@ -1,0 +1,9 @@
+<%=form_for @profile, url: "/profile/#{current_user.id}" do |f|%>
+<%= f.label :name, "Your Name" %>
+<%= f.text_field :name %><br /><br />
+<%= f.label :bio, "Biography: " %>
+<%= f.text_field :bio %><br />
+<%= f.label :interests, "Interests: " %>
+<%= f.text_field :interests %><br />
+<%= f.submit %>
+<% end %>
