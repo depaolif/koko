@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <%=render '/layouts/navbar'%>
+    <%if !notice.nil? && !alert.nil?%>
+    <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+    <%end%>
     <% if flash[:alert]%>
     <%= flash[:alert] %>
     <%end%><br />
