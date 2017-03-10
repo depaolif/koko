@@ -1,0 +1,4 @@
+<% @songs.each do |song| %>
+  <%= link_to song.name, song_path(song) %>
+  <%= song.artist_name %>
+<% end %>
