@@ -11,7 +11,9 @@
 <h3>Review History</h3>
 <%if @profile.account.reviews.count > 0 %>
 <%@profile.account.reviews.each do |review|%>
-<%=review.content%>
+<strong>Rating:</strong> <%=review.song_score%> Stars <br />
+<strong>Review:</strong> <%=review.content%><br />
+<strong>Song:</strong> <%=link_to review.song.name, song_path(review.song) %>
 <%end%>
 <%else%>
 You have not reviewed anything.
