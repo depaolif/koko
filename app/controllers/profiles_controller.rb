@@ -3,12 +3,6 @@ class ProfilesController < ApplicationController
   before_action :set_own_profile!, only: [:index, :edit, :update]
 
   def index
-    if @profile
-      render :index
-    else
-      @profile = Profile.create(name: "", bio: "", interests: "", account_id: current_user.id)
-      render :index
-    end
   end
 
   def show
@@ -17,6 +11,7 @@ class ProfilesController < ApplicationController
     elsif @profile.account.id == current_user.id
       redirect_to myprofile_path
     else
+      binding.pry
       render :show
     end
   end

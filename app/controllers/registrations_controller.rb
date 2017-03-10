@@ -7,6 +7,17 @@ class RegistrationsController < ApplicationController
     account = Account.new(account_params)
     account.save
     session[:account_id] = account.id
+    account.profile = Profile.create(name: "", bio: "", interests: "", account_id: current_user.id)
+    redirect_to home_path
+  end
+
+  def close
+    redirect_to login_path if !logged_in?
+  end
+
+  def destroy
+    current_user.destroy
+    session[:account_id] = nil
     redirect_to home_path
   end
 

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/profile/edit', to: 'profiles#edit'
   get '/profile/:id', to: 'profiles#show', as: 'show_profile'
   patch '/profile/:id', to: "profiles#update"
+  get '/close_account', to: 'registrations#close', as: 'close_account'
+  delete '/registrations', to: 'registrations#destroy'
 
   root 'application#home'
 end
