@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :reviews, except: :destroy
   resources :songs, only: [:create,:show] do
     resources :reviews
   end
@@ -17,6 +16,8 @@ Rails.application.routes.draw do
   patch '/profile/:id', to: "profiles#update"
   get '/close_account', to: 'registrations#close', as: 'close_account'
   delete '/registrations', to: 'registrations#destroy'
+
+  delete '/songs/:song_id/reviews/:id', to: 'reviews#destroy', as: 'destroy_song_review'
 
   root 'application#home'
 end
