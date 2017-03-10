@@ -8,10 +8,9 @@ Show Me the Stuff!
 
 <br><br>
 <%= link_to "Sign Up", new_registration_path %>
-<% if session[:account_id] %>
+<% if logged_in? %>
   <%= link_to "View Your Profile", myprofile_path%>
   <%= link_to "Log Out", session_path, method: "DELETE" %>
 <% else %>
   <%= link_to "Log In", login_path %>
 <% end %>
-
