@@ -12,8 +12,9 @@ class SpotifyApi
   # end
 
   # scratchpad
-  #query = "pinegrove"
+  #query = "kanye west"
   #url = "https://api.spotify.com/v1/search?q=#{query}&type=track&limit=20"
   # response = RestClient.send("get", url)
-  # JSON.parse response
+  # stuff = JSON.parse response
+  # stuff["tracks"]["items"].first
 end
