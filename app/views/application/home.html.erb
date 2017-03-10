@@ -3,3 +3,11 @@ Show Me the Stuff!
   <%= text_field_tag "query" %>
   <%= submit_tag "Search It!" %>
 <% end %>
+
+<br><br>
+<%= link_to "Sign Up", new_registration_path %>
+<% if session[:account_id] %>
+  <%= link_to "Log Out", session_path, method: "DELETE" %>
+<% else %>
+  <%= link_to "Log In", login_path %>
+<% end %>
