@@ -9,11 +9,14 @@
 <%= @profile.interests %>
 <br />
 <h3>Review History</h3>
+<h5>Total Points: <%= @profile.account.vote_total%></h5>
 <%if @profile.account.reviews.count > 0 %>
 <%@profile.account.reviews.each do |review|%>
+<strong>Song:</strong> <%=link_to review.song.name, song_path(review.song) %>
 <strong>Rating:</strong> <%=review.song_score%> Stars <br />
 <strong>Review:</strong> <%=review.content%><br />
-<strong>Song:</strong> <%=link_to review.song.name, song_path(review.song) %>
+<strong>Review Score:</strong> <%=review.vote_sum%><br />
+<br>
 <%end%>
 <%else%>
 You have not reviewed anything.
