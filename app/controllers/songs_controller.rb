@@ -9,9 +9,11 @@ class SongsController < ApplicationController
 
 
   def vote
+    # binding.pry
     vote = Vote.new(score: vote_attributes[:vote], review_id: vote_attributes[:review_id].to_i)
     vote.account_id = current_user.id
-    # redirect_to song_path()
+    vote.save
+    redirect_to song_path(params[:song_id])
   end
 
   private
