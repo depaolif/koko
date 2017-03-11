@@ -11,4 +11,14 @@ class Account < ApplicationRecord
     self.reviews.map{|review| review.vote_sum}.sum
   end
 
+  #account having voted on a review
+  def voted?(review_id)
+    binding.pry
+    Vote.where(account_id: self.id).where(review_id: review_id)
+  end
+
+  ### Accounts you've upvoted alot
+
+  ### Reviews_I_have_voted
+
 end
