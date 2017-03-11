@@ -7,7 +7,7 @@ class SpotifyApi
   end
 
   def search
-    url = "https://api.spotify.com/v1/search?q=#{self.query}&type=track&limit=20"
+    url = "https://api.spotify.com/v1/search?q=#{self.query}&type=track&limit=30"
     response = RestClient.send("get", url)
     raw_data = JSON.parse(response)
     @songs_data = raw_data["tracks"]["items"]
@@ -20,6 +20,7 @@ class SpotifyApi
       song
     end
   end
+
   # def authenticate(client_id, client_secret)
   #   @client_id, @client_secret = client_id, client_secret
   #   request_body = { grant_type: 'client_credentials' }
