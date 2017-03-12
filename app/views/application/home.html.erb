@@ -1,6 +1,6 @@
 <%if logged_in?%>
 <h3>What Are Your Friends Reviewing?</h3>
-<%if @friends%>
+<%if @friends.count > 0%>
 <%@friends.each do |friend|%>
 <h3>
   <%=link_to friend.friend.user_name, show_profile_path(friend.friend)%>
