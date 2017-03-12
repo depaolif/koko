@@ -2,7 +2,7 @@
 
 <%@trending_artists.each do |artist, score|%>
 <h3>
-  <%=link_to artist.name, artist_path(artist.name)%>
+  <%=link_to artist.name, artist_path(artist)%>
 </h3>
 <h4> Average Review Score: <%=score%></h4>
 <%end%>
