@@ -1,5 +1,23 @@
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#search-field').keydown(function() {
+
+    var empty = false;
+
+    if ($('#search-field').val().length == 0) {
+            empty = true;
+        }
+      if (empty) {
+          $('#search-submit').attr('disabled', 'disabled');
+      } else {
+          $('#search-submit').removeAttr('disabled');
+      }
+  });
+});
+</script>
+
 Show Me the Stuff!
-<%= form_tag('/search') do %>
-  <%= text_field_tag "query" %>
-  <%= submit_tag "Search It!" %>
+<%= form_tag('/search', id: "search-form") do %>
+  <%= text_field_tag "query", nil, id: "search-field" %>
+  <%= submit_tag("Search It!", id: "search-submit", disabled: "disabled") %>
 <% end %>
