@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:account_id] = @account.id
       redirect_to home_path
     else
-      redirect_to home_path, alert: "Username and password do not match."
+      redirect_to login_path, alert: "Username and password do not match."
     end
   end
 

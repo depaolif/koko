@@ -2,14 +2,9 @@ class ProfilesController < ApplicationController
   before_action :set_profile!, only: :show
   before_action :set_own_profile!, only: [:index, :edit, :update]
 
-  def index
-  end
-
   def show
     if !@profile
       redirect_to root_path, alert: "This user does not exist."
-    elsif @profile.account.id == current_user.id
-      redirect_to myprofile_path
     end
   end
 
@@ -24,7 +19,11 @@ class ProfilesController < ApplicationController
   private
 
   def set_profile!
+    if !params[:id]
+      @profile = Profile.find_by(account_id: current_user.id)
+    else
       @profile = Profile.find_by(account_id: params[:id])
+    end
   end
 
   def profile_params
