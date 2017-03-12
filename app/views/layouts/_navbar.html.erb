@@ -14,7 +14,9 @@
     </ul> -->
       <ul class="nav navbar-nav">
         <li><a href="/artists">Trending Artists</a></li>
+        <%if logged_in?%>
         <li><%=link_to "Your Friends", friends_path(current_user.id)%></li>
+        <%end%>
       </ul>
       <div class="navbar-form navbar-left">
          <div class="form-group">
