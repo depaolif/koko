@@ -41,12 +41,16 @@ class ReviewsController < ApplicationController
   def update
     set_review
     @review.update(review_params)
+    @review.votes.each{|vote| vote.destroy}
+    vote = Vote.new(score: 1, review_id: @review.id, account_id: current_user.id)
+    vote.save
     redirect_to song_path(params[:song_id])
   end
 
   def destroy
     set_review
     set_song
+    @review.votes.each{|vote| vote.destroy}
     @review.destroy
     redirect_to song_path(params[:song_id])
   end

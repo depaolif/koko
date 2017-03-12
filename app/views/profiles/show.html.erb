@@ -9,19 +9,25 @@
 <%= @profile.interests %>
 <br />
 <%if @profile != current_user.profile%>
-<%if !current_user.friends.include?(@profile.account)%> <%=link_to 'Add Friend', add_friend_path(@profile.account.id)%><%else%><%=link_to 'Remove Friend', remove_friend_path(@profile.account.id)%><%end%>
+  <%if !current_user.friends.include?(@profile.account)%>
+    <%=link_to 'Add Friend', add_friend_path(@profile.account.id)%>
+  <%else%>
+    <%=link_to 'Remove Friend', remove_friend_path(@profile.account.id)%>
+  <%end%>
 <%end%>
-<br />
+<br>
 <h3>Review History</h3>
 <h5>Total Points: <%= @profile.account.vote_total%></h5>
-<%if @profile.account.reviews %>
+
+<%if !@profile.account.reviews.empty? %>
   <%= render partial: "reviews/review", collection: @profile.account.reviews %>
 <%else%>
-You have not reviewed anything.
+  You have not reviewed anything.
 <%end%>
-<br />
-<br />
+
+<br><br>
+
 <% if @profile == current_user.profile %>
-<h4><a href = '/profile/edit'>Edit Profile</a></h4>
-<h5><%= link_to "Delete Account", close_account_path %></h5>
+  <h4><a href = '/profile/edit'>Edit Profile</a></h4>
+  <h5><%= link_to "Delete Account", close_account_path %></h5>
 <% end %>
