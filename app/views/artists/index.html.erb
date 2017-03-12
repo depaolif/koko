@@ -1,8 +1,8 @@
 <h1>Trending Artists</h1>
 
-<%@trending_artists.each do |artist_and_score|%>
+<%@trending_artists.each do |artist, score|%>
 <h3>
-  <%=link_to artist_and_score[0].name, artist_path(artist_and_score[0])%>
+  <%=link_to artist.name, artist_path(artist.name)%>
 </h3>
-<h4> Average Review Score: <%=artist_and_score[1]%></h4>
+<h4> Average Review Score: <%=score%></h4>
 <%end%>

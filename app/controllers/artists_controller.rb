@@ -5,16 +5,10 @@ class ArtistsController < ApplicationController
 
   def index
     artists = Artist.all
-    trending_artists_hash = {}
-    @trending_artists = []
-    average_score = 0
+    @trending_artists = {}
     artists.each do |artist|
       if artist.reviews.count > 0
-      average_score = artist.reviews.sum(:song_score).to_f/artist.reviews.count(:song_score)
-        trending_artists_hash[artist] = average_score
-        trending_artists_hash.map do |h|
-          @trending_artists << h
-      end
+        @trending_artists[artist] = artist.reviews.sum(:song_score).to_f/artist.reviews.count(:song_score)
       end
     end
   end
