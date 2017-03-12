@@ -9,7 +9,7 @@
 <%= @profile.interests %>
 <br />
 <%if @profile != current_user.profile%>
-  <%if !current_user.friends.include?(@profile.account)%>
+  <%if !current_user.friends.any?{|friend| friend.friend == @profile.account}%>
     <%=link_to 'Add Friend', add_friend_path(@profile.account.id)%>
   <%else%>
     <%=link_to 'Remove Friend', remove_friend_path(@profile.account.id)%>
