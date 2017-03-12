@@ -4,7 +4,7 @@ class CreateSongs < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :play_url
       t.string :spotify_song_id
-      t.string :artist_name
+      t.integer :artist_id
       t.string :album_name
       t.timestamps
     end

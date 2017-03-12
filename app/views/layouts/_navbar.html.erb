@@ -6,12 +6,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand navbar-text" href="/" data-turbolinks="false">Yelpify</a>
+      <a class="navbar-brand navbar-img" href="/" data-turbolinks="false"><img alt="Koko" src="/images/logo.png" height:"100" width:"150"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
     <!-- <ul class="nav navbar-nav">
       <li <%= 'class=active' if request.path.split('/')[1] == 'topics' || request.path == '/' %>><a href="/topics">Message Board</a></li>
     </ul> -->
+      <ul class="nav navbar-nav">
+        <li><a href="/artists">Trending Artists</a></li>
+        <li><%=link_to "Your Friends", friends_path(current_user.id)%></li>
+      </ul>
+      <div class="navbar-form navbar-left">
+         <div class="form-group">
+           <%= form_tag('/search', id: "search-form") do %>
+           <%= text_field_tag "query", nil, id: "search-field" %>
+           <%= submit_tag("Search It!", id: "search-submit", disabled: "disabled") %>
+           <% end %>
+         </div>
+       </div>
 
     <ul class="nav navbar-nav navbar-right">
 

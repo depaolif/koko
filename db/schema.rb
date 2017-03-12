@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170310225326) do
+ActiveRecord::Schema.define(version: 20170312141304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 20170310225326) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer  "account_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -44,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170310225326) do
     t.string   "name"
     t.string   "play_url"
     t.string   "spotify_song_id"
-    t.string   "artist_name"
+    t.integer  "artist_id"
     t.string   "album_name"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
