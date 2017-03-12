@@ -37,20 +37,31 @@
         Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <br>
         <%= review.content%> <br>
 
-        <% if logged_in? && review.account.id == current_user.id %>
+        <% if review.account.id == current_user.id %>
         <%= link_to 'Edit', edit_song_review_path(@song,review) %> <br>
-        <%= link_to 'Delete', destroy_song_review_path(@song,review), method: 'delete' %>
+        <%= link_to 'Delete', destroy_song_review_path(@song,review), method: 'delete' %><br>
         <% end %>
 
-        <%=form_tag song_review_vote_path(@song, review) do %>
-        <%=hidden_field_tag "review_id", review.id %>
-        <%=radio_button_tag "vote", 1%> Up Vote<br>
-        <%=radio_button_tag "vote", 0%> Neutral<br>
-        <%=radio_button_tag "vote", -1%>Down Vote<br />
-        <%=submit_tag "Vote!" %>
-        <% end%>
+        <% if !current_user.voted?(review.id)%>
+          <%=form_tag song_review_vote_path(@song, review) do %>
+          <%=hidden_field_tag "review_id", review.id %>
+          <%=radio_button_tag "vote", 1%> Up Vote<br>
+          <%=radio_button_tag "vote", 0%> Neutral<br>
+          <%=radio_button_tag "vote", -1%>Down Vote<br/>
+          <%=submit_tag "Vote!" %>
+          <% end%>
+
+        <% else %>
+          <%=form_tag song_review_vote_path(@song, review), method: "PATCH" do %>
+          <%=hidden_field_tag "review_id", review.id %>
+          <%=radio_button_tag "vote", 1, current_user.voted_score(review.id) == 1%> Up Vote<br>
+          <%=radio_button_tag "vote", 0, current_user.voted_score(review.id) == 0 %> Neutral<br>
+          <%=radio_button_tag "vote", -1, current_user.voted_score(review.id) == -1 %>Down Vote<br />
+          <%=submit_tag "Vote!" %>
+          <% end %>
+
+        <% end %>
         <%= "Votes: #{review.vote_sum}" %>
-            <br><br>
-      </div>
+      <br><br>
   <%end%>
 <%end%>

@@ -17,6 +17,12 @@ class SongsController < ApplicationController
     redirect_to song_path(params[:song_id])
   end
 
+  def change_vote
+    vote = Vote.where(account_id: current_user.id, review_id: params[:review_id]).first
+    vote.update(score: vote_attributes[:vote])
+    redirect_to song_path(params[:song_id])
+  end
+
   private
   def vote_attributes
     params.permit(:vote, :review_id, :account_id)

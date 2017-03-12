@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :songs, only: [:create,:show] do
     resources :reviews do
       post '/vote', to: 'songs#vote'
+      patch '/vote', to: 'songs#change_vote'
     end
   end
 
