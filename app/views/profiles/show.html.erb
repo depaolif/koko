@@ -8,6 +8,10 @@
 <h3>Interests: </h3>
 <%= @profile.interests %>
 <br />
+<%if @profile != current_user.profile%>
+<%if !current_user.friends.include?(@profile.account)%> <%=link_to 'Add Friend', add_friend_path(@profile.account.id)%><%else%><%=link_to 'Remove Friend', remove_friend_path(@profile.account.id)%><%end%>
+<%end%>
+<br />
 <h3>Review History</h3>
 <h5>Total Points: <%= @profile.account.vote_total%></h5>
 <%if @profile.account.reviews %>
