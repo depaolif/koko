@@ -5,11 +5,11 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find_by(id: params[:id])
+    @review = Review.new
   end
 
 
   def vote
-    # binding.pry
     vote = Vote.new(score: vote_attributes[:vote], review_id: vote_attributes[:review_id].to_i)
     vote.account_id = current_user.id
     vote.save

@@ -34,7 +34,7 @@ class Account < ApplicationRecord
   end
 
   def upvoted_accounts
-    Account.joins(:votes).where(votes: {account_id: 13}).where(votes: {score: 1})
+    Account.joins(:votes).where(votes: {account_id: current_user.id}).where(votes: {score: 1})
   end
 
   ### Reviews_I_have_voted

@@ -1,10 +1,16 @@
 class ReviewsController < ApplicationController
+  protect_from_forgery except: :new
 
   def new
+    # allows people to still use the new page, but only if they haven't already written a review, otherwise it redirects
     set_song
-    if @song
-      @review = Review.new
-      render 'new'
+    if user_has_reviewed?
+      redirect_to @song
+    else
+      if @song
+        @review = Review.new
+        render 'new'
+      end
     end
   end
 
@@ -14,7 +20,7 @@ class ReviewsController < ApplicationController
     @review.song = @song
     @review.account = current_user
     if @review.save
-      redirect_to song_path(@song)
+      redirect_to @song
     else
       redirect_to new_song_review_path, alert: "Something went horribly wrong with creating your review."
     end
@@ -23,6 +29,11 @@ class ReviewsController < ApplicationController
   def edit
     set_review
     set_song
+    if @review.account_id == current_user.id
+      render 'edit'
+    else
+      redirect_to @song
+    end
   end
 
   def update
@@ -49,5 +60,10 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find_by(id: params[:id])
+  end
+
+  def user_has_reviewed?
+    set_song
+    current_user.reviews.any? { |review| review.song_id == @song.id }
   end
 end
