@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Yelpify</title>
+    <title>Koko</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,21 @@
   </head>
 
   <body>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $('#search-field').keydown(function() {
+      var empty = false;
+      if ($('#search-field').val().length == 0) {
+              empty = true;
+            }
+            if (empty) {
+              $('#search-submit').attr('disabled', 'disabled');
+            } else {
+              $('#search-submit').removeAttr('disabled');
+            }
+          });
+        });
+      </script>
     <%=render '/layouts/navbar'%>
     <% if flash[:alert] || flash[:error]%>
     <%= flash[:alert] || flash[:error] %>

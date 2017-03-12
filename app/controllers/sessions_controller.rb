@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:account_id] = nil
+    session.destroy
     redirect_to home_path
   end
 

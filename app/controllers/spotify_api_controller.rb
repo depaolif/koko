@@ -4,7 +4,7 @@ class SpotifyApiController < ApplicationController
     search_obj = SpotifyApi.new(spotify_params[:query])
     x = search_obj.search
     if x.length > 0
-      @songs = search_obj.make_songs
+      @songs = search_obj.make_songs_and_artists
       render 'search_results'
     else
 

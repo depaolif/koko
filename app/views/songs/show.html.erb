@@ -8,7 +8,7 @@
 </script>
 
 <h1><%= @song.name %></h1>
-<h2><%= @song.artist_name %></h2>
+<h2><%= link_to @song.artist.name, artist_path(@song.artist)%></h2>
 
 <iframe src="https://embed.spotify.com/?uri=<%=@song.play_url%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
   <div>
@@ -34,7 +34,7 @@
   <%@song.reviews.each do |review|%>
       <div id="review_<%= review.id %>">
         <%= review.song_score %> Stars <br>
-        Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <br>
+        Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <%if review.account != current_user%> | <%if !current_user.friends.include?(review.account)%> <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%><%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><br>
         <%= review.content%> <br>
 
         <% if review.account.id == current_user.id %>

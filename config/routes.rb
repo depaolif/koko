@@ -5,9 +5,12 @@ Rails.application.routes.draw do
       patch '/vote', to: 'songs#change_vote'
     end
   end
-
+  resources :artists, only: [:index, :create, :show]
   resources :registrations, only: [:new,:create]
   resources :sessions, only: [:new,:create]
+  get '/friends/:id', to: 'friends#index', as: 'friends'
+  get '/add_friend/:id', to: 'friends#create', as: 'add_friend'
+  get '/remove_friend/:id', to: 'friends#destroy', as: 'remove_friend'
   get '/login', to: 'sessions#new', as: 'login'
   delete 'sessions/delete', to: 'sessions#destroy', as: 'session'
   get '/home', to: 'application#home', as: 'home'

@@ -1,5 +1,4 @@
-<h1>What Are Your Friends Reviewing?</h1>
-<%if @friends%>
+<h1>Friends</h1>
 <%@friends.each do |friend|%>
 <h3>
   <%=link_to friend.friend.user_name, show_profile_path(friend.friend)%>
@@ -16,9 +15,5 @@
 <p>
   Review: <%= friend.friend.reviews.last.content%>
 </p>
-<%else%>
-<p>
-  Add Friends to unlock this feature!
-</p>
-<%end%>
+--
 <%end%>

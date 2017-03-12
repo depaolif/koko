@@ -4,7 +4,7 @@
 <% @songs.each do |song| %>
 <li>
   <%= link_to song.name, song_path(song) %>
-  By: <%= song.artist_name %>
+  By: <%= link_to song.artist.name, artist_path(song.artist) %>
 </li>
 <% end %>
 </ul>

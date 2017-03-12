@@ -5,6 +5,7 @@ class Account < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :songs, through: :reviews
   has_many :votes, through: :reviews
+  has_many :friends, :class_name => 'Friend', :foreign_key => :account_id
 
   #Account as recipient of upvotes
   def vote_total
