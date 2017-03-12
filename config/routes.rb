@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/home', to: 'application#home', as: 'home'
   post '/search', to: 'spotify_api#search'
 
-  get '/myprofile', to: 'profiles#index'
+  get '/my_profile', to: 'profiles#show'
   get '/profile/edit', to: 'profiles#edit'
   get '/profile/:id', to: 'profiles#show', as: 'show_profile'
   patch '/profile/:id', to: "profiles#update"
