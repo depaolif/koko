@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def home
     if logged_in?
       @friends = current_user.friends
-    end 
+    end
   end
 
 

@@ -20,6 +20,8 @@ class ReviewsController < ApplicationController
     @review.song = @song
     @review.account = current_user
     if @review.save
+      vote = Vote.new(score: 1, review_id: @review.id, account_id: current_user.id)
+      vote.save
       redirect_to @song
     else
       redirect_to new_song_review_path, alert: "Something went horribly wrong with creating your review."
