@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
+  protect_from_forgery except: :new
 
   def new
+    # allows people to still use the new page, but only if they haven't already written a review, otherwise it redirects
     set_song
     if user_has_reviewed?
       redirect_to @song
