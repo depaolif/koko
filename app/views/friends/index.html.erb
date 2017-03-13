@@ -1,19 +1,9 @@
 <h1>Friends</h1>
 <%@friends.each do |friend|%>
-<h3>
-  <%=link_to friend.friend.user_name, show_profile_path(friend.friend)%>
-</h3>
-<p>
-  Last Review Information:
-</p>
-<p>
-  Song: <%= link_to friend.friend.reviews.last.song.name, song_path(friend.friend.reviews.last.song)%>
-</p>
-<p>
-  Score: <%= friend.friend.reviews.last.song_score%>
-</p>
-<p>
-  Review: <%= friend.friend.reviews.last.content%>
-</p>
---
+  <h3><%=link_to friend.friend.user_name, show_profile_path(friend.friend)%></h3>
+  <p>Last Review Information:</p>
+  <p>Song: <%= link_to friend.friend.reviews.last.song.name, song_path(friend.friend.reviews.last.song)%></p>
+  <p>Score: <%= friend.friend.reviews.last.song_score%></p>
+  <p>Review: <%= friend.friend.reviews.last.content%></p>
+  --
 <%end%>
