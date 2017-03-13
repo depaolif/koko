@@ -1,7 +1,7 @@
 <div class="row">
   <%if logged_in?%>
     <div class="col-md-4">
-  <h3>What Are Your Friends Reviewing?</h3>
+  <h1>Friend Activity</h1>
     <%if @friends.count > 0%>
     <%@friends.each do |friend|%>
     <h3>
@@ -38,12 +38,30 @@
     <h3><%=link_to song.name, song_path(song)%></h3>
     <h4> Average Review Score: <%=score%></h4>
   <%end%>
-
 </div>
 <div class="col-md-4">
+  <h1>Top Influencers Picks</h1>
+  <%@final_array.each do |reviewer|%>
+  <P>
+    Reviewer: <%= link_to reviewer[0].user_name, show_profile_path(reviewer[0]) %>
+  </P>
+  <p>
+    Last Positive Review:
+  </p>
+  <p>
+    Song: <%= link_to reviewer[1].song.name, song_path(reviewer[1].song)%><br />
+    Score: <%= reviewer[1].song_score%> Stars
+    Content: <%= reviewer[1].content%>
+  </p>
+  <%end%>
 </div>
 <%else%>
   <div class="col-md-12">
+    <h1>Trending Songs</h1>
+    <%@ordered_songs_hash.each do |song, score|%>
+      <h3><%=link_to song.name, song_path(song)%></h3>
+      <h4> Average Review Score: <%=score%></h4>
+    <%end%>
   </div>
 <%end%>
 </div>
