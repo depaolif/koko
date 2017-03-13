@@ -18,13 +18,14 @@
         <li><%=link_to "Your Friends", friends_path(current_user.id)%></li>
         <%end%>
       </ul>
-      <div class="navbar-form navbar-left">
+
+      <div class="nav navbar-form navbar-right">
          <div class="search-form">
            <%= form_tag('/search/', id: "search-form") do %>
              <%= text_field_tag "query", nil, id: "search-field", placeholder: "Search for Music!", class: "search-field" %>
-           <%= button_tag type: 'submit', id: "search-submit", disabled: "disabled" do %>
-            <%= icon('search', class: "fa-2x") %>
-           <% end %>
+             <%= button_tag type: 'submit', id: "search-submit", disabled: "disabled" do %>
+              <%= icon('search', class: "fa-2x") %>
+             <% end %>
            <% end %>
          </div>
        </div>
