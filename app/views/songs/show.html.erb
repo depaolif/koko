@@ -55,14 +55,14 @@
         <%= link_to 'Delete', destroy_song_review_path(@song,my_review), method: 'delete' %><br>
 
       <% if !current_user.voted?(my_review.id)%>
-          <%= render partial: "votes", locals: {song: @song, review: my_review} %>
+          <%= render partial: "votes", locals: {song: @song, review: my_review, vote_score: 0} %>
 
       <% else %>
           <% vote_score = current_user.voted_score(my_review.id) %>
           <%= render partial: "editvotes", locals: {song: @song, review: my_review, vote_score: vote_score} %>
 
-      <% end %>
-        <br><br>
+        <% end %>
+        <br><br>Votes:
         <div id="review_<%= my_review.id %>_total">
           <%= "#{my_review.vote_sum}" %>
         </div>
@@ -92,7 +92,7 @@
           <%= render partial: "editvotes", locals: {song: @song, review: review, vote_score: vote_score} %>
 
         <% end %>
-        <br><br>
+        <br><br>Votes:
         <div id="review_<%= review.id %>_total">
           <%= "#{review.vote_sum}" %>
         </div>
@@ -100,8 +100,5 @@
   <%end%>
 <% end %>
 <br><br>
-<div id="upvotes" class="john">
-  0
-</div>
 
 <br><br>

@@ -3,5 +3,5 @@
 # //= require_tree .
 #
 this.App = {};
-#
-App.cable = ActionCable.createConsumer();
+
+App.cable = ActionCable.createConsumer('<%= ENV["CABLE_SERVER"]%>');
