@@ -68,9 +68,9 @@
         <%=radio_button_tag "vote", -1, current_user.voted_score(my_review.id) == -1 %>Down Vote<br />
         <%=submit_tag "Vote!" %>
         <% end %>
-
       <% end %>
       <%= "Votes: #{my_review.vote_sum}" %>
+
       <br><br>
     </div>
     <div id="edit_form" style="display:none">
