@@ -1,7 +1,7 @@
 <span>
   <%=form_tag song_review_vote_path(song, review), id: 'upvote-icon', class: vote_score == 1 ? "votes-form selected-up" : "votes-form", method: "PATCH", remote: true do %>
     <%=hidden_field_tag "review_id", review.id %>
-    <%=hidden_field_tag "vote", vote_score == 1 ? 0 : 1 , id: "hidden-down", class: "vote_value"%>
+    <%=hidden_field_tag "vote", vote_score == 1 ? 0 : 1 , id: "hidden-up", class: "vote_value"%>
     <%= button_tag type: 'submit' do %>
      <%= icon('thumbs-up') %>
     <% end %>
