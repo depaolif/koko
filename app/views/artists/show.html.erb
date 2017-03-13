@@ -15,8 +15,7 @@
    </tr>
   </thead>
   <tbody>
-    <%@artist.songs.each do |song|%>
-      <%if song.reviews.count > 0%>
+    <%@artist_songs_ordered_by_review.each do |song, score|%>
         <tr>
           <td>
             <h4>
@@ -24,7 +23,7 @@
             </h4>
           </td>
           <td>
-             <h4><%=song.reviews.average(:song_score).round(2)%></h4>
+             <h4><%=score.round(2)%></h4>
           </td>
           <td>
             <p>Reviewer: <%=link_to song.reviews.last.account.user_name, show_profile_path(song.reviews.last.account)%></p>
@@ -33,7 +32,6 @@
             <p>Posted On:<%=song.reviews.last.created_at.strftime("%l:%M %P, %B %-d, %Y")%></p>
           </td>
         </tr>
-      <%end%>
     <%end%>
   </tbody>
 </table>

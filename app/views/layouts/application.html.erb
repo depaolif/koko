@@ -5,27 +5,63 @@
     <%= action_cable_meta_tag %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Titillium+Web">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <script type="text/javascript">
-    $(document).ready(function() {
-    $('#search-field').keydown(function() {
-      var empty = false;
-      if ($('#search-field').val().length == 0) {
-              empty = true;
-            }
-            if (empty) {
-              $('#search-submit').attr('disabled', 'disabled');
-              $('#search-submit').removeAttr('class', 'pulse');
-            } else {
-              $('#search-submit').removeAttr('disabled');
-              $('#search-submit').attr('class', 'pulse');
-            }
+   $(document).ready(function() {
+   $('#search-field').keydown(function() {
+     var empty = false;
+     if ($('#search-field').val().length == 0) {
+             empty = true;
+           }
+           if (empty) {
+             $('#search-submit').attr('disabled', 'disabled');
+             $('#search-submit').removeAttr('class', 'pulse');
+           } else {
+             $('#search-submit').removeAttr('disabled');
+             $('#search-submit').attr('class', 'pulse');
+           }
+         });
+       });
+     </script>
+      <script type="text/javascript">
+      $(document).ready(function() {
+      $('#search-field-2').keydown(function() {
+        var empty = false;
+        if ($('#search-field-2').val().length == 0) {
+                empty = true;
+              }
+              if (empty) {
+                $('#search-submit-2').attr('disabled', 'disabled');
+                $('#search-submit-2').removeAttr('class', 'pulse');
+              } else {
+                $('#search-submit-2').removeAttr('disabled');
+                $('#search-submit-2').attr('class', 'pulse');
+              }
+            });
           });
-        });
-      </script>
+        </script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+        $('#search-field-3').keydown(function() {
+          var empty = false;
+          if ($('#search-field-3').val().length == 0) {
+                  empty = true;
+                }
+                if (empty) {
+                  $('#search-submit-3').attr('disabled', 'disabled');
+                  $('#search-submit-3').removeAttr('class', 'pulse');
+                } else {
+                  $('#search-submit-3').removeAttr('disabled');
+                  $('#search-submit-3').attr('class', 'pulse');
+                }
+              });
+            });
+          </script>
     <%=render '/layouts/navbar'%>
     <br />
     <% if flash[:alert] || flash[:error]%>
@@ -33,7 +69,5 @@
     <%end%><br/>
     <%= yield %>
   </body>
-  <footer>
-      <%=render '/layouts/footer'%>
-  </footer>
+<%= render '/layouts/footer'%>
 </html>

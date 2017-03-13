@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :artists, only: [:index, :create, :show]
   resources :registrations, only: [:new,:create]
   resources :sessions, only: [:new,:create]
+
+  post '/friends/search', to: 'friends#search'
+  get '/friends/search', to: 'application#home'
   get '/friends/:id', to: 'friends#index', as: 'friends'
   get '/add_friend/:id', to: 'friends#create', as: 'add_friend'
   get '/remove_friend/:id', to: 'friends#destroy', as: 'remove_friend'
