@@ -1,4 +1,7 @@
+@import "palette";
+
 /* navbar */
+
 .navbar-default {
     background-color: #db5461;
     border-color: #fff;
@@ -204,7 +207,7 @@
 	width:285px;
 	outline: none;
 	border:none;
-	border-bottom: 4px solid #1bd67f;
+	border-bottom: 4px solid $color2;
 }
 
 // .search-form > button {
@@ -220,7 +223,7 @@
   width:285px;
   outline: none;
   border:none;
-  border-bottom: 4px solid #1bd67f;
+  border-bottom: 4px solid $color2;
 }
 
 // .nav-account-name {
