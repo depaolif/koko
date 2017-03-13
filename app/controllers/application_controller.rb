@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     unordered_songs = Song.all
     @unordered_songs_hash = {}
     unordered_songs.each do |song|
-      if song.reviews.count > 0
+      if song.reviews.count > 0 && (song.weighted_review_average.round(2) >= 3)
         @unordered_songs_hash[song] = song.weighted_review_average.round(2)
       end
     end
