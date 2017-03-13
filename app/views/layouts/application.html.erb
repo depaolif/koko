@@ -3,7 +3,6 @@
   <head>
     <title>Koko</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -18,8 +17,10 @@
             }
             if (empty) {
               $('#search-submit').attr('disabled', 'disabled');
+              $('#search-submit').removeAttr('class', 'pulse');
             } else {
               $('#search-submit').removeAttr('disabled');
+              $('#search-submit').attr('class', 'pulse');
             }
           });
         });

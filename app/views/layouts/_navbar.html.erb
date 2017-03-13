@@ -19,10 +19,12 @@
         <%end%>
       </ul>
       <div class="navbar-form navbar-left">
-         <div class="form-group">
+         <div class="search-form">
            <%= form_tag('/search', id: "search-form") do %>
-           <%= text_field_tag "query", nil, id: "search-field" %>
-           <%= submit_tag("Search It!", id: "search-submit", disabled: "disabled") %>
+             <%= text_field_tag "query", nil, id: "search-field", placeholder: "Search for Music!", class: "search-field" %>
+           <%= button_tag type: 'submit', id: "search-submit", disabled: "disabled" do %>
+            <%= icon('search', class: "fa-2x") %>
+           <% end %>
            <% end %>
          </div>
        </div>
