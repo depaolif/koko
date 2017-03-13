@@ -5,6 +5,7 @@
 <h3>
   <%=link_to friend.friend.user_name, show_profile_path(friend.friend)%>
 </h3>
+<%if friend.friend.reviews.count > 0 %>
 <p>
   Last Review Information:
 </p>
@@ -17,6 +18,11 @@
 <p>
   Review: <%= friend.friend.reviews.last.content%>
 </p>
+<%else%>
+<p>
+  This user has not posted any reviews yet.
+</p>
+<%end%>
 <%end%>
 <%else%>
 <p>
