@@ -49,8 +49,6 @@
         <%= my_review.content%> <br>
 
         <a id="edit_review"style="cursor:pointer">Edit</a><br>
-
-        <!-- <%= link_to 'Edit', edit_song_review_path(@song,my_review) %><br> -->
         <%= link_to 'Delete', destroy_song_review_path(@song,my_review), method: 'delete' %><br>
 
       <% if !current_user.voted?(my_review.id)%>
