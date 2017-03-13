@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+
   resources :songs, only: [:create,:show] do
     resources :reviews do
       post '/vote', to: 'songs#vote'

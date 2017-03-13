@@ -1,4 +1,4 @@
-<%= form_for [@song, @review] do |f| %>
+<%= form_for [song, review] do |f| %>
   <p>Score: <%= f.select :song_score, [['1',1],['2',2],['3',3],['4',4],['5',5]] %></p>
   <p>Review: <%= f.text_area :content %></p>
   <%= f.submit %>
