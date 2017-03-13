@@ -1,13 +1,14 @@
 <h1><%= @profile == current_user.profile ? "Your" : "#{@profile.account.user_name}'s" %> Profile</h1>
 <h3>Name</h3>
 <%= @profile.name %>
-<br />
+<br>
 <h3>Biography:</h3>
 <%= @profile.bio %>
-<br />
+<br>
 <h3>Interests: </h3>
 <%= @profile.interests %>
-<br />
+<br>
+
 <%if @profile != current_user.profile%>
   <%if !current_user.friends.any?{|friend| friend.friend == @profile.account}%>
     <%=link_to 'Add Friend', add_friend_path(@profile.account.id)%>

@@ -1,5 +1,5 @@
 <h1><%=@artist.name%>'s Top Songs</h1>
-<br />
+<br>
 <table class ="table">
   <thead>
     <tr>
@@ -13,27 +13,27 @@
        <h3>Last Review</h3>
      </th>
    </tr>
- </thead>
- <tbody>
-<%@artist.songs.each do |song|%>
-<%if song.reviews.count > 0%>
-  <tr>
-    <td>
-<h4>
-  <%= link_to song.name, song_path(song)%>
-</h4>
-  </td>
-  <td>
-     <h4><%=song.reviews.average(:song_score)%></h4>
-  </td>
-  <td>
-    <p>Reviewer: <%=link_to song.reviews.last.account.user_name, show_profile_path(song.reviews.last.account)%></p>
-    <p>Score: <%=song.reviews.last.song_score%></p>
-    <p>Content: <%=song.reviews.last.content%></p>
-     <p>Posted On:<%=song.reviews.last.created_at.strftime("%l:%M %P, %B %-d, %Y")%></p>
-  </td>
-</tr>
-<%end%>
-<%end%>
-</tbody>
+  </thead>
+  <tbody>
+    <%@artist.songs.each do |song|%>
+      <%if song.reviews.count > 0%>
+        <tr>
+          <td>
+            <h4>
+              <%= link_to song.name, song_path(song)%>
+            </h4>
+          </td>
+          <td>
+             <h4><%=song.reviews.average(:song_score)%></h4>
+          </td>
+          <td>
+            <p>Reviewer: <%=link_to song.reviews.last.account.user_name, show_profile_path(song.reviews.last.account)%></p>
+            <p>Score: <%=song.reviews.last.song_score%></p>
+            <p>Content: <%=song.reviews.last.content%></p>
+            <p>Posted On:<%=song.reviews.last.created_at.strftime("%l:%M %P, %B %-d, %Y")%></p>
+          </td>
+        </tr>
+      <%end%>
+    <%end%>
+  </tbody>
 </table>

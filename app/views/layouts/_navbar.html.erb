@@ -18,18 +18,17 @@
         <li><%=link_to "Your Friends", friends_path(current_user.id)%></li>
         <%end%>
       </ul>
-      <div class="navbar-form navbar-left">
-         <div class="search-form">
-           <%= form_tag('/search/', id: "search-form") do %>
-             <%= text_field_tag "query", nil, id: "search-field", placeholder: "Search for Music!", class: "search-field" %>
-           <%= button_tag type: 'submit', id: "search-submit", disabled: "disabled" do %>
-            <%= icon('search', class: "fa-2x") %>
-           <% end %>
-           <% end %>
-         </div>
-       </div>
 
     <ul class="nav navbar-nav navbar-right">
+
+      <li class="search-form">
+        <%= form_tag('/search/', id: "search-form") do %>
+          <%= text_field_tag "query", nil, id: "search-field", placeholder: "Search for Music!", class: "search-field" %>
+          <%= button_tag type: 'submit', id: "search-submit", disabled: "disabled" do %>
+           <%= icon('search', class: "fa-2x") %>
+          <% end %>
+        <% end %>
+      </li>
 
       <% if logged_in? %>
       <li class="dropdown">
@@ -40,6 +39,7 @@
           <li><%= link_to "Log Out", session_path, method: :delete %></li>
         </ul>
       </li>
+
       <% else %>
       <li><a href="<%= new_registration_path %>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="<%= login_path %>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
