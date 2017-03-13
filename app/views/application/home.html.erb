@@ -1,32 +1,49 @@
-<%if logged_in?%>
-<h3>What Are Your Friends Reviewing?</h3>
-<%if @friends.count > 0%>
-<%@friends.each do |friend|%>
-<h3>
-  <%=link_to friend.friend.user_name, show_profile_path(friend.friend)%>
-</h3>
-<%if friend.friend.reviews.count > 0 %>
-<p>
-  Last Review Information:
-</p>
-<p>
-  Song: <%= link_to friend.friend.reviews.last.song.name, song_path(friend.friend.reviews.last.song)%>
-</p>
-<p>
-  Score: <%= friend.friend.reviews.last.song_score%>
-</p>
-<p>
-  Review: <%= friend.friend.reviews.last.content%>
-</p>
+<div class="row">
+  <%if logged_in?%>
+    <div class="col-md-4">
+  <h3>What Are Your Friends Reviewing?</h3>
+    <%if @friends.count > 0%>
+    <%@friends.each do |friend|%>
+    <h3>
+      <%=link_to friend.friend.user_name, show_profile_path(friend.friend)%>
+    </h3>
+      <%if friend.friend.reviews.count > 0 %>
+      <p>
+        Last Review Information:
+      </p>
+      <p>
+        Song: <%= link_to friend.friend.reviews.last.song.name, song_path(friend.friend.reviews.last.song)%>
+      </p>
+      <p>
+        Score: <%= friend.friend.reviews.last.song_score%>
+      </p>
+      <p>
+        Review: <%= friend.friend.reviews.last.content%>
+      </p>
+      <%else%>
+      <p>
+        This user has not posted any reviews yet.
+      </p>
+      <%end%>
+    <%end%>
+  <%else%>
+  <p>
+    Add Friends to unlock this feature!
+  </p>
+  <%end%>
+</div>
+<div class="col-md-4">
+  <h1>Trending Songs</h1>
+  <%@ordered_songs_hash.each do |song, score|%>
+    <h3><%=link_to song.name, song_path(song)%></h3>
+    <h4> Average Review Score: <%=score%></h4>
+  <%end%>
+
+</div>
+<div class="col-md-4">
+</div>
 <%else%>
-<p>
-  This user has not posted any reviews yet.
-</p>
+  <div class="col-md-12">
+  </div>
 <%end%>
-<%end%>
-<%else%>
-<p>
-  Add Friends to unlock this feature!
-</p>
-<%end%>
-<%end%>
+</div>
