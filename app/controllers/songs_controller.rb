@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  helper_method :my_review_for_song
 
   def create
   end
