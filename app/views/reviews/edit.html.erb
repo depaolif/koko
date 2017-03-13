@@ -1,2 +1,4 @@
 <h2>Edit <%= @song.name %> review: </h2><br>
 <%= render partial: 'form', locals: {song: @song, review: @review} %>
+<br>
+<p><i>Note: Editing your review will clear all vote history.</i></p>
