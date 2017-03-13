@@ -24,7 +24,7 @@
             </h4>
           </td>
           <td>
-             <h4><%=song.reviews.average(:song_score)%></h4>
+             <h4><%=song.reviews.average(:song_score).round(2)%></h4>
           </td>
           <td>
             <p>Reviewer: <%=link_to song.reviews.last.account.user_name, show_profile_path(song.reviews.last.account)%></p>

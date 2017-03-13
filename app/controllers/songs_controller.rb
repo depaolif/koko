@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  helper_method :my_review_for_song
 
   def create
   end
@@ -35,6 +36,10 @@ class SongsController < ApplicationController
   private
   def vote_attributes
     params.permit(:vote, :review_id, :account_id)
+  end
+
+  def my_review_for_song(song, current_user)
+    song.reviews.find {|review| review.account_id == current_user.id}
   end
 
 end
