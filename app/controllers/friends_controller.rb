@@ -11,8 +11,12 @@ class FriendsController < ApplicationController
   end
 
   def index
-    @account = Account.find_by(id: params[:id])
-    @friends = current_user.friends
+    @user = Account.find_by(id: params[:id])
+    if @user
+      @friends = @user.friends
+    else
+      redirect_to :index, alert: "Sorry, this user does not exist"
+    end 
   end
 
   def destroy
