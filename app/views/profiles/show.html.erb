@@ -10,6 +10,7 @@
 <br>
 
 <%if @profile != current_user.profile%>
+  <%= link_to "View #{@profile.account.user_name}'s friends", friends_path(@profile.account.id)%><br />
   <%if !current_user.friends.any?{|friend| friend.friend == @profile.account}%>
     <%=link_to 'Add Friend', add_friend_path(@profile.account.id)%>
   <%else%>
