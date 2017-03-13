@@ -1,4 +1,4 @@
-<span><%=form_tag song_review_vote_path(song, review), class: "votes-form" do %>
+<span><%=form_tag song_review_vote_path(song, review), id: 'upvote-icon', class: "votes-form", remote: true do %>
   <%=hidden_field_tag "review_id", review.id %>
   <%=hidden_field_tag "vote", 1%>
   <%= button_tag type: 'submit' do %>
@@ -6,7 +6,7 @@
   <% end %>
 <% end%>
 
-<%=form_tag song_review_vote_path(song, review), class: "votes-form" do %>
+<%=form_tag song_review_vote_path(song, review), id: 'downvote-icon', class: "votes-form", remote: true do %>
   <%=hidden_field_tag "review_id", review.id %>
   <%=hidden_field_tag "vote", -1%>
   <%= button_tag type: 'submit' do %>

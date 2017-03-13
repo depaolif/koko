@@ -13,11 +13,13 @@ class SongsController < ApplicationController
   def vote
     vote = Vote.new(score: vote_attributes[:vote], review_id: vote_attributes[:review_id].to_i)
     vote.account_id = current_user.id
+    prev = 0
     vote.save
     if vote.save
       ActionCable.server.broadcast 'upvotes',
         score: vote.score,
-        review_id: vote.review_id
+        review_id: vote.review_id,
+        prev: prev
       head :ok
     end
     # redirect_to song_path(params[:song_id])
