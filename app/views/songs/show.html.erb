@@ -51,16 +51,16 @@
         <a id="edit_review"style="cursor:pointer">Edit</a><br>
         <%= link_to 'Delete', destroy_song_review_path(@song,my_review), method: 'delete' %><br>
 
-      <% if !current_user.voted?(review.id)%>
-          <%= render partial: "votes", locals: {song: @song, review: review} %>
+      <% if !current_user.voted?(my_review.id)%>
+          <%= render partial: "votes", locals: {song: @song, review: my_review} %>
 
         <% else %>
-          <% vote_score = current_user.voted_score(review.id) %>
-          <%= render partial: "editvotes", locals: {song: @song, review: review, vote_score: vote_score} %>
+          <% vote_score = current_user.voted_score(my_review.id) %>
+          <%= render partial: "editvotes", locals: {song: @song, review: my_review, vote_score: vote_score} %>
 
         <% end %>
         <br><br>
-          <%= "Votes: #{review.vote_sum}" %>
+          <%= "Votes: #{my_review.vote_sum}" %>
     </div>
     <div id="edit_form" style="display:none">
       <h3>Edit Your Review:</h3><br>
