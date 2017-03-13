@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def search
+    if logged_in?
+      @friends = current_user.friends
+      redirect_to root_path, alert: "Oops! Please re-enter your search."
+    end
+  end
+
 
   def logged_in?
     !!session[:account_id]

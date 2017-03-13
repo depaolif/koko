@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete 'sessions/delete', to: 'sessions#destroy', as: 'session'
   get '/home', to: 'application#home', as: 'home'
   post '/search', to: 'spotify_api#search'
+  get '/search', to: 'application#search'
 
   get '/my_profile', to: 'profiles#show'
   get '/profile/edit', to: 'profiles#edit'
