@@ -42,7 +42,8 @@
     <% end %>
 
     <% if !!my_review %>
-      <div id="my_review">
+    <div id="my_review">
+      <div id="review_<%= my_review.id %>">
         <h3>My Review:</h3>
         <%= my_review.song_score %> Stars <br>
         Review by: <%= link_to my_review.account.user_name, show_profile_path(my_review.account) %> <br>
@@ -60,8 +61,11 @@
 
         <% end %>
         <br><br>
-          <%= "Votes: #{my_review.vote_sum}" %>
+        <div id="review_<%= my_review.id %>_total">
+          <%= "#{my_review.vote_sum}" %>
+        </div>
     </div>
+  </div>
     <div id="edit_form" style="display:none">
       <h3>Edit Your Review:</h3><br>
       <%= render partial: '/reviews/form', locals: {song: @song, review: my_review} %>
@@ -85,7 +89,15 @@
 
         <% end %>
         <br><br>
-        <%= "Votes: #{review.vote_sum}" %>
+        <div id="review_<%= review.id %>_total">
+          <%= "#{review.vote_sum}" %>
+        </div>
       <% end %>
   <%end%>
-  <%end%>
+<% end %>
+<br><br>
+<div id="upvotes" class="john">
+  0
+</div>
+
+<br><br>
