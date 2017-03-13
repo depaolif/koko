@@ -1,13 +1,28 @@
-<h1><%= @user == current_user.profile ? "Your" : (link_to "#{@user.user_name}'s", show_profile_path(@user))%> Friend's</h1>
-<%if @friends.count > 0%>
+<h1><%= @user.id == current_user.id ? "Your" : (link_to "#{@user.user_name}'s", show_profile_path(@user))%> Friends</h1>
+<%if @user.id == current_user.id%>
+<div class="search-form-center">
+  <%= form_tag('/friends/search', id: "search-form-2", method: :post) do %>
+    <%= text_field_tag "friend_search", nil, id: "search-field-2", placeholder: "Search for Koko Users!", class: "search-field" %>
+    <%= button_tag type: 'submit', id: "search-submit-2", class: "search-submit", disabled: "disabled" do %>
+     <%= icon('search', class: "fa-2x") %>
+    <% end %>
+    <% end %>
+  </div>
+<br />
+<br />
+<br />
+<%end%>
+<% if @friends.count == 0 %>
+<h4>This user has no friends yet.</h4>
+<%else%>
 <%@friends.each do |friend|%>
   <h3><%=link_to friend.friend.user_name, show_profile_path(friend.friend)%></h3>
+  <%if !friend.friend.reviews.empty? %>
   <p>Last Review Information:</p>
   <p>Song: <%= link_to friend.friend.reviews.last.song.name, song_path(friend.friend.reviews.last.song)%></p>
   <p>Score: <%= friend.friend.reviews.last.song_score%></p>
   <p>Review: <%= friend.friend.reviews.last.content%></p>
+  <%end%>
   --
 <%end%>
-<%else%>
-This user has no friends.
 <%end%>

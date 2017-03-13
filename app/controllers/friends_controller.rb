@@ -10,13 +10,19 @@ class FriendsController < ApplicationController
     end
   end
 
+  def search
+    query = params[:friend_search].downcase
+    @accounts = Account.where("user_name LIKE ?", "%#{query}%")
+      render 'results'
+  end
+
   def index
     @user = Account.find_by(id: params[:id])
     if @user
       @friends = @user.friends
     else
-      redirect_to :index, alert: "Sorry, this user does not exist"
-    end 
+      redirect_to root_path, alert: "Sorry, this user does not exist"
+    end
   end
 
   def destroy
