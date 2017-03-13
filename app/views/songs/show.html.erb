@@ -35,6 +35,16 @@
     </p>
   <% else %>
 
+  <h3>Reviews:</h3> <br>
+  <%@song.reviews.each do |review|%>
+      <div id="review_<%= review.id %>">
+        <%= review.song_score %> Stars <br>
+        Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <% if review.account != current_user%><%if !current_user.friends.any?{|friend| friend.friend == review.account}%> | <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%> | <%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><br>
+        <%= review.content%> <br>
+        <% if review.account.id == current_user.id %>
+        <%= link_to 'Edit', edit_song_review_path(@song,review) %> <br>
+        <%= link_to 'Delete', destroy_song_review_path(@song,review), method: 'delete' %><br>
+
     <% if logged_in? %>
         <% my_review = my_review_for_song(@song, current_user) %>
     <% else %>
