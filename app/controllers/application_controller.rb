@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   def home
       trending_songs
-      influencers_picks
     if logged_in?
+      influencers_picks
       @friends = current_user.friends
     end
   end

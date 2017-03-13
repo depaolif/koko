@@ -57,6 +57,11 @@
 </div>
 <%else%>
   <div class="col-md-12">
+    <h1>Trending Songs</h1>
+    <%@ordered_songs_hash.each do |song, score|%>
+      <h3><%=link_to song.name, song_path(song)%></h3>
+      <h4> Average Review Score: <%=score%></h4>
+    <%end%>
   </div>
 <%end%>
 </div>
