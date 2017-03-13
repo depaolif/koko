@@ -1,0 +1,19 @@
+<h1>Koko Users That Matched Your Search</h1>
+<br />
+
+<%if @accounts.count > 0%>
+<% @accounts.each do |account| %>
+<h4><%= link_to account.user_name, show_profile_path(account)%></h4>
+<br />
+<%end%>
+<%else%>
+<h4>There are no users with that name on Koko. Search again below?</h4>
+<li class="search-form-center">
+  <%= form_tag('/friends/search', id: "search-form-3", method: :post) do %>
+    <%= text_field_tag "friend_search", nil, id: "search-field-3", class:"search-field", placeholder: "Search for Koko Users!"%>
+    <%= button_tag type: 'submit', id: "search-submit-3", class:"search-submit", disabled: "disabled" do %>
+     <%= icon('search', class: "fa-2x") %>
+    <% end %>
+</li>
+<% end %>
+<%end%>
