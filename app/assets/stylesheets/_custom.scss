@@ -251,3 +251,19 @@ body {
 // 	float: right;
 // 	padding:10px;
 // }
+
+/* Display the vote icons inline */
+form.votes-form { display: inline; }
+
+.votes-form > button {
+  background-color: Transparent;
+  border: none;
+}
+
+.selected-up > button {
+  color: $color4;
+}
+
+.selected-down > button {
+  color: $color2;
+}
