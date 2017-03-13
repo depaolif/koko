@@ -4,6 +4,10 @@
       $("#review_form").show();
       $("#add_review").hide();
     })
+    $("#edit_review").click(function() {
+      $("#edit_form").show();
+      $("#my_review").hide();
+    })
   })
 </script>
 
@@ -44,7 +48,9 @@
         Review by: <%= link_to my_review.account.user_name, show_profile_path(my_review.account) %> <br>
         <%= my_review.content%> <br>
 
-        <%= link_to 'Edit', edit_song_review_path(@song,my_review) %> <br>
+        <a id="edit_review"style="cursor:pointer">Edit</a><br>
+
+        <!-- <%= link_to 'Edit', edit_song_review_path(@song,my_review) %><br> -->
         <%= link_to 'Delete', destroy_song_review_path(@song,my_review), method: 'delete' %><br>
 
       <% if !current_user.voted?(my_review.id)%>
@@ -69,6 +75,10 @@
       <%= "Votes: #{my_review.vote_sum}" %>
       <br><br>
     </div>
+    <div id="edit_form" style="display:none">
+      <h3>Edit Your Review:</h3><br>
+      <%= render partial: '/reviews/form', locals: {song: @song, review: my_review} %>
+    </div>
   <% end %>
 
   <h3>Reviews:</h3>
@@ -78,11 +88,6 @@
           <%= review.song_score %> Stars <br>
           Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> | <%if !current_user.friends.any?{|friend| friend.friend == review.account}%><%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%><%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><br>
           <%= review.content%> <br>
-
-          <% if review.account.id == current_user.id %>
-          <%= link_to 'Edit', edit_song_review_path(@song,review) %> <br>
-          <%= link_to 'Delete', destroy_song_review_path(@song,review), method: 'delete' %><br>
-          <% end %>
 
           <% if !current_user.voted?(review.id)%>
             <%=form_tag song_review_vote_path(@song, review) do %>
