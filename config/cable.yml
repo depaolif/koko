@@ -1,6 +1,6 @@
 production:
-  adapter: redis
-  url: redis://redistogo:d1957dcbed9df80ff5c8bdb1b451456f@koi.redistogo.com:9551
+  url: redis:<%= ENV["REDISTOGO_URL"] %>
+  adapter: redis```
 
 development:
   adapter: async

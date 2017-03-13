@@ -1,3 +1,3 @@
-web: bundle exec puma -C config/puma.rb
-actioncable: bundle exec puma -p 28080 cable/config.ru
+web: bundle exec puma -p $PORT ./config.ru
+actioncable: bundle exec puma -p $PORT cable/config.ru
 redis: redis-server
