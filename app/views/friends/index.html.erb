@@ -1,16 +1,13 @@
-<h1><%= @user.id == current_user.id ? "Your" : (link_to "#{@user.user_name}'s", show_profile_path(@user))%> Friend's</h1>
+<h1><%= @user.id == current_user.id ? "Your" : (link_to "#{@user.user_name}'s", show_profile_path(@user))%> Friends</h1>
 <%if @user.id == current_user.id%>
-<li class="search-form-center">
+<div class="search-form-center">
   <%= form_tag('/friends/search', id: "search-form-2", method: :post) do %>
     <%= text_field_tag "friend_search", nil, id: "search-field-2", placeholder: "Search for Koko Users!", class: "search-field" %>
     <%= button_tag type: 'submit', id: "search-submit-2", class: "search-submit", disabled: "disabled" do %>
      <%= icon('search', class: "fa-2x") %>
     <% end %>
     <% end %>
-  </li>
-<br />
-<br />
-<br />
+  </div>
 <br />
 <br />
 <br />
