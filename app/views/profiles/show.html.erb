@@ -21,7 +21,7 @@
 <h5>Total Points: <%= @profile.account.vote_total%></h5>
 
 <%if !@profile.account.reviews.empty? %>
-  <%= render partial: "reviews/review", collection: @profile.account.reviews %>
+  <%= render partial: "profiles/review", collection: @profile.account.reviews %>
 <%else%>
   You have not reviewed anything.
 <%end%>

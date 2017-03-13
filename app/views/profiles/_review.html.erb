@@ -1,5 +1,8 @@
-<strong>Song:</strong> <%=link_to review.song.name, song_path(review.song) %>
+<strong>Song:</strong> <%=link_to review.song.name, song_path(review.song) %><br />
 <strong>Rating:</strong> <%=review.song_score%> Stars <br>
 <strong>Review:</strong> <%=review.content%><br>
 <strong>Review Score:</strong> <%=review.vote_sum%><br>
+<%if review.account_id == current_user.id%>
+<%=link_to "Delete Review", destroy_song_review_path(review.song, review), method: :delete%>
+<%end%>
 <br><br>

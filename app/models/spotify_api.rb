@@ -14,7 +14,7 @@ class SpotifyApi
   end
 
   def make_songs_and_artists
-    @songs_data.map do |song_data|
+    self.songs_data.map do |song_data|
       song = Song.find_or_create_by(spotify_song_id: song_data["id"])
       song.update(song_data: song_data)
       song
