@@ -1,41 +1,33 @@
 <style>
-  /*.radios > input {*/
-    /*display: none;*/
-  /*}
-  .radios > label {
-    float:right
+  .radios {
+      display: inline-block;
+      border: 0;
   }
+
+  /* Hide radio */
+  .radios > input {
+      display: none;
+  }
+  /* Order correctly by floating highest to the right */
+  .radios > label {
+      float: right;
+  }
+
   .radios > label:before {
     display: inline-block;
-    font-size: 1.1rem;
     padding: .3rem .2rem;
     margin: 0;
     cursor: pointer;
-    font-family: FontAwesome;*/
-    /*content: "\f005 "; /* full star */
-  /*}*/
-  * {
-      margin: 0;
-      padding: 0;
+    content: "\2605"; /* full star */
   }
 
-  .radios {
-    list-style: none;
-    display: table;
-  }
+  input:checked ~ label, /* color current and previous stars on checked */
+  label:hover, label:hover ~ label { color: rgba(219, 84, 97, 1);  } /* color previous stars on hover */
 
-  .radios > label {
-      position: relative;
-      display: inline-block;
-      float: right;
-      height: 2em;
-      width: 2em;
-      font-family: sans-serif;
-  }
-
-  .radios > label:hover, .radios > label:hover ~ label {
-      color: red;
-  }
+  /* Hover highlights */
+  input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
+  input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+  label:hover ~ input:checked ~ label /* highlight previous selected stars { color: #A6E72D;  }  */
 
 </style>
 
@@ -43,11 +35,11 @@
   <!-- <p>Score: <%= f.select :song_score, [['1',1],['2',2],['3',3],['4',4],['5',5]] %></p> -->
   <div class="radios">
     <p>Score:</p>
-    <input type="radio" id="rating5" name="rating" value="5" /><label for="rating5" title="5 stars">&#9733</label>
-    <input type="radio" id="rating4" name="rating" value="4" /><label for="rating4" title="4 stars">&#9733</label>
-    <input type="radio" id="rating3" name="rating" value="3" /><label for="rating3" title="3 stars">&#9733</label>
-    <input type="radio" id="rating2" name="rating" value="2" /><label for="rating2" title="2 stars">&#9733</label>
-    <input type="radio" id="rating1" name="rating" value="1" /><label for="rating1" title="1 stars">&#9733</label>
+    <input type="radio" id="rating5" name="review[song_score]" value="5" /><label for="rating5" title="5 stars"></label>
+    <input type="radio" id="rating4" name="review[song_score]" value="4" /><label for="rating4" title="4 stars"></label>
+    <input type="radio" id="rating3" name="review[song_score]" value="3" /><label for="rating3" title="3 stars"></label>
+    <input type="radio" id="rating2" name="review[song_score]" value="2" /><label for="rating2" title="2 stars"></label>
+    <input type="radio" id="rating1" name="review[song_score]" value="1" /><label for="rating1" title="1 stars"></label>
   </div>
   <p>Review: <%= f.text_area :content %></p>
   <%= f.submit %>

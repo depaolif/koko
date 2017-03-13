@@ -45,9 +45,11 @@
     <div id="my_review">
       <div id="review_<%= my_review.id %>">
         <h3>My Review:</h3>
-        <%= my_review.song_score %> Stars <br>
-        Review by: <%= link_to my_review.account.user_name, show_profile_path(my_review.account) %> <br>
+        <% my_review.song_score.times do %>
+          &#9733
+        <% end %> <br>
         <%= my_review.content%> <br>
+        Review by: <%= link_to my_review.account.user_name, show_profile_path(my_review.account) %> <br>
 
         <a id="edit_review"style="cursor:pointer">Edit</a><br>
         <%= link_to 'Delete', destroy_song_review_path(@song,my_review), method: 'delete' %><br>
@@ -55,11 +57,11 @@
       <% if !current_user.voted?(my_review.id)%>
           <%= render partial: "votes", locals: {song: @song, review: my_review} %>
 
-        <% else %>
+      <% else %>
           <% vote_score = current_user.voted_score(my_review.id) %>
           <%= render partial: "editvotes", locals: {song: @song, review: my_review, vote_score: vote_score} %>
 
-        <% end %>
+      <% end %>
         <br><br>
         <div id="review_<%= my_review.id %>_total">
           <%= "#{my_review.vote_sum}" %>
@@ -76,9 +78,11 @@
   <%@song.reviews.each do |review|%>
     <% unless review == my_review %>
         <div id="review_<%= review.id %>">
-          <%= review.song_score %> Stars <br>
-          Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <% if review.account != current_user%><%if !current_user.friends.any?{|friend| friend.friend == review.account}%> | <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%> | <%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><br>
+          <% review.song_score.times do %>
+          &#9733
+          <% end %> <br>
           <%= review.content%> <br>
+          Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <% if review.account != current_user%><%if !current_user.friends.any?{|friend| friend.friend == review.account}%> | <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%> | <%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><br>
 
           <% if !current_user.voted?(review.id)%>
           <%= render partial: "votes", locals: {song: @song, review: review} %>
