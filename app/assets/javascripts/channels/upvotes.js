@@ -30,17 +30,7 @@ App.upvotes = App.cable.subscriptions.create('UpvotesChannel', {
         this[3].value = -1
       })
     };
-
-    // $("#upvotes").attr("class")
-    // $("#upvotes").removeClass('hidden')
-    // debugger
     var add_score = data.score - data.prev
     $('#review_' + data.review_id + '_total').html(parseInt($('#review_' + data.review_id + '_total').html()) + add_score)
-    // parseInt($('#review_' + data.review_id + '_total').html()) + data.score
-    // $('#upvotes').html(parseInt($('#upvotes').html()) + data.score)
   },
-
-  renderUpvote: function(data) {
-    return "Hey";
-  }
 });
