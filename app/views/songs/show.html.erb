@@ -1,7 +1,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $("#add_review").click(function() {
-      $("#new_review_form").show();
+      $("#review_form").show();
       $("#add_review").hide();
     })
   })
@@ -15,7 +15,7 @@
     <% if logged_in? && !current_user.reviews.any? { |review| review.song_id == @song.id } %>
       <br>
       <button id="add_review">Add New Review</button>
-      <div id="new_review_form" style="display:none">
+      <div id="review_form" style="display:none">
         <h4>New Review:</h4><br>
         <%= render partial: '/reviews/form', locals: {song: @song, review: @review} %>
       </div>
@@ -24,23 +24,58 @@
     <% end %>
   </div>
 
-  <%if @song.reviews.count == 0%>
+  <% if @song.reviews.count == 0%>
     <br>
     <p>
       No one has reviewed this song yet.
     </p>
   <% else %>
-  <h3>Reviews:</h3> <br>
-  <%@song.reviews.each do |review|%>
+    <h3>Reviews:</h3> <br>
+
+    <% if logged_in?
+        my_review = my_review_for_song(@song, current_user) %>
+    <% else
+        my_review = nil %>
+    <% end %>
+
+    <% if my_review do %>
+      <div id="my_review">
+        <%= my_review.song_score %> Stars <br>
+        Review by: <%= link_to my_review.account.user_name, show_profile_path(my_review.account) %> <br>
+        <%= my_review.content%> <br>
+
+        <%= link_to 'Edit', edit_song_review_path(@song,my_review) %> <br>
+        <%= link_to 'Delete', destroy_song_review_path(@song,my_review), method: 'delete' %><br>
+
+      <% if !current_user.voted?(my_review.id)%>
+        <%=form_tag song_review_vote_path(@song, my_review) do %>
+        <%=hidden_field_tag "review_id", my_review.id %>
+        <%=radio_button_tag "vote", 1%> Up Vote<br>
+        <%=radio_button_tag "vote", 0%> Neutral<br>
+        <%=radio_button_tag "vote", -1%>Down Vote<br/>
+        <%=submit_tag "Vote!" %>
+        <% end%>
+
+      <% else %>
+        <%=form_tag song_review_vote_path(@song, my_review), method: "PATCH" do %>
+        <%=hidden_field_tag "review_id", my_review.id %>
+        <%=radio_button_tag "vote", 1, current_user.voted_score(review.id) == 1%> Up Vote<br>
+        <%=radio_button_tag "vote", 0, current_user.voted_score(review.id) == 0 %> Neutral<br>
+        <%=radio_button_tag "vote", -1, current_user.voted_score(review.id) == -1 %>Down Vote<br />
+        <%=submit_tag "Vote!" %>
+        <% end %>
+
+      <% end %>
+      <%= "Votes: #{review.vote_sum}" %>
+      <br><br>
+    </div>
+  <% end %>
+
+  <%(@song.reviews - my_review).each do |review|%>
       <div id="review_<%= review.id %>">
         <%= review.song_score %> Stars <br>
         Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <%if review.account != current_user%> | <%if !current_user.friends.include?(review.account)%> <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%><%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><br>
         <%= review.content%> <br>
-
-        <% if review.account.id == current_user.id %>
-        <%= link_to 'Edit', edit_song_review_path(@song,review) %> <br>
-        <%= link_to 'Delete', destroy_song_review_path(@song,review), method: 'delete' %><br>
-        <% end %>
 
         <% if !current_user.voted?(review.id)%>
           <%=form_tag song_review_vote_path(@song, review) do %>
