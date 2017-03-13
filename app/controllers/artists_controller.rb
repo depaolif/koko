@@ -8,7 +8,7 @@ class ArtistsController < ApplicationController
     @trending_artists = {}
     artists.each do |artist|
       artist.songs.each do |song|
-        if song.reviews.count > 0
+        if song.reviews.count > 0 && (song.weighted_review_average.round(2) > 3)
           @trending_artists[song.artist] = song.weighted_review_average.round(2)
         end
       end
