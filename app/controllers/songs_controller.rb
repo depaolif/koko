@@ -5,15 +5,24 @@ class SongsController < ApplicationController
   end
 
   def trending_songs
-    unordered_songs = Song.all
-    @unordered_songs_hash = {}
-    unordered_songs.each do |song|
-      if song.reviews.count > 0 && (song.weighted_review_average.round(2) >= 3)
-        @unordered_songs_hash[song] = song.weighted_review_average.round(2)
-      end
+    accounts = Account.all
+    unordered_influencers_hash = {}
+    @influencers_last_good_review = []
+    accounts.each do |account|
+      unordered_influencers_hash[account] = account.vote_total
     end
-      @ordered_songs_hash = Hash[@unordered_songs_hash.sort_by{|k, v| v}.reverse]
-      render :trending
+    ordered_influencers_hash = Hash[unordered_influencers_hash.sort_by{|k, v| v}.reverse]
+      influencers = ordered_influencers_hash.keys
+      influencers.each do |influencer|
+        if influencer.reviews.count > 0 && influencer.reviews.any? {|review| review.song_score > 3}
+          @influencers_last_good_review << influencer.reviews.where(song_score: "<= 3").last
+        end
+    end
+    if @influencers_last_good_review.count > 20
+      @influencers_last_good_review[0..20]
+    else
+      @influencers_last_good_review
+    end
   end
 
   def show
@@ -56,6 +65,10 @@ class SongsController < ApplicationController
 
   def my_review_for_song(song, current_user)
     song.reviews.find {|review| review.account_id == current_user.id}
+  end
+
+  def vote_total
+    self.reviews.map{|review| review.vote_sum}.sum
   end
 
 end
