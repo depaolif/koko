@@ -4,7 +4,7 @@
 
     <!-- Trending Songs -->
     <div class="col-md-4 trending-songs-wrapper">
-      <%= render partial: "trending_songs", locals: {ordered_songs_hash: @ordered_songs_hash} %>
+      <%= render partial: "influencer_picks", locals: {influencers_last_good_review: @influencers_last_good_review} %>
     </div>
     <!-- Friends Activity  -->
     <div class="col-md-8 right-div">
@@ -24,7 +24,7 @@
       <!--- Trending Songs --->
 
       <div class="col-md-3 trending-songs-wrapper">
-        <%= render partial: "trending_songs", locals: {ordered_songs_hash: @ordered_songs_hash} %>
+        <%= render partial: "influencer_picks", locals: {influencers_last_good_review: @influencers_last_good_review} %>
       </div>
       <!--- log in --->
 

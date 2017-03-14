@@ -1,0 +1,46 @@
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="dashboard-title">Influencers Picks'</h1>
+      </div>
+    </div>
+
+    <div class="col-md-12 trending-dash">
+      <div class="row">
+        <div class="col-md-4">
+          <h4 class="dashboard-sub-title">Reviewer</h4>
+         </div>
+        <div class="col-md-4">
+          <h4 class="dashboard-sub-title">Song</h4>
+         </div>
+        <div class="col-md-4">
+          <h4 class="dashboard-sub-title">Koko's Score</h4>
+        </div>
+      </div>
+
+      <div class="row">
+      <%if influencers_last_good_review%>
+      <%influencers_last_good_review.each do |review|%>
+      <div class="row">
+        <div class="col-md-4">
+          <p class="dashboard-text">
+            <%=link_to review.account.user_name, show_profile_path(review.account)%>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p class="dashboard-text">
+            <%=link_to review.song.name, song_path(review.song)%>
+          </p>
+        </div>
+        <div class="col-md-4">
+        <p class="dashboard-text">
+          <%=review.song.score%>
+        </p>
+        </div>
+      </div>
+
+      <%end%>
+      <%else%>
+      Nothing!
+      <%end%>
+    </div>
+  </div>
