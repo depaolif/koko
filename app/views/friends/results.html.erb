@@ -4,7 +4,7 @@
 <%if @accounts.count > 0%>
 <% @accounts.each_with_index do |account, i| %>
   <h4><%= link_to account.user_name, show_profile_path(account)%></h4>
-  <p>Name: <%= @profiles[i].name %></p>
+  <p>Name: <%= @profiles[i].first.name %></p>
   <br />
 <%end%>
 <%else%>
