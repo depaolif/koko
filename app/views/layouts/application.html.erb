@@ -86,9 +86,6 @@
     <% if flash[:alert] || flash[:error]%>
         <%= flash[:alert] || flash[:error] %>
     <%end%>
-    <% if flash[:alert] || flash[:error]%>
-        <%= flash[:alert] || flash[:error] %>
-    <%end%>
     <%=render 'layouts/signup' %>
     <%=render 'layouts/login' %>
     <%= yield %>
