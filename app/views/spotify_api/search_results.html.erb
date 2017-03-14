@@ -1,48 +1,34 @@
 <%link_to "Return Home", home_path%>
 
-<div class="search-result">
-<div class="container" style="overflow:scroll; height:650px;">
-<div class="container-search">
-<div class="row search">
-  <div class="col-md-4 search">
-    <div class="search-result-box">
-      <h2>Song Title</h2>
+<div class="container-fluid search" style="overflow:scroll; height:650px;">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="search-header-box">
+        <h2>Song Title</h2>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="search-header-box">
+        <h2>Artist</h2>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="search-header-box">
+        <h2>Album</h2>
+      </div>
     </div>
   </div>
-  <div class="col-md-4 search">
-    <div class="search-result-box">
-    <h2>Artist</h2>
-  </div>
+  <% @songs.each do |song| %>
+    <div class="row search-result-songs">
+      <div class="col-md-4">
+        <h4><%= link_to song.name, song_path(song) %></h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= link_to song.artist.name, artist_path(song.artist)  %></h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= song.album_name %></h4>
+      </div>
     </div>
-    <div class="col-md-4 search">
-    <div class="search-result-box">
-    <h2>Album</h2>
-    </div>
-  </div>
-<% @songs.each do |song| %>
-  <div class="col-md-4 search">
-    <div class="search-result-result">
-  <h4>
-    <%= link_to song.name, song_path(song) %>
-  </h4>
-  </div>
-  </div>
-  <div class="col-md-4 search">
-    <div class="search-result-result">
-    <h4>
-  <%= link_to song.artist.name, artist_path(song.artist) %>
-  </h4>
-  </div>
-  </div>
-  <div class="col-md-4 search">
-    <div class="search-result-result">
-    <h4>
-  <%= song.album_name %>
-  </div>
-  </div>
-  </h4>
-<% end %>
-</div>
-</div>
-</div>
+  <% end %>
 </div>

@@ -13,7 +13,7 @@
 <br />
 <%end%>
 <% if @friends.count == 0 %>
-<h4>This user has no friends yet.</h4>
+<h4>This user has no friends yet.</h4> <br>
 <%else%>
 <%@friends.each do |friend|%>
   <h3><%=link_to friend.friend.user_name, show_profile_path(friend.friend)%></h3>
