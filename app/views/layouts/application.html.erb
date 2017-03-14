@@ -63,10 +63,9 @@
             });
           </script>
     <%=render '/layouts/navbar'%>
-    <br />
     <% if flash[:alert] || flash[:error]%>
         <%= flash[:alert] || flash[:error] %>
-    <%end%><br/>
+    <%end%>
     <%= yield %>
   </body>
 <%= render '/layouts/footer'%>
