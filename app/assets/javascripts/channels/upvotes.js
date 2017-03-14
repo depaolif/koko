@@ -1,6 +1,6 @@
 App.upvotes = App.cable.subscriptions.create('UpvotesChannel', {
   received: function(data) {
-    var upvote = $("#review_" + data.review_id).children('span').children()
+    var upvote = $("#review_" + data.review_id).find('span').children()
     upvote.each(function(index){
       this.className = "votes-form"
       this[3].value = 0
