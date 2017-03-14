@@ -1,4 +1,9 @@
-<h1><%= @profile == current_user.profile ? "Your" : "#{@profile.account.user_name}'s" %> Profile</h1>
+<% if @profile == current_user.profile %>
+  <h1>Your Profile</h1>
+  <p><%= link_to "Edit", profile_edit_path(@profile) %></p>
+<% else %>
+  <h1><%= "#{@profile.account.user_name}'s Profile" %></h1>
+<% end %>
 <h3>Name</h3>
 <%= @profile.name %>
 <br>

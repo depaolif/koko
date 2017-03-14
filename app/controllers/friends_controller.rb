@@ -13,6 +13,9 @@ class FriendsController < ApplicationController
   def search
     query = params[:friend_search].downcase
     @accounts = Account.where("user_name LIKE ?", "%#{query}%")
+    @profiles = @accounts.map do |account|
+      Profile.where(account_id: account.id)
+    end
     render 'results'
   end
 

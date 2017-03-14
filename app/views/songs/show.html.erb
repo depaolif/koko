@@ -45,9 +45,7 @@
     <div id="my_review">
       <div id="review_<%= my_review.id %>">
         <h3>My Review:</h3>
-        <% my_review.song_score.times do %>
-          &#9733
-        <% end %> <br>
+        <%= render partial: "/application/stars", locals: {score: my_review.song_score} %> <br>
         <%= my_review.content%> <br>
         Review by: <%= link_to my_review.account.user_name, show_profile_path(my_review.account) %> <br>
 
@@ -78,9 +76,7 @@
   <%@song.reviews.each do |review|%>
     <% unless review == my_review %>
         <div id="review_<%= review.id %>">
-          <% review.song_score.times do %>
-          &#9733
-          <% end %> <br>
+          <%= render partial: '/application/stars', locals: {score: review.song_score} %> <br>
           <%= review.content%> <br>
           Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <% if review.account != current_user%><%if !current_user.friends.any?{|friend| friend.friend == review.account}%> | <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%> | <%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><br>
 
