@@ -1,7 +1,6 @@
 @import "palette";
 
-/* navbar */
-
+// general
 html {
   height: 100%;
 }
@@ -12,9 +11,14 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
+.blackout {
+  background-color: $color5;
+}
+
 .navbar-default {
     background-color: #db5461;
-    border-color: #fff;
+    border: none;
+    border-radius: 0%;
     margin-bottom: 0;
 }
 /* Search Icon Transparency */
@@ -26,6 +30,8 @@ body {
     overflow: hidden;
     outline:none;
 }
+
+/* navbar */
 
 // #search-submit:hover {
 //   background-color: #eee;
@@ -184,6 +190,8 @@ body {
   animation-iteration-count: 1;
 }
 
+
+// search results page
 #search-submit {
 	position: relative;
   float: right;
@@ -278,25 +286,32 @@ form.votes-form { display: inline; }
   color: $color2;
 }
 
-.search-result-box {
-  background: rgba(242, 160, 92, 0.6);
-  color: $color5;
-  height: 50px;
-  text-align:center;
-  border-radius: 25px;
-}
-
-.search-result-result {
-  text-align:center;
-}
-
-.container-search{
-  background: rgba(245, 245, 201, 0.4);
+.search{
+  background: #FDFDF5;
   border-radius: 25px;
   padding:1em;
   border: solid;
   border-color: $color5;
+  margin-right: 2em;
+  margin-left: 2em;
 }
+
+.search-header-box {
+  background: $color2;
+  color: $color5;
+  text-align:center;
+  vertical-align: middle;
+  border-radius: 25px;
+  border: 1px solid $color5;
+  padding: 5px;
+}
+
+.search-result-songs {
+  text-align:center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
 
 .dashboard-title{
   text-align: center;
