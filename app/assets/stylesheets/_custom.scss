@@ -347,6 +347,7 @@ form.votes-form { display: inline; }
   border-width: thin;
   border-color: black;
   border-radius: 4px;
+  margin-top: 1em;
 }
 .dashboard-right-col {
   background-color: $color2;
@@ -360,6 +361,7 @@ form.votes-form { display: inline; }
 }
 
 .right-div {
+  margin-top: 1em;
   padding-right: 0px;
 }
 
@@ -367,16 +369,22 @@ form.votes-form { display: inline; }
 .friends-dash{
   background-color: $color1;
   border-radius: 4px;
+  max-height: 500px;
+  overflow: scroll;
 }
 
 .suggested-dash {
   background-color: $color1;
   border-radius: 4px;
+  max-height: 500px;
+  overflow: scroll;
 }
 
 .trending-dash {
   background: $color1;
   border-radius: 4px;
+  max-height: 500px;
+  overflow: scroll;
 }
 
 .form-group {
@@ -399,3 +407,12 @@ form.votes-form { display: inline; }
    height: inherit;
    margin: 0 auto;
  }
+
+.no-pad-dash {
+  padding: 0px;
+  padding-right: 15px;
+}
+
+.right-div h2 {
+  float: right;
+}

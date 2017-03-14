@@ -1,161 +1,41 @@
 <div class="container-fluid">
-<div class="row">
-  <%if logged_in?%>
+  <div class="row">
+    <%if logged_in?%>
 
-  <!-- Trending Songs -->
+    <!-- Trending Songs -->
+    <div class="col-md-4 trending-songs-wrapper">
+      <%= render partial: "trending_songs", locals: {ordered_songs_hash: @ordered_songs_hash} %>
+    </div>
+    <!-- Friends Activity  -->
+    <div class="col-md-8 right-div">
+      <div class="col-md-12 dashboard-right-col">
+        <%= render partial: "friends_activity", locals: {friends_reviews: @friends_reviews} %>
 
-  <div class="col-md-4 trending-songs-wrapper">
+      <!-- Suggestions -->
+        <%= render partial: "suggestions", locals: {final_array: @final_array} %>
+      </div>
+    </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="dashboard-title">Trending Songs</h1>
+    <!-- If User Not Logged In -->
+
+
+    <%else%>
+
+    <!--- Trending Songs --->
+
+      <div class="col-md-4 trending-songs-wrapper">
+        <%= render partial: "trending_songs", locals: {ordered_songs_hash: @ordered_songs_hash} %>
+      </div>
+      <!--- log in --->
+
+      <div class="col-md-8 right-div">
+          <h2>Log in for personalized suggestions!</h2>
+        <div class="col-md-12 dashboard-right-col">
         </div>
       </div>
 
-      <div class="col-md-12 trending-dash">
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="dashboard-sub-title">
-                Song
-            </h4>
-           </div>
-        <div class="col-md-6">
-            <h4 class="dashboard-sub-title">
-               Koko's Score
-            </h4>
-        </div>
-        </div>
-        <div class="row">
-        <%@ordered_songs_hash.each do |song, score|%>
-              <div class="col-md-6">
-                <p class="dashboard-text">
-                  <%=link_to song.name, song_path(song)%>
-                </p>
-              </div>
-                <div class="col-md-6">
-                <p class="dashboard-text">
-                  <%=score%>
-                </p>
-                </div>
-            <%end%>
-          </div>
-        </div>
-      </div>
 
-  <!-- Friends Activity  -->
-  <div class="col-md-8 right-div">
-  <div class="col-md-12 dashboard-right-col">
-    <div class="col-md-6">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="dashboard-title">Friend Activity</h1>
-        </div>
-      </div>
 
-      <div class="col-md-12 friends-dash">
-      <div class="row">
-        <div class="col-md-4">
-          <h4 class="dashboard-sub-title">Song</h4>
-         </div>
-         <div class="col-md-6">
-          <h4 class="dashboard-sub-title">What They're Saying</h4>
-         </div>
-         <div class="col-md-2">
-          <h4 class="dashboard-sub-title">Score</h4>
-         </div>
-      </div>
-        <%if @friends_reviews.count > 0%>
-            <%@friends_reviews.each do |review|%>
-            <div class="row">
-              <div class="col-md-4">
-                <p class="dashboard-text">
-                  <%=link_to review.song.name, song_path(review.song)%>
-                </p>
-              </div>
-              <div class="col-md-6">
-                <p class="dashboard-text-left">
-                    <%= review.content == "" ? "[No content]": review.content %>
-                    <br>
-                    Reviewer: <%=link_to review.account.user_name, show_profile_path(review.account)%>
-                </p>
-              </div>
-              <div class="col-md-2">
-              <p class="dashboard-text">
-                <%= review.song_score%> Star
-              </p>
-            </div>
-          </div>
-            <%end%>
-        <%else%>
-          <div class="col-md-12">
-            <p class="dashboard-no-result">Add Friends to unlock this feature!</p>
-          </div>
-        <%end%>
-      </div>
-    </div> <!-- col md 6 -->
-
-<!-- Influencers Picks' -->
-  <div class="col-md-6">
-      <div class="row">
-        <div class="col-md-12"><h1 class="dashboard-title">Influencer's Picks</h1></div>
-      </div>
-      <div class="col-md-12 suggested-dash">
-
-      <div class="row">
-        <div class="col-md-4">
-          <h4 class="dashboard-sub-title">
-              Song
-          </h4>
-         </div>
-      <div class="col-md-6">
-          <h4 class="dashboard-sub-title">
-             What They're Saying
-          </h4>
-      </div>
-      <div class="col-md-2">
-          <h4 class="dashboard-sub-title">
-             Score
-          </h4>
-      </div>
-      </div>
-      <div class="row">
-        <%= render partial: 'influencers', locals: {final_array: @final_array} %>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- If User Not Logged In -->
-
-<%else%>
-
-<div class="row">
-  <div class="col-md-12">
-    <h1>Trending Songs</h1>
-  </div>
-</div>
-<div class="row">
-    <%@ordered_songs_hash.each do |song, score|%>
-    <div class="col-md-6">
-      <p class="dashboard-no-result">Song</p>
-    </div>
-    <div class="col-md-6">
-      <p class="dashboard-no-result">Koko's Score</p>
-    </div>
-    <%end%>
-  </div>
-<div class="row">
-    <%@ordered_songs_hash.each do |song, score|%>
-    <div class="col-md-6">
-      <p class="dashboard-no-result"><%=link_to song.name, song_path(song)%></p>
-    </div>
-    <div class="col-md-6">
-      <p class="dashboard-no-result"><%=score%></p>
-    </div>
-    <%end%>
-  </div>
-</div> <!-- big row -->
-<%end%>
-
+    <% end %>
+  </div> <!-- big row -->
 </div> <!-- container fluid -->
