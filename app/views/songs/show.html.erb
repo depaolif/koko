@@ -15,6 +15,7 @@
 <h2><%= link_to @song.artist.name, artist_path(@song.artist)%></h2>
 
 <iframe src="https://embed.spotify.com/?uri=<%=@song.play_url%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
   <div>
     <% if logged_in? && !current_user.reviews.any? { |review| review.song_id == @song.id } %>
       <br>
