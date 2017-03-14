@@ -1,0 +1,21 @@
+<div class="modal fade bd-login-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h3 class="modal-title" style="text-align:center" id="exampleModalLabel">Log In</h3>
+       </div>
+         <div class="form-group">
+           <div id='login' style="text-align:center; width: 200px;">
+             <%= form_tag sessions_path do |f| %>
+                <div class="modal-body">
+              <div> Username: <%= text_field_tag :user_name, nil, {class: "form-control"} %>  </div>
+              <div> Password: <%= password_field_tag :password, nil, {class: "form-control"}%> </div>
+              <br />
+               <div> <%= submit_tag "Log In" %> </div>
+             <% end %>
+           </div>
+           </div>
+       </div>
+     </div>
+   </div>
+ </div>
