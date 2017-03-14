@@ -19,12 +19,12 @@ class ReviewsController < ApplicationController
     set_song
     @review.song = @song
     @review.account = current_user
-    if @review.save
+    if @review.save && @review.valid?
       vote = Vote.new(score: 1, review_id: @review.id, account_id: current_user.id)
       vote.save
       redirect_to @song
     else
-      redirect_to new_song_review_path, alert: "Something went horribly wrong with creating your review."
+      redirect_to @song, alert: "Please make sure you give your review 1 to 5 stars."
     end
   end
 
@@ -40,11 +40,15 @@ class ReviewsController < ApplicationController
 
   def update
     set_review
-    @review.update(review_params)
-    @review.votes.each{|vote| vote.destroy}
-    vote = Vote.new(score: 1, review_id: @review.id, account_id: current_user.id)
-    vote.save
-    redirect_to song_path(params[:song_id])
+    set_song
+    if @review.update(review_params) && @review.valid?
+      @review.votes.each{|vote| vote.destroy}
+      vote = Vote.new(score: 1, review_id: @review.id, account_id: current_user.id)
+      vote.save
+      redirect_to @song
+    else
+      redirect_to @song
+    end
   end
 
   def destroy

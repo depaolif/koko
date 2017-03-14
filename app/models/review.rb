@@ -1,4 +1,5 @@
 class Review < ApplicationRecord
+  validates :song_score, inclusion: {:in => 1..5}
   belongs_to :account
   belongs_to :song
   has_many :votes

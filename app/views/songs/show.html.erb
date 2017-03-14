@@ -6,7 +6,7 @@
     })
     $("#edit_review").click(function() {
       $("#edit_form").show();
-      $("#my_review").hide();
+      $(".my_review").hide();
     })
   })
 </script>
@@ -26,7 +26,7 @@
           <br>
           <button id="add_review">Add New Review</button>
           <div id="review_form" style="display:none">
-            <h4>New Review:</h4><br>
+            <h3>New Review:</h3><br>
             <%= render partial: '/reviews/form', locals: {song: @song, review: @review} %>
           </div>
         <% elsif !logged_in? %>
@@ -49,8 +49,8 @@
         <% end %>
 
         <% if !!my_review %>
-        <h3>My Review:</h3><br>
-        <div id="review_<%= my_review.id %>" class="review_box">
+        <div id="review_<%= my_review.id %>" class="my_review">
+          <h3>My Review:</h3><br>
             <div class="row">
               <div class="col-md-6 review_box_content">
                 <%= render partial: "/application/stars", locals: {score: my_review.song_score} %> <br><br>
