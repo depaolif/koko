@@ -1,67 +1,180 @@
+<div class="container-fluid">
 <div class="row">
   <%if logged_in?%>
+
+  <!-- Friends Activity  -->
     <div class="col-md-4">
-  <h1>Friend Activity</h1>
-    <%if @friends.count > 0%>
-    <%@friends.each do |friend|%>
-    <h3>
-      <%=link_to friend.friend.user_name, show_profile_path(friend.friend)%>
-    </h3>
-      <%if friend.friend.reviews.count > 0 %>
-      <p>
-        Last Review Information:
-      </p>
-      <p>
-        Song: <%= link_to friend.friend.reviews.last.song.name, song_path(friend.friend.reviews.last.song)%>
-      </p>
-      <p>
-        Score: <%= friend.friend.reviews.last.song_score%>
-      </p>
-      <p>
-        Review: <%= friend.friend.reviews.last.content%>
-      </p>
-      <%else%>
-      <p>
-        This user has not posted any reviews yet.
-      </p>
-      <%end%>
-    <%end%>
-  <%else%>
-  <p>
-    Add Friends to unlock this feature!
-  </p>
-  <%end%>
+      <div class="row">
+        <div class="col-md-12"><h1 class="dashboard-title">Friend Activity</h1></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h4 class="dashboard-sub-title">
+              Song
+          </h4>
+         </div>
+      <div class="col-md-4">
+          <h4 class="dashboard-sub-title">
+             What They're Saying
+          </h4>
+      </div>
+      <div class="col-md-4">
+          <h4 class="dashboard-sub-title">
+            Their Score
+          </h4>
+      </div>
+      </div>
+      <div class="row">
+          <%if @friends.count > 0%>
+            <%@friends.each do |friend|%>
+              <div class="col-md-4">
+              <p class="dashboard-text">
+                <%=link_to friend.friend.reviews.last.song.name, song_path(friend.friend.reviews.last.song)%>
+              </p>
+            </div>
+            <%if friend.friend.reviews.count > 0 %>
+              <div class="col-md-5">
+              <p class="dashboard-text-left">
+              <%= friend.friend.reviews.last.content%>
+              <br />
+              Reviewer: <%=link_to friend.friend.user_name, show_profile_path(friend.friend)%>
+              </p>
+              </div>
+              <div class="col-md-3">
+              <p class="dashboard-text">
+                <%= friend.friend.reviews.last.song_score%> Star
+              </p>
+            </div>
+          <%else%>
+          <div class="col-md-12">
+            <p class="dashboard-no-result">
+              This user has not posted any reviews yet.
+            </p>
+          </div>
+          <%end%>
+          <%end%>
+          <%else%>
+            <div class="col-md-12">
+              <p class="dashboard-no-result">
+                Add Friends to unlock this feature!
+              </p>
+            </div>
+          <%end%>
+        </div>
 </div>
-<div class="col-md-4">
-  <h1>Trending Songs</h1>
-  <%@ordered_songs_hash.each do |song, score|%>
-    <h3><%=link_to song.name, song_path(song)%></h3>
-    <h4> Average Review Score: <%=score%></h4>
-  <%end%>
+
+<!-- Trending Songs -->
+
+<div class="col-md-3">
+    <div class="row">
+      <div class="col-md-12"><h1 class="dashboard-title">Trending Songs</h1></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="dashboard-sub-title">
+            Song
+        </h4>
+       </div>
+    <div class="col-md-6">
+        <h4 class="dashboard-sub-title">
+           Koko's Score
+        </h4>
+    </div>
+    </div>
+    <div class="row">
+    <%@ordered_songs_hash.each do |song, score|%>
+          <div class="col-md-6">
+            <p class="dashboard-text">
+              <%=link_to song.name, song_path(song)%>
+            </p>
+          </div>
+            <div class="col-md-6">
+            <p class="dashboard-text">
+              <%=score%>
+            </p>
+            </div>
+        <%end%>
+      </div>
+    </div>
+
+<!-- Influencers Picks' -->
+
+<div class="col-md-5">
+    <div class="row">
+      <div class="col-md-12"><h1 class="dashboard-title">Influencer's Picks</h1></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="dashboard-sub-title">
+            Song
+        </h4>
+       </div>
+    <div class="col-md-4">
+        <h4 class="dashboard-sub-title">
+           What They're Saying
+        </h4>
+    </div>
+    <div class="col-md-4">
+        <h4 class="dashboard-sub-title">
+           Their Score
+        </h4>
+    </div>
+    </div>
+    <div class="row">
+    <%@final_array.each do |reviewer|%>
+          <div class="col-md-4">
+            <p class="dashboard-text">
+            <%= link_to reviewer[1].song.name, song_path(reviewer[1].song)%>
+            </p>
+          </div>
+            <div class="col-md-4">
+            <p class="dashboard-text">
+              <%= link_to reviewer[0].user_name, show_profile_path(reviewer[0]) %><br />
+              <%= reviewer[1].content%>
+            </p>
+            </div>
+            <div class="col-md-4">
+            <p class="dashboard-text">
+              <%= reviewer[1].song_score%> Stars
+            </p>
+            </div>
+        <%end%>
+      </div>
 </div>
-<div class="col-md-4">
-  <h1>Top Influencers Picks</h1>
-  <%@final_array.each do |reviewer|%>
-  <P>
-    Reviewer: <%= link_to reviewer[0].user_name, show_profile_path(reviewer[0]) %>
-  </P>
-  <p>
-    Last Positive Review:
-  </p>
-  <p>
-    Song: <%= link_to reviewer[1].song.name, song_path(reviewer[1].song)%><br />
-    Score: <%= reviewer[1].song_score%> Stars
-    Content: <%= reviewer[1].content%>
-  </p>
-  <%end%>
-</div>
+
+<!-- If User Not Logged In -->
+
 <%else%>
+
+<div class="container" style="overflow:scroll; height:650px;">
+<div class="row">
   <div class="col-md-12">
     <h1>Trending Songs</h1>
+  </div>
+</div>
+<div class="row">
     <%@ordered_songs_hash.each do |song, score|%>
-      <h3><%=link_to song.name, song_path(song)%></h3>
-      <h4> Average Review Score: <%=score%></h4>
+    <div class="col-md-6">
+      <p class="dashboard-no-result">Song</p>
+    </div>
+    <div class="col-md-6">
+      <p class="dashboard-no-result">Koko's Score</p>
+    </div>
     <%end%>
   </div>
+<div class="row">
+    <%@ordered_songs_hash.each do |song, score|%>
+    <div class="col-md-6">
+      <p class="dashboard-no-result"><%=link_to song.name, song_path(song)%></p>
+    </div>
+    <div class="col-md-6">
+      <p class="dashboard-no-result"><%=score%></p>
+    </div>
+    <%end%>
+  </div>
+</div>
 <%end%>
+
+</div>
+
 </div>

@@ -302,3 +302,27 @@ form.votes-form { display: inline; }
   border: solid;
   border-color: $color5;
 }
+
+.dashboard-title{
+  text-align: center;
+}
+
+.dashboard-sub-title {
+  text-align: center;
+}
+
+.dashboard-text{
+  text-align: center;
+}
+
+.dashboard-no-result {
+  font-size:150%;
+  text-align: center;
+  margin-top: 50px;
+  color: $color4;
+}
+
+.dashboard-text-left {
+  text-align: center;
+  padding-right: 2.75em;
+}
