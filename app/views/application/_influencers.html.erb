@@ -1,0 +1,20 @@
+<%final_array.each do |reviewer|%>
+      <div class="row">
+      <div class="col-md-4">
+        <p class="dashboard-text">
+        <%= link_to reviewer[1].song.name, song_path(reviewer[1].song)%>
+        </p>
+      </div>
+        <div class="col-md-4">
+        <p class="dashboard-text">
+          <%= link_to reviewer[0].user_name, show_profile_path(reviewer[0]) %><br />
+          <%= reviewer[1].content%>
+        </p>
+        </div>
+        <div class="col-md-4">
+        <p class="dashboard-text">
+          <%= reviewer[1].song_score%> Stars
+        </p>
+        </div>
+      </div>
+    <%end%>

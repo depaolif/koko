@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if logged_in?
       influencers_picks
       friends_reviews
-    end 
+    end
   end
 
   def search
@@ -42,8 +42,8 @@ class ApplicationController < ActionController::Base
     unordered_influencer_list = array.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
     sorted_influencer_list = Hash[unordered_influencer_list.sort_by{|k, v| v}.reverse]
     sorted_influencer_list.each do |reviewer, frequency|
-      if reviewer.reviews.where(song_score: "> 3").last
-        @final_array << [reviewer, reviewer.reviews.where(song_score: "> 3").last]
+      if reviewer.reviews.where("song_score > ?", 3).last
+        @final_array << [reviewer, reviewer.reviews.where("song_score > ?", 3).last]
       end
     end
     if @final_array.size > 10
