@@ -415,11 +415,6 @@ form.votes-form { display: inline; }
   padding-right: 15px;
 }
 
-.right-div h3 {
-  float: right;
-  padding-right: .5em;
-}
-
 .dashboard-right-col-logged-out {
   background-color: $color2;
   height: 537px;
@@ -432,11 +427,26 @@ form.votes-form { display: inline; }
 }
 
 .dash-search {
-  background: #eee;
-  width: 60%;
+  width: 50%;
   margin: auto;
   text-align: center;
   margin-top: 10em;
+}
+
+.pitch {
+  margin-top: 10px;
+}
+
+#pitch-1 {
+  margin-left: .5em;
+}
+
+#pitch-2 {
+ margin-right: 0.5em;
+}
+
+#pitch-3 {
+  margin-right: 1.5em;
 }
 
 .home-search {
