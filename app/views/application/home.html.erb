@@ -1,51 +1,41 @@
 <div class="container-fluid">
-<div class="row">
-  <%if logged_in?%>
+  <div class="row">
+    <%if logged_in?%>
 
-  <!-- Trending Songs -->
-  <div class="col-md-4 trending-songs-wrapper">
-    <%= render partial: "trending_songs", locals: {ordered_songs_hash: @ordered_songs_hash} %>
-  </div>
-  <!-- Friends Activity  -->
-  <div class="col-md-8 right-div">
-    <div class="col-md-12 dashboard-right-col">
-      <%= render partial: "friends_activity", locals: {friends_reviews: @friends_reviews} %>
-
-    <!-- Suggestions -->
-      <%= render partial: "suggestions", locals: {final_array: @final_array} %>
+    <!-- Trending Songs -->
+    <div class="col-md-4 trending-songs-wrapper">
+      <%= render partial: "trending_songs", locals: {ordered_songs_hash: @ordered_songs_hash} %>
     </div>
-  </div>
+    <!-- Friends Activity  -->
+    <div class="col-md-8 right-div">
+      <div class="col-md-12 dashboard-right-col">
+        <%= render partial: "friends_activity", locals: {friends_reviews: @friends_reviews} %>
 
-<!-- If User Not Logged In -->
+      <!-- Suggestions -->
+        <%= render partial: "suggestions", locals: {final_array: @final_array} %>
+      </div>
+    </div>
 
-<%else%>
+    <!-- If User Not Logged In -->
 
-<div class="row">
-  <div class="col-md-12">
-    <h1>Trending Songs</h1>
-  </div>
-</div>
-<div class="row">
-    <%@ordered_songs_hash.each do |song, score|%>
-    <div class="col-md-6">
-      <p class="dashboard-no-result">Song</p>
-    </div>
-    <div class="col-md-6">
-      <p class="dashboard-no-result">Koko's Score</p>
-    </div>
-    <%end%>
-  </div>
-<div class="row">
-    <%@ordered_songs_hash.each do |song, score|%>
-    <div class="col-md-6">
-      <p class="dashboard-no-result"><%=link_to song.name, song_path(song)%></p>
-    </div>
-    <div class="col-md-6">
-      <p class="dashboard-no-result"><%=score%></p>
-    </div>
-    <%end%>
-  </div>
-</div> <!-- big row -->
-<%end%>
 
+    <%else%>
+
+    <!--- Trending Songs --->
+
+      <div class="col-md-4 trending-songs-wrapper">
+        <%= render partial: "trending_songs", locals: {ordered_songs_hash: @ordered_songs_hash} %>
+      </div>
+      <!--- log in --->
+
+      <div class="col-md-8 right-div">
+          <h2>Log in for personalized suggestions!</h2>
+        <div class="col-md-12 dashboard-right-col">
+        </div>
+      </div>
+
+
+
+    <% end %>
+  </div> <!-- big row -->
 </div> <!-- container fluid -->
