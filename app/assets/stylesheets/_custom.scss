@@ -101,11 +101,6 @@ body {
     }
 }
 
-.form-group {
-  margin-left: 10em;
-  margin-top: 3em;
-  color: #2A2B2A;
-}
 
 .navbar-img {
   margin-bottom: 1.5em;
@@ -353,6 +348,7 @@ form.votes-form { display: inline; }
   padding-right: 0px;
 }
 
+
 .friends-dash{
   background-color: $color1;
   border-radius: 4px;
@@ -367,3 +363,24 @@ form.votes-form { display: inline; }
   background: $color1;
   border-radius: 4px;
 }
+
+.form-group {
+  height: 100%;
+  width: 100%;
+}
+
+ #signup {
+   width: inherit;
+   vertical-align: center;
+   position: relative;
+   height: inherit;
+   margin: 0 auto;
+ }
+
+ #login {
+   width: inherit;
+   vertical-align: center;
+   position: relative;
+   height: inherit;
+   margin: 0 auto;
+ }

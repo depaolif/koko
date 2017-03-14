@@ -1,14 +1,18 @@
 class RegistrationsController < ApplicationController
+
   def new
     @account = Account.new
   end
 
   def create
-    account = Account.new(account_params)
-    account.save
-    session[:account_id] = account.id
-    account.profile = Profile.create(name: "", bio: "", interests: "", account_id: current_user.id)
-    redirect_to home_path
+    @account = Account.new(account_params)
+    if !@account.save
+      render root_path
+    else
+      session[:account_id] = @account.id
+      @account.profile = Profile.create(name: "", bio: "", interests: "", account_id: current_user.id)
+      redirect_to home_path
+    end
   end
 
   def close
