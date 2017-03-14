@@ -282,3 +282,23 @@ form.votes-form { display: inline; }
 .selected-down > button {
   color: $color2;
 }
+
+.search-result-box {
+  background: rgba(242, 160, 92, 0.6);
+  color: $color5;
+  height: 50px;
+  text-align:center;
+  border-radius: 25px;
+}
+
+.search-result-result {
+  text-align:center;
+}
+
+.container-search{
+  background: rgba(245, 245, 201, 0.4);
+  border-radius: 25px;
+  padding:1em;
+  border: solid;
+  border-color: $color5;
+}
