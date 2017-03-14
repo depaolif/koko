@@ -6,95 +6,111 @@
     })
     $("#edit_review").click(function() {
       $("#edit_form").show();
-      $("#my_review").hide();
+      $(".my_review").hide();
     })
   })
 </script>
-
-<h1><%= @song.name %></h1>
-<h2><%= link_to @song.artist.name, artist_path(@song.artist)%></h2>
-
-<iframe src="https://embed.spotify.com/?uri=<%=@song.play_url%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-  <div>
-    <% if logged_in? && !current_user.reviews.any? { |review| review.song_id == @song.id } %>
-      <br>
-      <button id="add_review">Add New Review</button>
-      <div id="review_form" style="display:none">
-        <h4>New Review:</h4><br>
-        <%= render partial: '/reviews/form', locals: {song: @song, review: @review} %>
-      </div>
-    <% elsif !logged_in? %>
-      <h4><%= link_to 'Log In', login_path %> or <%= link_to 'Sign Up', new_registration_path %> to Review</h4>
-    <% end %>
-  </div>
-
-  <% if @song.reviews.count == 0%>
+<div class="container-fluid offwhite">
+  <div class="col-md-6 text-center">
     <br>
-    <p>
-      No one has reviewed this song yet.
-    </p>
-  <% else %>
-
-    <% if logged_in? %>
-        <% my_review = my_review_for_song(@song, current_user) %>
-    <% else %>
-        <% my_review = nil %>
-    <% end %>
-
-    <% if !!my_review %>
-    <div id="my_review">
-      <div id="review_<%= my_review.id %>">
-        <h3>My Review:</h3>
-        <%= render partial: "/application/stars", locals: {score: my_review.song_score} %> <br>
-        <%= my_review.content%> <br>
-        Review by: <%= link_to my_review.account.user_name, show_profile_path(my_review.account) %> <br>
-
-        <a id="edit_review"style="cursor:pointer">Edit</a><br>
-        <%= link_to 'Delete', destroy_song_review_path(@song,my_review), method: 'delete' %><br>
-
-      <% if !current_user.voted?(my_review.id)%>
-          <%= render partial: "votes", locals: {song: @song, review: my_review, vote_score: 0} %>
-
-      <% else %>
-          <% vote_score = current_user.voted_score(my_review.id) %>
-          <%= render partial: "editvotes", locals: {song: @song, review: my_review, vote_score: vote_score} %>
-
-        <% end %>
-        <br><br>Votes:
-        <div id="review_<%= my_review.id %>_total">
-          <%= "#{my_review.vote_sum}" %>
-        </div>
-    </div>
+    <h1><%= @song.name %></h1>
+    <h2><%= link_to @song.artist.name, artist_path(@song.artist)%></h2>
+    <br>
+    <iframe src="https://embed.spotify.com/?uri=<%=@song.play_url%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
   </div>
-    <div id="edit_form" style="display:none">
-      <h3>Edit Your Review:</h3><br>
-      <%= render partial: '/reviews/form', locals: {song: @song, review: my_review} %>
-    </div>
-  <% end %>
 
-  <h3>Reviews:</h3>
-  <%@song.reviews.each do |review|%>
-    <% unless review == my_review %>
-        <div id="review_<%= review.id %>">
-          <%= render partial: '/application/stars', locals: {score: review.song_score} %> <br>
-          <%= review.content%> <br>
-          Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %><% if logged_in? %><% if review.account != current_user%><%if !current_user.friends.any?{|friend| friend.friend == review.account}%> | <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%> | <%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><% end %><br>
-
-          <% if logged_in? && !current_user.voted?(review.id)%>
-          <%= render partial: "votes", locals: {song: @song, review: review} %>
-
-        <% elsif logged_in? %>
-          <% vote_score = current_user.voted_score(review.id) %>
-          <%= render partial: "editvotes", locals: {song: @song, review: review, vote_score: vote_score} %>
-
+    <div class="col-md-6 text-center reviews_display">
+      <br>
+      <div id="new_review">
+        <% if logged_in? && !current_user.reviews.any? { |review| review.song_id == @song.id } %>
+          <br>
+          <button id="add_review">Add New Review</button>
+          <div id="review_form" style="display:none">
+            <h3>New Review:</h3><br>
+            <%= render partial: '/reviews/form', locals: {song: @song, review: @review} %>
+          </div>
+        <% elsif !logged_in? %>
+          <h4><%= link_to 'Log In', login_path %> or <%= link_to 'Sign Up', new_registration_path %> to Review</h4>
         <% end %>
-        <br><br>Votes:
-        <div id="review_<%= review.id %>_total">
-          <%= "#{review.vote_sum}" %>
+        <br><br>
+      </div>
+
+      <% if @song.reviews.count == 0%>
+        <br>
+        <p>
+          No one has reviewed this song yet.
+        </p>
+      <% else %>
+
+        <% if logged_in? %>
+            <% my_review = my_review_for_song(@song, current_user) %>
+        <% else %>
+            <% my_review = nil %>
+        <% end %>
+
+        <% if !!my_review %>
+        <div id="review_<%= my_review.id %>" class="my_review">
+          <h3>My Review:</h3><br>
+            <div class="row">
+              <div class="col-md-6 review_box_content">
+                <%= render partial: "/application/stars", locals: {score: my_review.song_score} %> <br><br>
+                <%= my_review.content%> <br><br>
+              </div>
+              <div class="col-md-6">
+                Review by: <%= link_to my_review.account.user_name, show_profile_path(my_review.account) %> <br>
+                <a id="edit_review" style="cursor:pointer">Edit</a> |
+                <%= link_to 'Delete', destroy_song_review_path(@song,my_review), method: 'delete' %><br>
+                  <% if logged_in? && !current_user.voted?(my_review.id)%>
+                    <%= render partial: "votes", locals: {song: @song, review: my_review, vote_score: 0} %>
+                  <% elsif logged_in? %>
+                    <% vote_score = current_user.voted_score(my_review.id) %>
+                    <%= render partial: "editvotes", locals: {song: @song, review: my_review, vote_score: vote_score} %>
+                  <% end %>
+                  <br>Votes:
+                  <div id="review_<%= my_review.id %>_total">
+                    <%= "#{my_review.vote_sum}" %>
+                  </div>
+              </div>
+            </div>
+      </div>
+        <div id="edit_form" style="display:none">
+          <h3>Edit Your Review:</h3><br>
+          <%= render partial: '/reviews/form', locals: {song: @song, review: my_review} %>
         </div>
       <% end %>
-  <%end%>
-<% end %>
-<br><br>
+
+      <h3>Reviews:</h3>
+      <br>
+      <%@song.reviews.each do |review|%>
+        <% unless review == my_review %>
+            <div id="review_<%= review.id %>" class="row review_box">
+              <div class="row">
+                <div class="col-md-6 review_box_content">
+                  <%= render partial: '/application/stars', locals: {score: review.song_score} %> <br><br>
+                  <%= review.content%> <br>
+                </div>
+                <div class="col-md-6">
+                  Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <% if review.account != current_user%><%if logged_in? && !current_user.friends.any?{|friend| friend.friend == review.account}%> | <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%> | <%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><br>
+
+                  <% if logged_in? && !current_user.voted?(review.id)%>
+                    <%= render partial: "votes", locals: {song: @song, review: review} %>
+
+                  <% elsif logged_in? %>
+                    <% vote_score = current_user.voted_score(review.id) %>
+                    <%= render partial: "editvotes", locals: {song: @song, review: review, vote_score: vote_score} %>
+
+                  <% end %>
+                  <br>Votes:
+                  <div id="review_<%= review.id %>_total">
+                    <%= "#{review.vote_sum}" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+        <%end%>
+        <% end %>
+      </div>
+  </div><br><br>
 
 <br><br>
