@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def home
       trending_songs
     if logged_in?
-      influencers_picks
+      suggested_picks
       friends_reviews
     end
   end
@@ -28,6 +28,27 @@ class ApplicationController < ActionController::Base
       @ordered_songs_hash = Hash[@unordered_songs_hash.sort_by{|k, v| v}.reverse]
   end
 
+  def influencers_picks
+    accounts = Account.all
+    unordered_influencers_hash = {}
+    @influencers_last_good_review = []
+    accounts.each do |account|
+      unordered_influencers_hash[account] = account.vote_total
+    end
+    ordered_influencers_hash = Hash[unordered_influencers_hash.sort_by{|k, v| v}.reverse]
+      influencers = ordered_influencers_hash.keys
+      influencers.each do |influencer|
+        if influencer.reviews.count > 0 && influencer.reviews.any? {|review| review.song_score > 3}
+          @influencers_last_good_review << influencer.reviews.where(song_score: "<= 3").last
+        end
+    end
+    if @influencers_last_good_review.count > 20
+      @influencers_last_good_review[0..20]
+    else
+      @influencers_last_good_review
+    end
+  end
+
   def logged_in?
     !!session[:account_id]
   end
@@ -36,20 +57,20 @@ class ApplicationController < ActionController::Base
     @account ||= Account.find_by_id(session[:account_id])
   end
 
-  def influencers_picks
+  def suggested_picks
     array = upvoted_accounts
-    @final_array = []
-    unordered_influencer_list = array.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-    sorted_influencer_list = Hash[unordered_influencer_list.sort_by{|k, v| v}.reverse]
-    sorted_influencer_list.each do |reviewer, frequency|
+    @suggested_array = []
+    unordered_suggested_list = array.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    sorted_suggested_list = Hash[unordered_suggested_list.sort_by{|k, v| v}.reverse]
+    sorted_suggested_list.each do |reviewer, frequency|
       if reviewer.reviews.where("song_score > ?", 3).last
-        @final_array << [reviewer, reviewer.reviews.where("song_score > ?", 3).last]
+        @suggested_array << [reviewer, reviewer.reviews.where("song_score > ?", 3).last]
       end
     end
-    if @final_array.size > 10
-      @final_array = final_array[0..10]
+    if @suggested_array.size > 10
+      @suggested_array = @suggested_array[0..10]
     else
-      @final_array
+      @suggested_array
     end
   end
 
@@ -61,7 +82,7 @@ class ApplicationController < ActionController::Base
       end
     end
     @friends_reviews = current_user_friends_reviews.sort
-    @friends_reviews
+    @friends_reviews = @friends_reviews[0..100]
   end
 
 

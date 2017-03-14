@@ -12,7 +12,7 @@
         <%= render partial: "friends_activity", locals: {friends_reviews: @friends_reviews} %>
 
       <!-- Suggestions -->
-        <%= render partial: "suggestions", locals: {final_array: @final_array} %>
+        <%= render partial: "suggestions", locals: {final_array: @suggested_array} %>
       </div>
     </div>
 
@@ -21,7 +21,7 @@
 
     <%else%>
 
-    <!--- Trending Songs --->
+      <!--- Trending Songs --->
 
       <div class="col-md-3 trending-songs-wrapper">
         <%= render partial: "trending_songs", locals: {ordered_songs_hash: @ordered_songs_hash} %>
