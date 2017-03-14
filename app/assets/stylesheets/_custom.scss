@@ -201,7 +201,7 @@ body {
   float: right;
   padding: 15px;
   margin-top: 2.6em;
-  margin-right: 30px;
+  margin-right: 70px;
   // background: white;
 }
 
@@ -325,30 +325,4 @@ form.votes-form { display: inline; }
 .dashboard-text-left {
   text-align: center;
   padding-right: 2.75em;
-}
-
-.influencers-wrapper {
-}
-
-.trending-songs-wrapper {
-  background-color: $color1;
-  height: 600px;
-  border: solid;
-  border-width: thin;
-  border-color: black;
-  border-radius: 4px;
-}
-.dashboard-right-col {
-  background-color: $color1;
-  height: 600px;
-  border: solid;
-  border-width: thin;
-  border-color: black;
-  border-radius: 4px;
-  padding-right: 0px;
-  margin-right: 0px;
-}
-
-.right-div {
-  padding-right: 0px;
 }
