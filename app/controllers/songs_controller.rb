@@ -21,7 +21,7 @@ class SongsController < ApplicationController
   def show
     @song = Song.find_by(id: params[:id])
     @song.reviews.each do |review|
-      if !current_user.voted?(review.id)
+      if logged_in? && !current_user.voted?(review.id)
         Vote.create(score: 0, review_id: review.id, account_id: current_user.id)
       end
     end
