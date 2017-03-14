@@ -5,34 +5,40 @@
   <!-- Trending Songs -->
 
   <div class="col-md-4 trending-songs-wrapper">
+    
       <div class="row">
-        <div class="col-md-12"><h1 class="dashboard-title">Trending Songs</h1></div>
+        <div class="col-md-12">
+          <h1 class="dashboard-title">Trending Songs</h1>
+        </div>
       </div>
-      <div class="row">
+
+      <div class="col-md-12 trending-dash">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="dashboard-sub-title">
+                Song
+            </h4>
+           </div>
         <div class="col-md-6">
-          <h4 class="dashboard-sub-title">
-              Song
-          </h4>
-         </div>
-      <div class="col-md-6">
-          <h4 class="dashboard-sub-title">
-             Koko's Score
-          </h4>
-      </div>
-      </div>
-      <div class="row">
-      <%@ordered_songs_hash.each do |song, score|%>
-            <div class="col-md-6">
-              <p class="dashboard-text">
-                <%=link_to song.name, song_path(song)%>
-              </p>
-            </div>
+            <h4 class="dashboard-sub-title">
+               Koko's Score
+            </h4>
+        </div>
+        </div>
+        <div class="row">
+        <%@ordered_songs_hash.each do |song, score|%>
               <div class="col-md-6">
-              <p class="dashboard-text">
-                <%=score%>
-              </p>
+                <p class="dashboard-text">
+                  <%=link_to song.name, song_path(song)%>
+                </p>
               </div>
-          <%end%>
+                <div class="col-md-6">
+                <p class="dashboard-text">
+                  <%=score%>
+                </p>
+                </div>
+            <%end%>
+          </div>
         </div>
       </div>
 
@@ -46,6 +52,7 @@
         </div>
       </div>
 
+      <div class="col-md-12 friends-dash">
       <div class="row">
         <div class="col-md-4">
           <h4 class="dashboard-sub-title">Song</h4>
@@ -57,7 +64,6 @@
           <h4 class="dashboard-sub-title">Their Score</h4>
          </div>
       </div>
-
         <%if @friends_reviews.count > 0%>
             <%@friends_reviews.each do |review|%>
             <div class="row">
@@ -85,6 +91,7 @@
             <p class="dashboard-no-result">Add Friends to unlock this feature!</p>
           </div>
         <%end%>
+      </div>
     </div> <!-- col md 6 -->
 
 <!-- Influencers Picks' -->
@@ -92,6 +99,8 @@
       <div class="row">
         <div class="col-md-12"><h1 class="dashboard-title">Influencer's Picks</h1></div>
       </div>
+      <div class="col-md-12 suggested-dash">
+
       <div class="row">
         <div class="col-md-4">
           <h4 class="dashboard-sub-title">
@@ -112,6 +121,7 @@
       <div class="row">
         <%= render partial: 'influencers', locals: {final_array: @final_array} %>
       </div>
+    </div>
   </div>
 </div>
 </div>

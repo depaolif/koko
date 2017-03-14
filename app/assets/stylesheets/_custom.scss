@@ -331,7 +331,7 @@ form.votes-form { display: inline; }
 }
 
 .trending-songs-wrapper {
-  background-color: $color1;
+  background-color: $color3;
   height: 600px;
   border: solid;
   border-width: thin;
@@ -339,7 +339,7 @@ form.votes-form { display: inline; }
   border-radius: 4px;
 }
 .dashboard-right-col {
-  background-color: $color1;
+  background-color: $color2;
   height: 600px;
   border: solid;
   border-width: thin;
@@ -351,4 +351,19 @@ form.votes-form { display: inline; }
 
 .right-div {
   padding-right: 0px;
+}
+
+.friends-dash{
+  background-color: $color1;
+  border-radius: 4px;
+}
+
+.suggested-dash {
+  background-color: $color1;
+  border-radius: 4px;
+}
+
+.trending-dash {
+  background: $color1;
+  border-radius: 4px;
 }
