@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
       trending_songs
     if logged_in?
       influencers_picks
-      @friends = current_user.friends
-    end
+      friends_reviews
+    end 
   end
 
   def search
@@ -52,6 +52,18 @@ class ApplicationController < ActionController::Base
       @final_array
     end
   end
+
+  def friends_reviews
+    current_user_friends_reviews = []
+    current_user.friends.each do |friend|
+      friend.friend.reviews.each do |review|
+        current_user_friends_reviews << review
+      end
+    end
+    @friends_reviews = current_user_friends_reviews.sort
+    @friends_reviews
+  end
+
 
   def upvoted_accounts
     Account.joins(:votes).where(votes: {account_id: current_user.id}).where(votes: {score: 1})
