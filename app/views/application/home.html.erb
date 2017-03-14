@@ -50,10 +50,10 @@
         <div class="col-md-4">
           <h4 class="dashboard-sub-title">Song</h4>
          </div>
-         <div class="col-md-4">
+         <div class="col-md-6">
           <h4 class="dashboard-sub-title">What They're Saying</h4>
          </div>
-         <div class="col-md-4">
+         <div class="col-md-2">
           <h4 class="dashboard-sub-title">Their Score</h4>
          </div>
       </div>
@@ -66,14 +66,14 @@
                   <%=link_to review.song.name, song_path(review.song)%>
                 </p>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <p class="dashboard-text-left">
-                    <%= review.content%>
+                    <%= review.content == "" ? "[No content]": review.content %>
                     <br>
                     Reviewer: <%=link_to review.account.user_name, show_profile_path(review.account)%>
                 </p>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-2">
               <p class="dashboard-text">
                 <%= review.song_score%> Star
               </p>
