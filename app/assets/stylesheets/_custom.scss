@@ -415,6 +415,65 @@ form.votes-form { display: inline; }
   padding-right: 15px;
 }
 
-.right-div h2 {
+.right-div h3 {
   float: right;
+  padding-right: .5em;
+}
+
+.dashboard-right-col-logged-out {
+  background-color: $color2;
+  height: 537px;
+  border: solid;
+  border-width: thin;
+  border-color: black;
+  border-radius: 4px;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.dash-search {
+  background: #eee;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  margin-top: 10em;
+}
+
+.home-search {
+  padding-left: 2.5em;
+}
+
+.search-field-simple {
+  width: 400px;
+  height: 32px;
+  border-radius: 10px;
+  border: solid;
+  border-width: thin;
+  text-align: center;
+  border-color: #ddd;
+  margin: auto;
+}
+
+#search-submit-simple {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+  float: right;
+}
+
+.search-field-simple:focus {
+  transition-duration: .4s;
+	outline: none;
+	border:none;
+	border-bottom: 4px solid $color3;
+}
+
+.search-field-simple:active {
+  transition-duration: .4s;
+	width:285px;
+	outline: none;
+	border-bottom: 4px solid $color3;
 }

@@ -16,6 +16,8 @@
 
       <div class="row">
       <%ordered_songs_hash.each do |song, score|%>
+      <div class="row">
+
         <div class="col-md-6">
           <p class="dashboard-text">
             <%=link_to song.name, song_path(song)%>
@@ -26,6 +28,7 @@
           <%=score%>
         </p>
         </div>
+      </div>
       <%end%>
     </div>
   </div>
