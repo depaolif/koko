@@ -1,0 +1,10 @@
+<div class="row search">
+  <div class="col-sm-6 col-sm-offset-5">
+    <%= form_tag('/friends/search', id: "search-form-2", method: :post) do %>
+      <%= text_field_tag "friend_search", nil, id: "search-field-2", placeholder: "Search for Koko Users!", class: "search-field" %>
+      <%= button_tag type: 'submit', id: "search-submit-2", class: "search-submit", disabled: "disabled" do %>
+        <%= icon('search', class: "fa-2x") %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

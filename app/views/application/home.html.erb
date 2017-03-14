@@ -12,7 +12,7 @@
         <%= render partial: "friends_activity", locals: {friends_reviews: @friends_reviews} %>
 
       <!-- Suggestions -->
-        <%= render partial: "suggestions", locals: {final_array: @final_array} %>
+        <%= render partial: "suggestions", locals: {final_array: @suggested_array} %>
       </div>
     </div>
 
@@ -21,16 +21,30 @@
 
     <%else%>
 
-    <!--- Trending Songs --->
+      <!--- Trending Songs --->
 
-      <div class="col-md-4 trending-songs-wrapper">
+      <div class="col-md-3 trending-songs-wrapper">
         <%= render partial: "trending_songs", locals: {ordered_songs_hash: @ordered_songs_hash} %>
       </div>
       <!--- log in --->
 
-      <div class="col-md-8 right-div">
-          <h2>Log in for personalized suggestions!</h2>
-        <div class="col-md-12 dashboard-right-col">
+      <div class="col-md-9 right-div">
+        <div class="col-md-12">
+        <div class="dash-search">
+          <div class="row">
+            <h3 class="pitch" id="pitch-1">Log in for personalized suggestions</h3>
+            <h3 class="pitch" id="pitch-2">/ or /</h3>
+            <h3 class="pitch" id="pitch-3">start discovering now.</h3>
+          </div>
+          <div class="row home-search">
+            <%= form_tag('/search', id: "search-form") do %>
+              <%= text_field_tag "query", nil, id: "search-field-simple", placeholder: "Search for Music!", class: "search-field-simple" %>
+              <%= button_tag type: 'submit', id: "search-submit-simple", disabled: "disabled" do %>
+               <%= icon('search', class: "fa-2x") %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
         </div>
       </div>
 
