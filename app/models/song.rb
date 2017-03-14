@@ -13,6 +13,7 @@ class Song < ApplicationRecord
       artists << Artist.find_or_create_by(name: artist_name)
     end
     self.artist = artists[0]
+    @album_image = song_data["album"]["images"][2]["url"]
   end
 
   def all_artists(song_data)

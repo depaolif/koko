@@ -1,10 +1,48 @@
 <%link_to "Return Home", home_path%>
 
-<ul>
+<div class="search-result">
+<div class="container" style="overflow:scroll; height:650px;">
+<div class="container-search">
+<div class="row search">
+  <div class="col-md-4 search">
+    <div class="search-result-box">
+      <h2>Song Title</h2>
+    </div>
+  </div>
+  <div class="col-md-4 search">
+    <div class="search-result-box">
+    <h2>Artist</h2>
+  </div>
+    </div>
+    <div class="col-md-4 search">
+    <div class="search-result-box">
+    <h2>Album</h2>
+    </div>
+  </div>
 <% @songs.each do |song| %>
-<li>
-  <%= link_to song.name, song_path(song) %>
-  By: <%= link_to song.artist.name, artist_path(song.artist) %>
-</li>
+  <div class="col-md-4 search">
+    <div class="search-result-result">
+  <h4>
+    <%= link_to song.name, song_path(song) %>
+  </h4>
+  </div>
+  </div>
+  <div class="col-md-4 search">
+    <div class="search-result-result">
+    <h4>
+  <%= link_to song.artist.name, artist_path(song.artist) %>
+  </h4>
+  </div>
+  </div>
+  <div class="col-md-4 search">
+    <div class="search-result-result">
+    <h4>
+  <%= song.album_name %>
+  </div>
+  </div>
+  </h4>
 <% end %>
-</ul>
+</div>
+</div>
+</div>
+</div>
