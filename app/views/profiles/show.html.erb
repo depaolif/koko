@@ -1,19 +1,31 @@
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
 <% if @profile == current_user.profile %>
-  <h1>Your Profile</h1>
-  <p><%= link_to "Edit", profile_edit_path(@profile) %></p>
+  <h1 style="text-align: center;">Your Profile</h1>
+  <% if @profile == current_user.profile %>
+    <h4><a href = '/profile/edit'>Edit Profile</a> | <%= link_to "Delete Account", close_account_path %></h5>
+  <% end %>
 <% else %>
-  <h1><%= "#{@profile.account.user_name}'s Profile" %></h1>
+  <h1 style="text-align: center;"><%= "#{@profile.account.user_name}'s Profile" %></h1>
 <% end %>
-<h3>Name</h3>
-<%= @profile.name %>
-<br>
-<h3>Biography:</h3>
-<%= @profile.bio %>
-<br>
-<h3>Interests: </h3>
-<%= @profile.interests %>
-<br>
+<div class="blackout">
+  <%link_to "Return Home", home_path%>
+  <div class="search-header-box">
+  <h3 style="text-align: left;">Name:</h3><h5 style="text-indent:50px; text-align: left;"><%= @profile.name %></h5>
+    </div>
+  <div class="search-header-box">
+  <h3 style="text-align: left;"> Biography: </h3><h5 style="text-indent:50px; text-align: left;">  <%= @profile.bio %></h5>
+  </div>
+  <div class="search-header-box" style="text-align: left;">
+  <h3>Interests:</h3><h5 style="text-indent:50px; text-align: left;"><%= @profile.interests %></h5>
+  </div>
+  </div>
+  </div>
+  <div class="col-md-4">
+  </div>
 
+  <div class="col-md-12">
 <%if @profile != current_user.profile%>
   <%= link_to "View #{@profile.account.user_name}'s friends", friends_path(@profile.account.id)%><br />
   <%if !current_user.friends.any?{|friend| friend.friend == @profile.account}%>
@@ -31,10 +43,4 @@
 <%else%>
   You have not reviewed anything.
 <%end%>
-
-<br><br>
-
-<% if @profile == current_user.profile %>
-  <h4><a href = '/profile/edit'>Edit Profile</a></h4>
-  <h5><%= link_to "Delete Account", close_account_path %></h5>
-<% end %>
+  </div>
