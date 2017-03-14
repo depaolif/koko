@@ -1,0 +1,26 @@
+<div class="col-md-6 no-pad-dash">
+    <div class="row">
+      <div class="col-md-12"><h1 class="dashboard-title">Suggested for You</h1></div>
+    </div>
+    <div class="col-md-12 suggested-dash">
+
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="dashboard-sub-title">
+            Song
+        </h4>
+       </div>
+    <div class="col-md-6">
+        <h4 class="dashboard-sub-title">
+           What They're Saying
+        </h4>
+    </div>
+    <div class="col-md-2">
+        <h4 class="dashboard-sub-title">
+           Score
+        </h4>
+    </div>
+    </div>
+      <%= render partial: 'suggestion', locals: {final_array: final_array} %>
+  </div>
+</div>
