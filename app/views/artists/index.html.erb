@@ -1,5 +1,5 @@
 <h1>Trending Artists</h1>
 <%@trending_artists.each do |artist, score|%>
   <h3><%=link_to artist.name, artist_path(artist)%></h3>
-  <h4> Average Review Score: <%=score.round(2)%></h4>
+  <h4> Average Review Score: <%=render partial: "application/stars", locals: {score: score}%></h4>
 <%end%>
