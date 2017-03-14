@@ -2,7 +2,9 @@
 <strong>Rating:</strong> <%=render partial: "application/stars", locals: {score: review.song_score}%> <br>
 <strong>Review:</strong> <%=review.content%><br>
 <strong>Review Score:</strong> <%=review.vote_sum%><br>
+<%if logged_in?%>
 <%if review.account_id == current_user.id%>
 <%=link_to "Delete Review", destroy_song_review_path(review.song, review), method: :delete%>
+<%end%>
 <%end%>
 <br><br>
