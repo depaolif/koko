@@ -62,11 +62,13 @@
               });
             });
           </script>
-    <%=render '/layouts/navbar'%>
+      <%=render 'layouts/navbar'%>
     <br />
     <% if flash[:alert] || flash[:error]%>
         <%= flash[:alert] || flash[:error] %>
     <%end%><br/>
+    <%=render 'layouts/signup' %>
+    <%=render 'layouts/login' %>
     <%= yield %>
   </body>
 <%= render '/layouts/footer'%>
