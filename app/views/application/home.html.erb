@@ -58,9 +58,9 @@
          </div>
       </div>
 
-      <div class="row">
         <%if @friends_reviews.count > 0%>
             <%@friends_reviews.each do |review|%>
+            <div class="row">
               <div class="col-md-4">
                 <p class="dashboard-text">
                   <%=link_to review.song.name, song_path(review.song)%>
@@ -78,14 +78,14 @@
                 <%= review.song_score%> Star
               </p>
             </div>
+          </div>
             <%end%>
         <%else%>
           <div class="col-md-12">
             <p class="dashboard-no-result">Add Friends to unlock this feature!</p>
           </div>
         <%end%>
-      </div>
-      </div> <!-- col md 4 -->
+    </div> <!-- col md 6 -->
 
 <!-- Influencers Picks' -->
   <div class="col-md-6">
