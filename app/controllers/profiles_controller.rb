@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile.update(profile_params)
-    render :index
+    redirect_to show_profile_path(@profile)
   end
 
   private
