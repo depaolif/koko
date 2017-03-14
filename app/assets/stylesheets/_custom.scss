@@ -15,6 +15,10 @@ body {
   background-color: $color5;
 }
 
+.offwhite {
+  background-color: $offwhite;
+}
+
 .navbar-default {
     background-color: #db5461;
     border: none;
@@ -419,5 +423,27 @@ form.votes-form { display: inline; }
 
 // song show page
 .song_info {
-  
+  position: fixed;
+}
+
+.reviews_display {
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+.review_box {
+  border: 1px black solid;
+  margin-bottom: 1em;
+  padding: 1em;
+  background-color: $color1;
+}
+
+.my_review {
+  background-color: $color2;
+  border: 1px black solid;
+  padding: 1em;
+}
+
+.review_box_content {
+  border-right: 1px black dashed;
 }
