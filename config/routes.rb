@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :registrations, only: [:new,:create]
   resources :sessions, only: [:new,:create]
 
+  get '/trendingsongs', to: 'songs#trending_songs'
   post '/friends/search', to: 'friends#search'
   get '/friends/search', to: 'application#home'
   get '/friends/:id', to: 'friends#index', as: 'friends'
