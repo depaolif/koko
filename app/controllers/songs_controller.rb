@@ -4,6 +4,18 @@ class SongsController < ApplicationController
   def create
   end
 
+  def trending_songs
+    unordered_songs = Song.all
+    @unordered_songs_hash = {}
+    unordered_songs.each do |song|
+      if song.reviews.count > 0 && (song.weighted_review_average.round(2) >= 3)
+        @unordered_songs_hash[song] = song.weighted_review_average.round(2)
+      end
+    end
+      @ordered_songs_hash = Hash[@unordered_songs_hash.sort_by{|k, v| v}.reverse]
+      render :trending
+  end
+
   def show
     @song = Song.find_by(id: params[:id])
     @song.reviews.each do |review|
