@@ -4,6 +4,7 @@
 <%if @accounts.count > 0%>
 <% @accounts.each do |account| %>
 <h4><%= link_to account.user_name, show_profile_path(account)%></h4>
+<p>Name: </p>
 <br />
 <%end%>
 <%else%>

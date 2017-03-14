@@ -20,7 +20,7 @@
   <%if !friend.friend.reviews.empty? %>
   <p>Last Review Information:</p>
   <p>Song: <%= link_to friend.friend.reviews.last.song.name, song_path(friend.friend.reviews.last.song)%></p>
-  <p>Score: <%= friend.friend.reviews.last.song_score%></p>
+  <p>Score: <%= render partial: "/application/stars", locals: {score: friend.friend.reviews.last.song_score}%></p>
   <p>Review: <%= friend.friend.reviews.last.content%></p>
   <%end%>
   --
