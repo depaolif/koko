@@ -1,7 +1,6 @@
 @import "palette";
 
-/* navbar */
-
+// general
 html {
   height: 100%;
 }
@@ -12,9 +11,13 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
+.blackout {
+  background-color: $color5;
+}
+
 .navbar-default {
     background-color: #db5461;
-    border-color: #fff;
+    border: none;
     margin-bottom: 0;
 }
 /* Search Icon Transparency */
@@ -26,6 +29,8 @@ body {
     overflow: hidden;
     outline:none;
 }
+
+/* navbar */
 
 // #search-submit:hover {
 //   background-color: #eee;
@@ -189,6 +194,8 @@ body {
   animation-iteration-count: 1;
 }
 
+
+// search results page
 #search-submit {
 	position: relative;
   float: right;
