@@ -99,47 +99,35 @@
 
 <!-- Influencers Picks' -->
 
-<div class="col-md-5">
-    <div class="row">
-      <div class="col-md-12"><h1 class="dashboard-title">Influencer's Picks</h1></div>
+<div class="col-md-5 influencers-wrapper">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="dashboard-title">Influencer's Picks</h1>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        <h4 class="dashboard-sub-title">
-            Song
-        </h4>
-       </div>
+  </div>
+
+  <div class="row">
     <div class="col-md-4">
-        <h4 class="dashboard-sub-title">
-           What They're Saying
-        </h4>
+      <h4 class="dashboard-sub-title">
+        Song
+      </h4>
     </div>
     <div class="col-md-4">
-        <h4 class="dashboard-sub-title">
-           Their Score
-        </h4>
+      <h4 class="dashboard-sub-title">
+         What They're Saying
+      </h4>
     </div>
+    <div class="col-md-4">
+      <h4 class="dashboard-sub-title">
+        Their Score
+      </h4>
     </div>
-    <div class="row">
-    <%@final_array.each do |reviewer|%>
-          <div class="col-md-4">
-            <p class="dashboard-text">
-            <%= link_to reviewer[1].song.name, song_path(reviewer[1].song)%>
-            </p>
-          </div>
-            <div class="col-md-4">
-            <p class="dashboard-text">
-              <%= link_to reviewer[0].user_name, show_profile_path(reviewer[0]) %><br />
-              <%= reviewer[1].content%>
-            </p>
-            </div>
-            <div class="col-md-4">
-            <p class="dashboard-text">
-              <%= reviewer[1].song_score%> Stars
-            </p>
-            </div>
-        <%end%>
-      </div>
+  </div>
+
+  <div class="row">
+    <%= render partial: 'influencers', locals: {final_array: @final_array} %>
+  </div>
 </div>
 
 <!-- If User Not Logged In -->
