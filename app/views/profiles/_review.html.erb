@@ -1,5 +1,5 @@
 <strong>Song:</strong> <%=link_to review.song.name, song_path(review.song) %><br />
-<strong>Rating:</strong>  <br>
+<strong>Rating:</strong> <%=render partial: "application/stars", locals: {score: review.song_score}%> <br>
 <strong>Review:</strong> <%=review.content%><br>
 <strong>Review Score:</strong> <%=review.vote_sum%><br>
 <%if review.account_id == current_user.id%>
