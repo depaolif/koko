@@ -6,14 +6,14 @@ class FriendsController < ApplicationController
       current_user.friends << Friend.find_or_create_by(account_id: current_user.id, friend_id: @account_to_friend.id)
       redirect_to root_path
     else
-    render :'/application/home', alert: "This is not a valid user"
+      render :'/application/home', alert: "This is not a valid user"
     end
   end
 
   def search
     query = params[:friend_search].downcase
     @accounts = Account.where("user_name LIKE ?", "%#{query}%")
-      render 'results'
+    render 'results'
   end
 
   def index
