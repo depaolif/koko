@@ -221,6 +221,17 @@ body {
   // background: white;
 }
 
+.search-form-centered {
+	color: black;
+  float: left;
+  padding: 15px;
+  border-style: solid;
+  border: black;
+  border-width: 2px;
+  margin: 0 auto;
+  // background: white;
+}
+
 
 
 .search-field {
@@ -294,8 +305,8 @@ form.votes-form { display: inline; }
   padding:1em;
   border: solid;
   border-color: $color5;
-  margin-right: 2em;
-  margin-left: 2em;
+  margin-right: 6em;
+  margin-left: 6em;
 }
 
 .search-header-box {
