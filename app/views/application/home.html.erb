@@ -5,55 +5,51 @@
   <!-- Friends Activity  -->
     <div class="col-md-4">
       <div class="row">
-        <div class="col-md-12"><h1 class="dashboard-title">Friend Activity</h1></div>
+        <div class="col-md-12">
+          <h1 class="dashboard-title">Friend Activity</h1>
+        </div>
       </div>
+
       <div class="row">
         <div class="col-md-4">
-          <h4 class="dashboard-sub-title">
-              Song
-          </h4>
+          <h4 class="dashboard-sub-title">Song</h4>
          </div>
-      <div class="col-md-4">
-          <h4 class="dashboard-sub-title">
-             What They're Saying
-          </h4>
+         <div class="col-md-4">
+          <h4 class="dashboard-sub-title">What They're Saying</h4>
+         </div>
+         <div class="col-md-4">
+          <h4 class="dashboard-sub-title">Their Score</h4>
+         </div>
       </div>
-      <div class="col-md-4">
-          <h4 class="dashboard-sub-title">
-            Their Score
-          </h4>
-      </div>
-      </div>
+
       <div class="row">
-          <%if @friends_reviews.count > 0%>
+        <%if @friends_reviews.count > 0%>
             <%@friends_reviews.each do |review|%>
               <div class="col-md-4">
-              <p class="dashboard-text">
-                <%=link_to review.song.name, song_path(review.song)%>
-              </p>
-            </div>
+                <p class="dashboard-text">
+                  <%=link_to review.song.name, song_path(review.song)%>
+                </p>
+              </div>
               <div class="col-md-4">
-              <p class="dashboard-text-left">
-              <%= review.content%>
-              <br />
-              Reviewer: <%=link_to review.account.user_name, show_profile_path(review.account)%>
-              </p>
+                <p class="dashboard-text-left">
+                    <%= review.content%>
+                    <br>
+                    Reviewer: <%=link_to review.account.user_name, show_profile_path(review.account)%>
+                </p>
               </div>
               <div class="col-md-4">
               <p class="dashboard-text">
                 <%= review.song_score%> Star
               </p>
             </div>
+            <%end%>
+        <%else%>
+          <div class="col-md-12">
+            <p class="dashboard-no-result">Add Friends to unlock this feature!</p>
           </div>
-          <%end%>
-          <%else%>
-            <div class="col-md-12">
-              <p class="dashboard-no-result">
-                Add Friends to unlock this feature!
-              </p>
-            </div>
-          <%end%>
-        </div>
+        <%end%>
+      </div>
+      </div> <!-- col md 4 -->
 
 
 <!-- Trending Songs -->
@@ -164,7 +160,7 @@
     </div>
     <%end%>
   </div>
-</div>
+</div> <!-- big row -->
 <%end%>
 
-</div>
+</div> <!-- container fluid -->

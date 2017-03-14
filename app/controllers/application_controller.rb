@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if logged_in?
       influencers_picks
       friends_reviews
-    end 
+    end
   end
 
   def search
