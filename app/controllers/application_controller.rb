@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def home
-      trending_songs
+      influencers_picks
     if logged_in?
       suggested_picks
       friends_reviews
@@ -17,17 +17,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def trending_songs
-    unordered_songs = Song.all
-    @unordered_songs_hash = {}
-    unordered_songs.each do |song|
-      if song.reviews.count > 0 && (song.weighted_review_average.round(2) >= 3)
-        @unordered_songs_hash[song] = song.weighted_review_average.round(2)
-      end
-    end
-      @ordered_songs_hash = Hash[@unordered_songs_hash.sort_by{|k, v| v}.reverse]
-  end
-
   def influencers_picks
     accounts = Account.all
     unordered_influencers_hash = {}
@@ -39,7 +28,7 @@ class ApplicationController < ActionController::Base
       influencers = ordered_influencers_hash.keys
       influencers.each do |influencer|
         if influencer.reviews.count > 0 && influencer.reviews.any? {|review| review.song_score > 3}
-          @influencers_last_good_review << influencer.reviews.where(song_score: "<= 3").last
+          @influencers_last_good_review << influencer.reviews.where("song_score > ?", 2).last
         end
     end
     if @influencers_last_good_review.count > 20
