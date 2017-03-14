@@ -78,12 +78,12 @@
         <div id="review_<%= review.id %>">
           <%= render partial: '/application/stars', locals: {score: review.song_score} %> <br>
           <%= review.content%> <br>
-          Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <% if review.account != current_user%><%if !current_user.friends.any?{|friend| friend.friend == review.account}%> | <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%> | <%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><br>
+          Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %><% if logged_in? %><% if review.account != current_user%><%if !current_user.friends.any?{|friend| friend.friend == review.account}%> | <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%> | <%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><% end %><br>
 
-          <% if !current_user.voted?(review.id)%>
+          <% if logged_in? && !current_user.voted?(review.id)%>
           <%= render partial: "votes", locals: {song: @song, review: review} %>
 
-        <% else %>
+        <% elsif logged_in? %>
           <% vote_score = current_user.voted_score(review.id) %>
           <%= render partial: "editvotes", locals: {song: @song, review: review, vote_score: vote_score} %>
 
