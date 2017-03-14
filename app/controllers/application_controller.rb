@@ -29,28 +29,24 @@ class ApplicationController < ActionController::Base
   end
 
   def influencers_picks
-    array = Account.all
+    accounts = Account.all
     unordered_influencers_hash = {}
-    vote_scores = {}
-    @influencers = []
-    array.each do |account|
-      account.reviews.each do |review|
-        vote_scores[review.account] = {sum: review.vote_sum}
-      end
+    @influencers_last_good_review = []
+    accounts.each do |account|
+      unordered_influencers_hash[account] = account.vote_total
     end
-    vote_total = vote_scores.values.inject(0) {|sum, h| sum + h[:sum] }
-    unordered_influencers_hash = vote_scores.collect { |k,v| { 'sum' => v.inject(0) { |s, vv| s + vv[:sum]}} }
-    sorted_influencers_list = Hash[unordered_influencers_hash.sort_by{|k, v| v}.reverse]
-    sorted_influencers_list.each do |reviewer, frequency|
-      if reviewer.reviews.where("song_score > ?", 3).last
-        @influencers << [reviewer, reviewer.reviews.where("song_score > ?", 3).last]
-      end
+    ordered_influencers_hash = Hash[unordered_influencers_hash.sort_by{|k, v| v}.reverse]
+      influencers = ordered_influencers_hash.keys
+      influencers.each do |influencer|
+        if influencer.reviews.count > 0 && influencer.reviews.any? {|review| review.song_score > 3}
+          @influencers_last_good_review << influencer.reviews.where(song_score: "<= 3").last
+        end
     end
-      if @influencers.size > 10
-        @influencers = @influencers[0..10]
+    if @influencers_last_good_review.count > 20
+      @influencers_last_good_review[0..20]
     else
-      @influencers
-      end
+      @influencers_last_good_review
+    end
   end
 
   def logged_in?
