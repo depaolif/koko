@@ -2,10 +2,10 @@
 <br />
 
 <%if @accounts.count > 0%>
-<% @accounts.each do |account| %>
-<h4><%= link_to account.user_name, show_profile_path(account)%></h4>
-<p>Name: </p>
-<br />
+<% @accounts.each_with_index do |account, i| %>
+  <h4><%= link_to account.user_name, show_profile_path(account)%></h4>
+  <p>Name: <%= @profiles[i].name %></p>
+  <br />
 <%end%>
 <%else%>
 <h4>There are no users with that name on Koko. Search again below.</h4>
