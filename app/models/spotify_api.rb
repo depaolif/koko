@@ -28,11 +28,4 @@ class SpotifyApi
   #   @client_token = JSON.parse(response)['access_token']
   #   true
   # end
-
-  # scratchpad
-  #query = "kanye west"
-  #url = "https://api.spotify.com/v1/search?q=#{query}&type=track&limit=20"
-  # response = RestClient.send("get", url)
-  # stuff = JSON.parse response
-  # stuff["tracks"]["items"].first
 end
