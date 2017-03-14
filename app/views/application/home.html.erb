@@ -2,11 +2,52 @@
 <div class="row">
   <%if logged_in?%>
 
-  <!-- Friends Activity  -->
-    <div class="col-md-4">
-      <div class="row">
-        <div class="col-md-12"><h1 class="dashboard-title">Friend Activity</h1></div>
+  <!-- Trending Songs -->
+  <div class="col-md-4 trending-songs-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="dashboard-title">Trending Songs</h1>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="dashboard-sub-title">
+          Song
+        </h4>
+      </div>
+      <div class="col-md-6">
+        <h4 class="dashboard-sub-title">
+          Koko's Score
+        </h4>
+      </div>
+    </div>
+    <div class="row">
+      <%@ordered_songs_hash.each do |song, score|%>
+      <div class="col-md-6">
+        <p class="dashboard-text">
+          <%=link_to song.name, song_path(song)%>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <p class="dashboard-text">
+          <%=score%>
+        </p>
+      </div>
+      <%end%>
+    </div>
+  </div>
+
+  <!-- Friends Activity  -->
+  <div class="col-md-8 right-div">
+    <div class="col-md-12 dashboard-right-col">
+    <div class="col-md-6">
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="dashboard-title">Friend Activity</h1>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-md-4">
           <h4 class="dashboard-sub-title">
@@ -61,45 +102,12 @@
             </div>
           <%end%>
         </div>
-</div>
-
-<!-- Trending Songs -->
-
-<div class="col-md-3">
-    <div class="row">
-      <div class="col-md-12"><h1 class="dashboard-title">Trending Songs</h1></div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <h4 class="dashboard-sub-title">
-            Song
-        </h4>
-       </div>
-    <div class="col-md-6">
-        <h4 class="dashboard-sub-title">
-           Koko's Score
-        </h4>
-    </div>
-    </div>
-    <div class="row">
-    <%@ordered_songs_hash.each do |song, score|%>
-          <div class="col-md-6">
-            <p class="dashboard-text">
-              <%=link_to song.name, song_path(song)%>
-            </p>
-          </div>
-            <div class="col-md-6">
-            <p class="dashboard-text">
-              <%=score%>
-            </p>
-            </div>
-        <%end%>
       </div>
-    </div>
+
+
 
 <!-- Influencers Picks' -->
-
-<div class="col-md-5 influencers-wrapper">
+<div class="col-md-6 influencers-wrapper">
 
   <div class="row">
     <div class="col-md-12">
@@ -128,6 +136,7 @@
   <div class="row">
     <%= render partial: 'influencers', locals: {final_array: @final_array} %>
   </div>
+</div>
 </div>
 
 <!-- If User Not Logged In -->
@@ -162,6 +171,7 @@
   </div>
 </div>
 <%end%>
+</div>
 
 </div>
 

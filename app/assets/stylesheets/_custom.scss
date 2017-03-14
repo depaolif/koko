@@ -329,3 +329,26 @@ form.votes-form { display: inline; }
 
 .influencers-wrapper {
 }
+
+.trending-songs-wrapper {
+  background-color: $color1;
+  height: 600px;
+  border: solid;
+  border-width: thin;
+  border-color: black;
+  border-radius: 4px;
+}
+.dashboard-right-col {
+  background-color: $color1;
+  height: 600px;
+  border: solid;
+  border-width: thin;
+  border-color: black;
+  border-radius: 4px;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.right-div {
+  padding-right: 0px;
+}
