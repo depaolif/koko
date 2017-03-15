@@ -322,7 +322,10 @@ form.votes-form { display: inline; }
 
 .search{
   background: $color1;
+  border-radius: 4px;
   overflow: scroll;
+  height:100%;
+  min-height: 100%;
   padding:1em;
   border-color: $color5;
   margin-right: 6em;
@@ -376,7 +379,8 @@ form.votes-form { display: inline; }
 
 .trending-songs-wrapper {
   background-color: $color3;
-  height: 600px;
+  height: 92%;
+  min-height: 92%;
   // border: solid;
   border-width: thin;
   border-color: black;
@@ -387,7 +391,8 @@ form.votes-form { display: inline; }
 
 .dashboard-right-col {
   background-color: $color2;
-  height: 600px;
+  height: 100%;
+  min-height: 100%;
   // border: solid;
   border-width: thin;
   border-color: black;
@@ -397,6 +402,8 @@ form.votes-form { display: inline; }
 }
 
 .right-div {
+  height: 92%;
+  min-height: 92%;
   margin-top: .5em;
   margin-bottom: .5em;
   padding-right: 0px;
@@ -455,7 +462,8 @@ form.votes-form { display: inline; }
 
 .dashboard-right-col-logged-out {
   background-color: $color2;
-  height: 537px;
+  height: 92%;
+  min-height: 92%;
   border: solid;
   border-width: thin;
   border-color: black;
@@ -666,6 +674,9 @@ form.votes-form { display: inline; }
 
 .trending-songs-artists {
   position: relative;
+  border-radius: 4px;
+  height: 92%;
+  min-height: 92%;
   min-height: 1px;
   padding-left: 0;
   padding-right: 0;
@@ -720,4 +731,32 @@ input[type=submit] {
     border-radius: 8px;
     border: 1px dotted #2a2b2a;
     height: 35px;
+}
+
+html, body {
+    height: 100%;
+}
+.container-fluid {
+    margin: 0 auto;
+    height: 88%;
+    padding: 20px 0;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.columns {
+    background-color: #C9E6FF;
+    height: 100%;
+}
+
+.content-area, .article-tree{
+    background: #bada55;
+    overflow:auto;
+    height: 100%;
+}
+
+#trending-artists {
+  height: 750px;
 }
