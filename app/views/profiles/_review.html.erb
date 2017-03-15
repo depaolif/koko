@@ -2,7 +2,7 @@
   <div class="col-md-4">
     <h5 style="text-align: center;"><%=link_to review.song.name, song_path(review.song)%></h5>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <h5 style="text-align: center;"><%=review.content%></h5>
     <%if logged_in?%>
     <%if review.account_id == current_user.id%>
@@ -10,8 +10,8 @@
     <%end%>
     <%end%>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3 text-center">
     <h5 style="text-align: center;"><%=render partial: "application/stars", locals: {score: review.song_score}%>
-      Votes: <%=review.vote_sum%></h5>
+      <!-- Votes: <%=review.vote_sum%></h5> -->
   </div>
   </div>

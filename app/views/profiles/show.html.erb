@@ -51,14 +51,14 @@
         </h4>
        </div>
      </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
       <div class="search-header-box">
         <h4 class="dashboard-sub-title">
            What They're Saying
         </h4>
     </div>
   </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
       <div class="search-header-box">
         <h4 class="dashboard-sub-title">
            Score
@@ -66,11 +66,11 @@
     </div>
   </div>
     </div>
-  <%if !@profile.account.reviews.empty? %>
-    <%= render partial: "profiles/review", collection: @profile.account.reviews %>
-  <%else%>
-    <h2 style="text-align: center;">You have not reviewed anything.</h2>
-  <%end%>
+        <%if !@profile.account.reviews.empty? %>
+      <%= render partial: "profiles/review", collection: @profile.account.reviews %>
+        <%else%>
+      <h2 style="text-align: center;">You have not reviewed anything.</h2>
+        <%end%>
   </div>
 
   <div class="col-md-2">
