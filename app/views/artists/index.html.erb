@@ -1,33 +1,35 @@
-<div class="col-md-2">
-</div>
-<div class="col-md-8">
-<div class="blackout">
-  <%link_to "Return Home", home_path%>
-    <div class="container-fluid search" style="overflow:scroll; height:650px;">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="search-header-box">
-            <h2>Artist</h2>
+<div class="container-fluid blackout">
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <%link_to "Return Home", home_path%>
+        <div class="container-fluid search" style="overflow:scroll; height:650px;">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="search-header-box">
+                <h2>Artist</h2>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="search-header-box">
+                <h2>Koko Score</h2>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="search-header-box">
-            <h2>Koko Score</h2>
-          </div>
+          <%@trending_artists.each do |artist, score|%>
+            <div class="row search-result-songs">
+              <div class="col-md-6">
+                <h4><%=link_to artist.name, artist_path(artist)%></h4>
+              </div>
+              <div class="col-md-6">
+                <h4><%=render partial: "application/stars", locals: {score: score}%></h4>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-      <%@trending_artists.each do |artist, score|%>
-        <div class="row search-result-songs">
-          <div class="col-md-6">
-            <h4><%=link_to artist.name, artist_path(artist)%></h4>
-          </div>
-          <div class="col-md-4">
-            <h4><%=render partial: "application/stars", locals: {score: score}%></h4>
-          </div>
-        </div>
-      <% end %>
-    </div>
+      <div class="col-md-2">
+      </div>
   </div>
-  </div>
-  <div class="col-md-2">
-  </div>
+</div>
