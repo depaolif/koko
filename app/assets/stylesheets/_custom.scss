@@ -433,7 +433,7 @@ form.votes-form { display: inline; }
 .trending-dash {
   background: $color1;
   border-radius: 4px;
-  max-height: 500px;
+  max-height: 75%;
   overflow: scroll;
 }
 
@@ -845,4 +845,8 @@ html, body {
 
 #prof_edit_submit > input{
   width: 8em;
+}
+
+#no_friend_link{
+  text-decoration: underline;
 }
