@@ -538,6 +538,7 @@ form.votes-form { display: inline; }
   cursor: pointer;
   overflow: hidden;
   outline:none;
+  color: $color3;
 }
 
 // song show page
@@ -837,4 +838,12 @@ html, body {
 
 #navbar-container-fluid {
   padding: 0;
+}
+
+#no-friends {
+  color: $color1
+}
+
+#prof_edit_submit > input{
+  width: 8em;
 }
