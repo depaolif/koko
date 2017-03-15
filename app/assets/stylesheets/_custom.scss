@@ -631,9 +631,10 @@ form.votes-form { display: inline; }
 }
 
 #add_review {
-  background: $color1;
+  background: $color4;
   color: $color5;
-  border-color: $color4;
+  border: transparent;
+  border-radius: 4px;
 }
 
 #review_form {
@@ -647,9 +648,10 @@ form.votes-form { display: inline; }
 }
 
 #review_submit {
-  background: $color1;
+  background: $color2;
   color: $color5;
   border-color: $color4;
+  width: 100px;
 }
 
 #search-field-2 {
