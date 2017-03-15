@@ -677,3 +677,30 @@ input[type=submit] {
     font-weight: bold;
     background: $color4;
 }
+
+.artist_show_content {
+  padding-top: 1em;
+  background: $color1;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: .5em;
+  margin-left: 3em;
+  margin-right: 3em;
+  text-align: center;
+}
+
+.artist_show_content_head {
+  color: $color1;
+  margin-left: 3em;
+  margin-right: 3em;
+  text-align: center;
+}
+
+#artist_show_name {
+  color: $color1;
+}
+
+hr.artist_show_rule {
+  border-color: $color5;
+  width: 60%;
+}
