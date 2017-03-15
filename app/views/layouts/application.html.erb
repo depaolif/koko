@@ -83,8 +83,8 @@
           </script>
 
     <%=render '/layouts/navbar'%>
-    <% if flash[:alert] || flash[:error]%>
-        <div class="alert"><%= flash[:alert] || flash[:error] %></div>
+    <% if flash[:alert] || flash[:errors]%>
+        <div class="alert"><%= flash[:alert] || flash[:errors] %></div>
     <%end%>
     <%=render 'layouts/signup' %>
     <%=render 'layouts/login' %>

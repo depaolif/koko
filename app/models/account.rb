@@ -1,5 +1,4 @@
 class Account < ApplicationRecord
-  #name - length (min 3 - max 16), uniquenes
   #password - length (min 6)
   has_secure_password
   has_one :profile, dependent: :destroy
@@ -7,6 +6,8 @@ class Account < ApplicationRecord
   has_many :songs, through: :reviews
   has_many :votes, through: :reviews
   has_many :friends, :class_name => 'Friend', :foreign_key => :account_id
+  validates :user_name, uniqueness: true, length: { in:3..16 }
+  validates :password, length: { minimum: 6}
 
   #Account as recipient of upvotes
   def vote_total

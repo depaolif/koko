@@ -61,7 +61,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require('review').permit('account_id','song_id','content','song_score')
+    params.require('review').permit('account_id','song_id', 'content','song_score')
   end
 
   def set_song
@@ -76,4 +76,12 @@ class ReviewsController < ApplicationController
     set_song
     current_user.reviews.any? { |review| review.song_id == @song.id }
   end
+
+  def validate_form_input(input)
+    if !!input.scan(/[<>]/).empty?
+    else
+      input.gsub(/\s+$/,'')
+    end
+  end
+
 end

@@ -12,8 +12,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile.update(profile_params)
-    redirect_to show_profile_path(@profile)
+    if @profile.update(profile_params)
+      redirect_to show_profile_path(@profile)
+    else
+      redirect_to show_profile_path(@profile), alert: "Don't try to pull a fast one on us."
+    end 
   end
 
   private
@@ -35,5 +38,6 @@ class ProfilesController < ApplicationController
   def set_own_profile!
     @profile = Profile.find_by(account_id: current_user.id)
   end
+
 
 end

@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   belongs_to :song
   has_many :votes
   has_many :friends, :class_name => 'Friend', :foreign_key => :account_id
-  #sanitize content
+  validate :validate_form_input
 
   def vote_sum
     self.votes.sum('score')
@@ -17,6 +17,14 @@ class Review < ApplicationRecord
       1
     else
     ((self.votes.sum(:score).abs)/self.votes.count).to_f
+    end
+  end
+
+  private
+
+  def validate_form_input
+    if !self.content.scan(/[<>]/).empty?
+      errors.add(:content, "Don't try to pull a fast one on us.")
     end
   end
 
