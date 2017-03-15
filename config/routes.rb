@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   resources :songs, only: [:create,:show] do
-    resources :reviews do
+    resources :reviews, except: [:index, :new, :edit] do
       post '/vote', to: 'songs#vote'
       patch '/vote', to: 'songs#change_vote'
     end
