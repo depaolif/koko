@@ -1,80 +1,55 @@
-<div class="row">
-  <div class="col-md-4">
-  </div>
-  <div class="col-md-4">
-    <% if logged_in? %>
-    <% if @profile == current_user.profile %>
-      <h1 style="text-align: center;">Your Profile</h1>
-      <h4><a href = '/profile/edit'>Edit Profile</a> | <%= link_to "Delete Account", close_account_path %></h5>
-    <% else %>
-      <h1 style="text-align: center;"><%= "#{@profile.account.user_name}'s Profile" %></h1><h4 style="text-align: center"><%= link_to "View #{@profile.account.user_name}'s Friends", friends_path(@profile.account.id)%></h4>
-        <%if !current_user.friends.any?{|friend| friend.friend == @profile.account}%>
-          <h4 style="text-align: center;"><%=link_to 'Add Friend', add_friend_path(@profile.account.id)%></h4>
-        <%else%>
-      <h4 style="text-align: center;">  <%=link_to 'Remove Friend', remove_friend_path(@profile.account.id)%></h4>
-      <%end%>
-      <%end%>
-      <% end %>
-<div class="blackout">
-  <%link_to "Return Home", home_path%>
-  <div class="search-header-box">
-  <h3 style="text-align: left;">Name:</h3><h5 style="text-indent:50px; text-align: left;"><%= @profile.name %></h5>
-    </div>
-  <div class="search-header-box">
-  <h3 style="text-align: left;"> Biography: </h3><h5 style="text-indent:50px; text-align: left;">  <%= @profile.bio %></h5>
-  </div>
-  <div class="search-header-box" style="text-align: left;">
-  <h3>Interests:</h3><h5 style="text-indent:50px; text-align: left;"><%= @profile.interests %></h5>
-  </div>
-  </div>
-  </div>
-  <div class="col-md-4">
-  </div>
-</div>
-<div class="row" style="height:20px;">
-  </div>
-
-<div class="blackout">
-<div class="container-fluid search" style="overflow:scroll; height:350px;">
+<div class="container-fluid blackout">
   <div class="row">
-  <div class="col-md-2">
-  </div>
-  <div class="col-md-8 text-center">
-  <h2 style="text-align: center;">Review History</h3>
-  <h4 style="text-align: center;">Koko Points: <%= @profile.account.vote_total%></h5>
-    <br />
-    <div class="row">
-      <div class="col-md-4">
-        <div class="search-header-box">
-        <h4 class="dashboard-sub-title">
-            Song
-        </h4>
-       </div>
-     </div>
-    <div class="col-md-5">
-      <div class="search-header-box">
-        <h4 class="dashboard-sub-title">
-           What They're Saying
-        </h4>
+    <div class="col-md-1">
     </div>
-  </div>
-    <div class="col-md-3">
-      <div class="search-header-box">
-        <h4 class="dashboard-sub-title">
-           Score
-        </h4>
-    </div>
-  </div>
-    </div>
-        <%if !@profile.account.reviews.empty? %>
-      <%= render partial: "profiles/review", collection: @profile.account.reviews %>
-        <%else%>
-      <h2 style="text-align: center;">You have not reviewed anything.</h2>
+    <div class="col-md-4">
+      <% if logged_in? %>
+        <% if @profile == current_user.profile %>
+          <h1 id="profile_title">Your Profile</h1>
+          <h4 class="text-center"><a href = '/profile/edit'>Edit Profile</a> | <%= link_to "Delete Account", close_account_path %></h4>
+        <% else %>
+          <h1 style="text-align: center;"><%= "#{@profile.account.user_name}'s Profile" %></h1><h4 style="text-align: center"><%= link_to "View #{@profile.account.user_name}'s Friends", friends_path(@profile.account.id)%></h4>
+          <%if !current_user.friends.any?{|friend| friend.friend == @profile.account}%>
+            <h4 style="text-align: center;"><%=link_to 'Add Friend', add_friend_path(@profile.account.id)%></h4>
+          <%else%>
+            <h4 style="text-align: center;">  <%=link_to 'Remove Friend', remove_friend_path(@profile.account.id)%></h4>
+          <%end%>
         <%end%>
-  </div>
+      <% end %>
+      <div class="profile_box">
+        <h3>Name:</h3>
+        <h5 class="info"><%= @profile.name %></h5>
+        <br>
+        <h3>Biography:</h3>
+        <h5 class="info">  <%= @profile.bio %></h5>
+        <br>
+        <h3>Interests:</h3>
+        <h5 class="info"><%= @profile.interests %></h5>
+      </div>
+    </div>
 
-  <div class="col-md-2">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-5 reviews_display text-center">
+      <h1>Review History</h1>
+        <h4 >Koko Points: <%= @profile.account.vote_total%></h5>
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Song</h4>
+        </div>
+        <div class="col-md-4">
+          <h4>What They're Saying</h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Score</h4>
+        </div>
+      </div>
+            <%if !@profile.account.reviews.empty? %>
+          <%= render partial: "profiles/review", collection: @profile.account.reviews %>
+            <%else%>
+          <h2 style="text-align: center;">You have not reviewed anything.</h2>
+            <%end%>
+    </div>
+    <div class="col-md-1"></div>
   </div>
-</div>
-</div>
 </div>

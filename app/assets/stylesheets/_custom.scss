@@ -553,6 +553,24 @@ form.votes-form { display: inline; }
 
 // end song show page
 
+// profile show
+
+#profile_title {
+  color: $color1;
+  text-align: center;
+}
+
+.profile_box {
+  border-radius: 4px;
+  background-color: $color1;
+  padding: 0.35em 1em 1em 1em;
+
+  .info {
+  }
+}
+
+// end profile show
+
 .search-field-simple:focus {
   transition-duration: .4s;
 	outline: none;
