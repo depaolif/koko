@@ -36,4 +36,5 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by(account_id: current_user.id)
   end
 
+
 end
