@@ -19,8 +19,10 @@ class ProfilesController < ApplicationController
   private
 
   def set_profile!
-    if !params[:id]
+    if !params[:id] && logged_in?
       @profile = Profile.find_by(account_id: current_user.id)
+    elsif !logged_in?
+      redirect_to root_path, alert: "Please log in to view this profile."
     else
       @profile = Profile.find_by(account_id: params[:id])
     end
