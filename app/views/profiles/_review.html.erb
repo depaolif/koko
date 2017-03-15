@@ -3,7 +3,7 @@
     <h5 style="text-align: center;"><%=link_to review.song.name, song_path(review.song)%></h5>
   </div>
   <div class="col-md-5">
-    <h5 style="text-align: center;"><%=review.content%></h5>
+    <h5 style="text-align: center;"><%= review.content == "" ? "[No content]": review.content %></h5>
     <%if logged_in?%>
     <%if review.account_id == current_user.id%>
     <p style="text-align: center;"><%=link_to "Delete Review", destroy_song_review_path(review.song, review), method: :delete%></p>
