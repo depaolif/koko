@@ -1,32 +1,27 @@
-<% if @friends.count == 0 %>
+<div class="container-fluid blackout">
+  <% if @friends.count == 0 %>
   <div class="col-md-12">
     <h1 style="text-align: center;"><%= @user.id == current_user.id ? "You have" : (link_to "#{@user.user_name} has", show_profile_path(@user))%> no friends yet.</h1> <br>
         <%= render 'search'%>
   </div>
-<%else%>
-<div class="col-md-12">
-<h1 style="text-align: center;"><%= @user.id == current_user.id ? "Your" : (link_to "#{@user.user_name}'s", show_profile_path(@user))%> Friends</h1>
-  <%= render 'search' %>
-</div>
-<div class="col-md-12">
-<div class="blackout">
-  <%link_to "Return Home", home_path%>
-    <div class="container-fluid search" style="overflow:scroll; height:550px;">
+  <%else%>
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8 trending-songs-artists">
+    <div class="search">
       <div class="row">
-        <div class="col-md-4">
-          <div class="search-header-box">
-            <h2>Username</h2>
-          </div>
+    <h1 style="text-align: center;"><%= @user.id == current_user.id ? "Your" : (link_to "#{@user.user_name}'s", show_profile_path(@user))%> Friends</h1>
+    <%= render 'search' %>
+    </div>
+      <div class="row">
+        <div class="col-md-4 friends-headers">
+            <h3>Username</h3>
         </div>
-        <div class="col-md-4">
-          <div class="search-header-box">
-            <h2>Last Song Reviewed</h2>
-          </div>
+        <div class="col-md-4 friends-headers">
+            <h3>Last Song Reviewed</h3>
         </div>
-        <div class="col-md-4">
-          <div class="search-header-box">
-            <h2>Their Score</h2>
-          </div>
+        <div class="col-md-4 friends-headers">
+            <h3>Their Score</h3>
         </div>
       </div>
       <% @friends.each do |friend|%>
@@ -42,13 +37,14 @@
             <h4><%= render partial: "/application/stars", locals: {score: friend.friend.reviews.last.song_score}%><br /><%= friend.friend.reviews.last.content%></h4>
           </div>
         </div>
+            </div>
         <%else%>
         <div class="col-md-8">
           <h4>This friend hasn't reviewed any songs yet!</h4>
         </div>
+        <%end%>
+        <%end%>
       </div>
-      <% end %>
-    <%end%>
-    </div>
-  </div>
+      <div class="col-md-2">
+      </div>
 <%end%>
