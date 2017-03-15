@@ -4,6 +4,7 @@ class Review < ApplicationRecord
   belongs_to :song
   has_many :votes
   has_many :friends, :class_name => 'Friend', :foreign_key => :account_id
+  #sanitize content
 
   def vote_sum
     self.votes.sum('score')

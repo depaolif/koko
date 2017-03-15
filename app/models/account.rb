@@ -1,5 +1,6 @@
 class Account < ApplicationRecord
-
+  #name - length (min 3 - max 16), uniquenes
+  #password - length (min 6)
   has_secure_password
   has_one :profile, dependent: :destroy
   has_many :reviews, dependent: :destroy

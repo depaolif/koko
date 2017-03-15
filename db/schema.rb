@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 20170312141304) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "account_id"
-    t.integer  "song_id"
+    t.integer  "account_id" #index
+    t.integer  "song_id" #index
     t.string   "content"
     t.integer  "song_score"
     t.datetime "created_at", null: false
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 20170312141304) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "review_id"
-    t.integer  "account_id"
+    t.integer  "review_id" #index
+    t.integer  "account_id" #index
     t.integer  "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
