@@ -415,6 +415,8 @@ form.votes-form { display: inline; }
 .form-group {
   height: 100%;
   width: 100%;
+  margin: 0;
+  background: $color1;
 }
 
  #signup {
@@ -423,6 +425,7 @@ form.votes-form { display: inline; }
    position: relative;
    height: inherit;
    margin: 0 auto;
+   background: $color1;
  }
 
  #login {
@@ -595,4 +598,34 @@ form.votes-form { display: inline; }
 
 .titles {
   font-weight: bold;
+}
+
+.modal-header {
+  background: $color4;
+  border-bottom: 2px;
+  border-color: $color5;
+}
+
+.modal-title {
+  font-weight: bold;
+
+}
+
+.modal-body {
+  background: $color1;
+}
+
+.modal-content {
+  background: $color1;
+  border: 0;
+}
+
+input[type=submit] {
+    border-radius: 5px;
+    width: 80px;
+    height:30px;
+    padding: 0;
+    border: none;
+    font-weight: bold;
+    background: $color4;
 }
