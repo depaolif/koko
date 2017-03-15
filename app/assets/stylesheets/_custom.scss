@@ -322,7 +322,6 @@ form.votes-form { display: inline; }
 
 .search{
   background: $color1;
-  height: 800px;
   overflow: scroll;
   padding:1em;
   border-color: $color5;
@@ -675,4 +674,19 @@ input[type=submit] {
     border: none;
     font-weight: bold;
     background: $color4;
+}
+
+.friends-search {
+  text-align: center;
+  padding-bottom: 2em;
+}
+
+.friends-headers > h3 {
+  background: $color2;
+    color: $color5;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 8px;
+    border: 1px dotted #2a2b2a;
+    height: 35px;
 }
