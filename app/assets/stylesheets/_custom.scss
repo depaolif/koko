@@ -64,14 +64,16 @@ a:hover, a:active {
 .navbar-default .navbar-nav > li > a {
     color: #2A2B2A;
     font-size: 1.5em;
+    font-weight: bold;
     margin-top: 2em;
     padding-left: 5px;
     padding-right: 5px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #2A2B2A;
-    background-color: #F2DD6E;
+    color: $color5;
+    background-color: $color2;
+    border-radius: 8px;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -319,10 +321,10 @@ form.votes-form { display: inline; }
 }
 
 .search{
-  background: #FDFDF5;
-  border-radius: 25px;
+  background: $color1;
+  height: 800px;
+  overflow: scroll;
   padding:1em;
-  border: solid;
   border-color: $color5;
   margin-right: 6em;
   margin-left: 6em;
@@ -333,9 +335,10 @@ form.votes-form { display: inline; }
   color: $color5;
   text-align:center;
   vertical-align: middle;
-  border-radius: 25px;
-  border: 1px solid $color5;
-  padding: 5px;
+  border-radius: 8px;
+  border: 1px dotted $color5;
+  margin-left: 4.5em;
+  margin-right: 4.5em;
 }
 
 .search-result-songs {
@@ -626,4 +629,17 @@ form.votes-form { display: inline; }
 
 .search-header-box > h2 {
   margin: 0px;
+}
+
+.trending-songs-artists {
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.titles {
+  font-weight: bold;
 }

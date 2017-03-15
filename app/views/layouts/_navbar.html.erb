@@ -13,11 +13,13 @@
       <li <%= 'class=active' if request.path.split('/')[1] == 'topics' || request.path == '/' %>><a href="/topics">Message Board</a></li>
     </ul> -->
       <ul class="nav navbar-nav">
+
         <li><a href="/artists">Trending Artists</a></li>
         <li><a href="/trendingsongs">Trending Songs</a></li>
         <%if logged_in?%>
         <li><%=link_to "Your Friends", friends_path(current_user.id)%></li>
         <%end%>
+
       </ul>
 
     <ul class="nav navbar-nav navbar-right">
