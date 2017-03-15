@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
   end
 
   def index
-    artists = Artist.all
+    artists = Artist.joins(songs: :reviews)
     @trending_artists = {}
     artists.each do |artist|
       artist.songs.each do |song|
