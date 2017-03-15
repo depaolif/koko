@@ -6,9 +6,6 @@ class Review < ApplicationRecord
   has_many :friends, :class_name => 'Friend', :foreign_key => :account_id
   validate :validate_form_input
 
-
-  private
-  
   def vote_sum
     self.votes.sum('score')
   end
@@ -22,6 +19,8 @@ class Review < ApplicationRecord
     ((self.votes.sum(:score).abs)/self.votes.count).to_f
     end
   end
+
+  private
 
   def validate_form_input
     if !self.content.scan(/[<>]/).empty?
