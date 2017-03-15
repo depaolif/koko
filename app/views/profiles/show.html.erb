@@ -5,10 +5,11 @@
     <div class="col-md-4 profile_box">
       <% if logged_in? %>
         <% if @profile == current_user.profile %>
-          <h1 id="profile_title">Your Profile</h1>
+          <h1 class="profile_title">Your Profile</h1>
           <h4 class="text-center"><a href = '/profile/edit'>Edit Profile</a> | <%= link_to "Delete Account", close_account_path %></h4>
         <% else %>
-          <h1 style="text-align: center;"><%= "#{@profile.account.user_name}'s Profile" %></h1><h4 style="text-align: center"><%= link_to "View #{@profile.account.user_name}'s Friends", friends_path(@profile.account.id)%></h4>
+          <h1 class="profile_title"><%= "#{@profile.account.user_name}'s Profile" %></h1>
+          <h4 style="text-align: center"><%= link_to "View #{@profile.account.user_name}'s Friends", friends_path(@profile.account.id)%></h4>
           <%if !current_user.friends.any?{|friend| friend.friend == @profile.account}%>
             <h4 style="text-align: center;"><%=link_to 'Add Friend', add_friend_path(@profile.account.id)%></h4>
           <%else%>
