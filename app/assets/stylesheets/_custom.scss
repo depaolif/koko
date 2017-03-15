@@ -798,8 +798,8 @@ html, body {
 }
 .container-fluid {
     margin: 0 auto;
-    height: 88%;
-    padding: 20px 0;
+    height: 100%;
+    padding: 30px 0;
 
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -829,4 +829,8 @@ html, body {
 #song-row {
   height: 100%;
   min-height: 100%;
+}
+
+#navbar-container-fluid {
+  padding: 0;
 }
