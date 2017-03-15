@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
     ordered_influencers_hash = Hash[unordered_influencers_hash.sort_by{|k, v| v}.reverse]
       influencers = ordered_influencers_hash.keys
       influencers.each do |influencer|
-        if influencer.reviews.count > 0 && influencer.reviews.any? {|review| review.song_score > 3} && influencer != current_user
-          @influencers_last_good_review << influencer.reviews.where("song_score > ?", 2).last
+        if influencer.reviews.count > 0 && influencer.reviews.any? {|review| review.song_score > 3} && influencer != current_user && influencer.vote_total >= 2
+          @influencers_last_good_review << influencer.reviews.where("song_score > ?", 2).find{|review| review.vote_sum > 1} if influencer.reviews.where("song_score > ?", 2).find{|review| review.vote_sum > 1}
         end
     end
     if @influencers_last_good_review.count > 20
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
     unordered_suggested_list = array.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
     sorted_suggested_list = Hash[unordered_suggested_list.sort_by{|k, v| v}.reverse]
     sorted_suggested_list.each do |reviewer, frequency|
-      if reviewer.reviews.where("song_score > ?", 3).last
+      if reviewer.reviews.where("song_score > ?", 3).last && reviewer != current_user
         @suggested_array << [reviewer, reviewer.reviews.where("song_score > ?", 3).last]
       end
     end
@@ -78,5 +78,6 @@ class ApplicationController < ActionController::Base
   def upvoted_accounts
     Account.joins(:votes).where(votes: {account_id: current_user.id}).where(votes: {score: 1})
   end
+
 
 end
