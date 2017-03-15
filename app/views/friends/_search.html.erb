@@ -1,4 +1,4 @@
-<div class="row search">
+<div class="row" id="friend-search">
   <div class="col-sm-6 col-sm-offset-3">
     <%= form_tag('/friends/search', id: "search-form-2", method: :post) do %>
       <%= text_field_tag "friend_search", nil, id: "search-field-2", placeholder: "Search for Koko Users!"%>

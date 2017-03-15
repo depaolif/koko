@@ -644,3 +644,13 @@ form.votes-form { display: inline; }
 .titles {
   font-weight: bold;
 }
+
+#friend-search{
+  background: $color1;
+  // height: 800px;
+  overflow: scroll;
+  padding:1em;
+  border-color: $color5;
+  margin-right: 6em;
+  margin-left: 6em;
+}
