@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     ordered_influencers_hash = Hash[unordered_influencers_hash.sort_by{|k, v| v}.reverse]
       influencers = ordered_influencers_hash.keys
       influencers.each do |influencer|
-        if influencer.reviews.count > 0 && influencer.reviews.any? {|review| review.song_score > 3}
+        if influencer.reviews.count > 0 && influencer.reviews.any? {|review| review.song_score > 3} && influencer != current_user
           @influencers_last_good_review << influencer.reviews.where("song_score > ?", 2).last
         end
     end
