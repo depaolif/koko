@@ -16,7 +16,7 @@ body {
 a {
   color: $color4;
 }
-a:hover, a:active {
+a:hover, a:active, a:visited {
   color: $color4;
   text-decoration: underline;
 }
@@ -528,6 +528,7 @@ form.votes-form { display: inline; }
 }
 
 .reviews_display {
+  margin-top: 50px;
   color: $color1;
   height: 90vh;
   overflow-y: scroll;
@@ -538,6 +539,7 @@ form.votes-form { display: inline; }
   margin-bottom: 1em;
   padding: 1em;
   background-color: $color1;
+  border-radius: 4px;
 }
 
 .my_review {
@@ -555,19 +557,30 @@ form.votes-form { display: inline; }
 
 // profile show
 
+.profile_box {
+  margin-top: 50px;
+}
+
 #profile_title {
   color: $color1;
   text-align: center;
 }
 
-.profile_box {
+.profile_info {
   border-radius: 4px;
   background-color: $color1;
+  margin-top: 50px;
   padding: 0.35em 1em 1em 1em;
 
   .info {
   }
 }
+
+.review_title {
+  margin-bottom: 50px;
+}
+
+
 
 // end profile show
 

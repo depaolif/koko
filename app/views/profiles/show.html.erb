@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-1">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 profile_box">
       <% if logged_in? %>
         <% if @profile == current_user.profile %>
           <h1 id="profile_title">Your Profile</h1>
@@ -16,7 +16,7 @@
           <%end%>
         <%end%>
       <% end %>
-      <div class="profile_box">
+      <div class="profile_info">
         <h3>Name:</h3>
         <h5 class="info"><%= @profile.name %></h5>
         <br>
@@ -31,24 +31,26 @@
     <div class="col-md-1"></div>
 
     <div class="col-md-5 reviews_display text-center">
-      <h1>Review History</h1>
+      <div class="review_title">
+        <h1>Review History</h1>
         <h4 >Koko Points: <%= @profile.account.vote_total%></h5>
-      <div class="row">
-        <div class="col-md-4">
-          <h4>Song</h4>
-        </div>
-        <div class="col-md-4">
-          <h4>What They're Saying</h4>
-        </div>
-        <div class="col-md-4">
-          <h4>Score</h4>
-        </div>
       </div>
-            <%if !@profile.account.reviews.empty? %>
-          <%= render partial: "profiles/review", collection: @profile.account.reviews %>
-            <%else%>
-          <h2 style="text-align: center;">You have not reviewed anything.</h2>
-            <%end%>
+      <div class="review_box_content"><%@profile.account.reviews.each do |review|%>
+              <div id="review_<%= review.id %>" class="row review_box">
+                <div class="row">
+                  <div class="col-md-6 review_box_content">
+                    <h4><%= link_to review.song.artist.name, artist_path(review.song.artist) %></h4>
+                    <h5><%= link_to review.song.name, song_path(review.song) %></h5>
+                  </div>
+                  <div class="col-md-6 review_box_content">
+                    <%= render partial: '/application/stars', locals: {score: review.song_score} %><br>
+                    <%= review.content%> <br>
+                    <br>Votes: <%= review.vote_sum %>
+                  </div>
+                </div>
+              </div>
+          <%end%>
+        </div>
     </div>
     <div class="col-md-1"></div>
   </div>
