@@ -32,8 +32,8 @@
           </p>
         </div>
         <div class="col-md-4">
-        <p class="dashboard-text">
-          <%=review.song_score%>
+        <p style="font-size: 10px" class="dashboard-text">
+          <%= render partial: "stars", locals: {score: review.song_score} %>
         </p>
         </div>
       </div>
