@@ -494,6 +494,15 @@ form.votes-form { display: inline; }
   float: right;
 }
 
+#search-submit-2 {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+}
+
 // song show page
 .song_info {
   position: fixed;
@@ -543,4 +552,27 @@ form.votes-form { display: inline; }
 
 #new_review {
   margin-top: 7.3em;
+}
+
+#search-field-2 {
+  width: 400px;
+  height: 32px;
+  border-radius: 10px;
+  border: solid;
+  border-width: thin;
+  text-align: center;
+  border-color: #ddd;
+}
+
+#search-field-2:focus {
+  transition-duration: .4s;
+	outline: none;
+	border:none;
+	border-bottom: 4px solid $color3;
+}
+
+#search-field-2:active {
+  transition-duration: .4s;
+	outline: none;
+	border-bottom: 4px solid $color3;
 }
