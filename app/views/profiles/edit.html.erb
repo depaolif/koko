@@ -1,19 +1,18 @@
+<div class="container-fluid blackout">
 <div class="col-md-4">
 </div>
 <div class="col-md-4">
-<div class="blackout">
   <%link_to "Return To Profile", show_profile_path(current_user)%>
   <%=form_for @profile, url: "/profile/#{current_user.id}" do |f|%>
   <div class="search-header-box">
   <h3 style="text-align: left;"><%= f.label :name, "Your Name" %>:</h3><h5 style="text-indent:50px; text-align: left;"><%= f.text_field :name %></h5>
-    </div>
-  <div class="search-header-box">
+
   <h3 style="text-align: left;"><%= f.label :bio, "Biography: " %></h3><h5 style="text-indent:50px; text-align: left;"><%= f.text_field :bio %></h5>
+
+  <h3 style="text-align: left;"><%= f.label :interests, "Interests: " %></h3><h5 style="text-indent:50px; text-align: left;"><%= f.text_field :interests %></h5>
   </div>
-  <div class="search-header-box" style="text-align: left;">
-  <h3><%= f.label :interests, "Interests: " %></h3><h5 style="text-indent:50px; text-align: left;"><%= f.text_field :interests %></h5>
-  </div>
-  <div class="col-md-12">
+  <br><br>
+  <div class="col-md-12 text-center" id="prof_edit_submit">
     <%= f.submit %>
     <% end %>
   </div>
