@@ -45,7 +45,8 @@ class SongsController < ApplicationController
       ActionCable.server.broadcast 'upvotes',
         score: vote.score,
         review_id: vote.review_id,
-        prev: prev
+        prev: prev,
+        account_id: current_user.id
       head :ok
     end
     # redirect_to song_path(params[:song_id])
