@@ -7,7 +7,7 @@ class RegistrationsController < ApplicationController
   def create
     @account = Account.new(account_params)
     if !@account.save
-      render root_path
+      redirect_to root_path
     else
       session[:account_id] = @account.id
       @account.profile = Profile.create(name: "", bio: "", interests: "", account_id: current_user.id)
