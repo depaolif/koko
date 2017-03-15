@@ -530,6 +530,7 @@ form.votes-form { display: inline; }
 .reviews_display {
   color: $color1;
   height: 90vh;
+  margin-top: 8em;
   overflow-y: scroll;
 }
 
@@ -575,7 +576,29 @@ form.votes-form { display: inline; }
 }
 
 #new_review {
-  margin-top: 7.3em;
+  // margin-top: 7.3em;
+}
+
+#add_review {
+  background: $color1;
+  color: $color5;
+  border-color: $color4;
+}
+
+#review_form {
+  // background: $color1;
+}
+
+#review_content {
+  background: $color1;
+  color: $color5;
+  border-color: $color4;
+}
+
+#review_submit {
+  background: $color1;
+  color: $color5;
+  border-color: $color4;
 }
 
 #search-field-2 {

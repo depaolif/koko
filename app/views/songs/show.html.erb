@@ -35,7 +35,7 @@
             <%= render partial: '/reviews/form', locals: {song: @song, review: @review} %>
           </div>
         <% elsif !logged_in? %>
-          <h4><%= link_to 'Log In', login_path %> or <%= link_to 'Sign Up', new_registration_path %> to Review</h4>
+          <h4><a href="#" data-toggle="modal" data-target=".bd-signup-modal-sm">Log In</a> or <a href="#" data-toggle="modal" data-target=".bd-login-modal-sm">Sign Up</a> to Review</h4>
         <% end %>
         <br><br>
       </div>
