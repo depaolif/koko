@@ -36,7 +36,7 @@
         <h1>Review History</h1>
         <h4 >Koko Points: <%= @profile.account.vote_total%></h5>
       </div>
-      <div class="review_box_content"><%@profile.account.reviews.each do |review|%>
+      <div><%@profile.account.reviews.each do |review|%>
               <div id="review_<%= review.id %>" class="row review_box">
                 <div class="row">
                   <div class="col-md-6 review_box_content">
