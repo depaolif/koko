@@ -15,7 +15,7 @@
     <h1><%= @song.name %></h1>
     <h2><%= link_to @song.artist.name, artist_path(@song.artist)%></h2>
   </div>
-  <div class="row">
+  <div class="row" id: "song-row">
     <div class="col-md-1">
     </div>
     <div class="col-md-4">
@@ -40,7 +40,6 @@
           <% elsif !logged_in? %>
             <h4><a href="#" data-toggle="modal" data-target=".bd-signup-modal-sm">Log In</a> or <a href="#" data-toggle="modal" data-target=".bd-login-modal-sm">Sign Up</a> to Review</h4>
           <% end %>
-          <br><br>
         </div>
 
         <% if @song.reviews.count == 0%>
