@@ -5,14 +5,14 @@ class Song < ApplicationRecord
 
   def song_data=(song_data)
     artists = []
-    @name = song_data["name"]
-    @play_url = song_data["uri"]
-    @spotify_song_id = song_data["id"]
-    @album_name = song_data["album"]["name"]
+    self.name = song_data["name"]
+    self.play_url = song_data["uri"]
+    self.spotify_song_id = song_data["id"]
+    self.album_name = song_data["album"]["name"]
     all_artists(song_data).each do |artist_name|
       artists << artist_name
     end
-    @artist = artists[0]
+    self.artist = artists[0]
   end
 
   def all_artists(song_data)
