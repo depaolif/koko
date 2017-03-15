@@ -527,16 +527,25 @@ form.votes-form { display: inline; }
 // song show page
 
 .song_info {
-  text-align: center;
-  margin-top: 50px;
+  margin-top: 1em;
+  margin-left: 1em;
   color: $color1;
+}
+
+.song_player {
+  margin-top: 5em;
 }
 
 .reviews_display {
   margin-top: 50px;
   color: $color1;
   height: 90vh;
-  margin-top: 8em;
+  overflow-y: scroll;
+}
+
+.reviews_display_no_top {
+  color: $color1;
+  height: 90vh;
   overflow-y: scroll;
 }
 
@@ -567,7 +576,7 @@ form.votes-form { display: inline; }
   margin-top: 50px;
 }
 
-#profile_title {
+.profile_title {
   color: $color1;
   text-align: center;
 }
