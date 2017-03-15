@@ -21,6 +21,10 @@ a:hover, a:active, a:visited {
   text-decoration: underline;
 }
 
+.alert {
+  background-color: $color2;
+}
+
 .blackout {
   background-color: $color5;
 }
