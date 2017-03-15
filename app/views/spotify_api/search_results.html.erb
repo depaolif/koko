@@ -18,18 +18,16 @@
           </div>
         </div>
       </div>
-      <% @songs.each do |song| %>
         <div class="row search-result-songs">
           <div class="col-md-4">
-            <h4><%= link_to song.name, song_path(song) %></h4>
+            <h4><%= link_to @song_data["name"], song_path(Song.find_or_create_by(spotify_song_id: song_data["id"])) %></h4>
           </div>
           <div class="col-md-4">
-            <h4><%= link_to song.artist.name, artist_path(song.artist)  %></h4>
+            <h4><%= link_to Artist.find_or_create_by(artist_name: song_data["artists"][0]["name"]), artist_path(Artist.find_or_create_by(artist_name: song_data["artists"][0]["name"])) %></h4>
           </div>
           <div class="col-md-4">
             <h4><%= song.album_name %></h4>
           </div>
         </div>
-      <% end %>
     </div>
   </div>

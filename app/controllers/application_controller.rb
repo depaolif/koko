@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
       end
     end
     @friends_reviews = current_user_friends_reviews.sort
-    @friends_reviews = @friends_reviews[0..100]
+    @friends_reviews = @friends_reviews[0..100].reverse
   end
 
 
