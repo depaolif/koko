@@ -243,8 +243,10 @@ body {
 .search-field {
 	width: 180px;
 	height: 32px;
-  border-radius: 4px;
+  border-radius: 5px;
   border: none;
+  background: $color1;
+  text-align: center;
 }
 
 .search-field:focus {
@@ -252,7 +254,7 @@ body {
 	width:285px;
 	outline: none;
 	border:none;
-	border-bottom: 4px solid $color2;
+	border-bottom: 4px solid rgb(80,185,72);
 }
 
 // .search-form > button {
@@ -268,7 +270,7 @@ body {
   width:285px;
   outline: none;
   border:none;
-  border-bottom: 4px solid $color2;
+  border-bottom: 4px solid rgb(80,185,72);
 }
 
 
@@ -365,25 +367,28 @@ form.votes-form { display: inline; }
 .trending-songs-wrapper {
   background-color: $color3;
   height: 600px;
-  border: solid;
+  // border: solid;
   border-width: thin;
   border-color: black;
   border-radius: 4px;
-  margin-top: 1em;
+  margin-top: .5em;
+  margin-bottom: .5em;
 }
+
 .dashboard-right-col {
   background-color: $color2;
   height: 600px;
-  border: solid;
+  // border: solid;
   border-width: thin;
   border-color: black;
-  border-radius: 4px;
+  border-radius: 4px 0px 0px 4px;
   padding-right: 0px;
   margin-right: 0px;
 }
 
 .right-div {
-  margin-top: 1em;
+  margin-top: .5em;
+  margin-bottom: .5em;
   padding-right: 0px;
 }
 
@@ -455,6 +460,7 @@ form.votes-form { display: inline; }
 
 .pitch {
   margin-top: 10px;
+  color: $color1;
 }
 
 #pitch-1 {
@@ -482,9 +488,11 @@ form.votes-form { display: inline; }
   text-align: center;
   border-color: #ddd;
   margin: auto;
+  background: $color1;
 }
 
 #search-submit-simple {
+  color: $color1;
   background-color: Transparent;
   background-repeat:no-repeat;
   border: none;
