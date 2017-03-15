@@ -41,7 +41,7 @@
         <%end%>
     <%else%>
       <div class="col-md-12">
-        <p class="dashboard-no-result">Add <%= link_to "Friends", friends_path(current_user.id) %> to unlock this feature!</p>
+        <p class="dashboard-no-result">Add <%= link_to "Friends", friends_path(current_user.id), id:"no_friend_link" %> to unlock this feature!</p>
       </div>
     <%end%>
   </div>
