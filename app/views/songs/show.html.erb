@@ -10,13 +10,18 @@
     })
   })
 </script>
-<div class="container-fluid offwhite">
-  <div class="col-md-6 text-center">
+<div class="container-fluid blackout">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-4 song_info">
     <br>
     <h1><%= @song.name %></h1>
     <h2><%= link_to @song.artist.name, artist_path(@song.artist)%></h2>
     <br>
     <iframe src="https://embed.spotify.com/?uri=<%=@song.play_url%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  </div>
+
+  <div class="col-md-1">
   </div>
 
     <div class="col-md-6 text-center reviews_display">
@@ -56,7 +61,7 @@
                 <%= render partial: "/application/stars", locals: {score: my_review.song_score} %> <br><br>
                 <%= my_review.content%> <br><br>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 review_box_content">
                 Review by: <%= link_to my_review.account.user_name, show_profile_path(my_review.account) %> <br>
                 <a id="edit_review" style="cursor:pointer">Edit</a> |
                 <%= link_to 'Delete', destroy_song_review_path(@song,my_review), method: 'delete' %><br>
@@ -89,7 +94,7 @@
                   <%= render partial: '/application/stars', locals: {score: review.song_score} %> <br><br>
                   <%= review.content%> <br>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 review_box_content">
                   Review by: <%= link_to review.account.user_name, show_profile_path(review.account) %> <% if review.account != current_user%><%if logged_in? && !current_user.friends.any?{|friend| friend.friend == review.account}%> | <%=link_to 'Add Friend', add_friend_path(review.account.id)%><%else%> | <%=link_to 'Remove Friend', remove_friend_path(review.account.id)%><%end%><%end%><br>
 
                   <% if logged_in? && !current_user.voted?(review.id)%>
@@ -111,6 +116,4 @@
         <%end%>
         <% end %>
       </div>
-  </div><br><br>
-
-<br><br>
+  </div>

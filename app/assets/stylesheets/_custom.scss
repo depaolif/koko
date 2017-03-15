@@ -13,12 +13,20 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
+a {
+  color: $color4;
+}
+a:hover, a:active {
+  color: $color4;
+  text-decoration: underline;
+}
+
 .blackout {
   background-color: $color5;
 }
 
 .offwhite {
-  background-color: $offwhite;
+  background-color: $color1;
 }
 
 .navbar-default {
@@ -272,8 +280,8 @@ body {
 }
 
 
-.footer{
-    position:fixed;
+.footer {
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -282,7 +290,7 @@ body {
     background-color: $color4;
     text-align: center;
     color: $color5;
-  }
+}
 
 
 
@@ -504,11 +512,15 @@ form.votes-form { display: inline; }
 }
 
 // song show page
+
 .song_info {
-  position: fixed;
+  text-align: center;
+  margin-top: 50px;
+  color: $color1;
 }
 
 .reviews_display {
+  color: $color1;
   height: 90vh;
   overflow-y: scroll;
 }
@@ -527,8 +539,11 @@ form.votes-form { display: inline; }
 }
 
 .review_box_content {
+  color: $color5;
   border-right: 1px black dashed;
 }
+
+// end song show page
 
 .search-field-simple:focus {
   transition-duration: .4s;
@@ -543,6 +558,7 @@ form.votes-form { display: inline; }
 	outline: none;
 	border-bottom: 4px solid $color3;
 }
+
 
 .vcenter {
     display: inline-block;
