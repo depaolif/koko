@@ -336,8 +336,9 @@ form.votes-form { display: inline; }
   vertical-align: middle;
   border-radius: 8px;
   border: 1px dotted $color5;
-  margin-left: 4.5em;
-  margin-right: 4.5em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  padding-bottom: .25em;
 }
 
 .search-result-songs {
@@ -705,6 +706,28 @@ input[type=submit] {
     border: none;
     font-weight: bold;
     background: $color4;
+}
+
+.artist_show_content {
+  padding-top: 1em;
+  background: $color1;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: .5em;
+  margin-left: 3em;
+  margin-right: 3em;
+  text-align: center;
+}
+
+.artist_show_content_head {
+  color: $color1;
+  margin-left: 3em;
+  margin-right: 3em;
+  text-align: center;
+}
+
+#artist_show_name {
+  color: $color1;
 }
 
 .friends-search {

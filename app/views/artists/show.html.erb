@@ -1,37 +1,53 @@
-<h1><%=@artist.name%>'s Top Songs</h1>
+<div class="container-fluid blackout">
+<h1 id="artist_show_name"><%=@artist.name%>'s Top Songs</h1>
 <br>
-<table class ="table">
-  <thead>
-    <tr>
-      <th>
-        <h3>Song Name</h3>
-      </th>
-      <th>
-        <h3>Average Review Score</h3>
-      </th>
-      <th>
-       <h3>Last Review</h3>
-     </th>
-   </tr>
-  </thead>
-  <tbody>
-    <%@artist_songs_ordered_by_review.each do |song, score|%>
-        <tr>
-          <td>
-            <h4>
-              <%= link_to song.name, song_path(song)%>
-            </h4>
-          </td>
-          <td>
-             <h4><%= render partial: "/application/stars", locals: {score: score}%></h4>
-          </td>
-          <td>
-            <p>Reviewer: <%=link_to song.reviews.last.account.user_name, show_profile_path(song.reviews.last.account)%></p>
-            <p>Score: <%=song.reviews.last.song_score%></p>
-            <p>Content: <%=song.reviews.last.content%></p>
-            <p>Posted On:<%=song.reviews.last.created_at.strftime("%l:%M %P, %B %-d, %Y")%></p>
-          </td>
-        </tr>
-    <%end%>
-  </tbody>
-</table>
+  <div class="row artist_show_content_head">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+
+    <div class="col-md-4">
+      <h3>Song Name</h3>
+    </div>
+    <div class="col-md-4">
+      <h3>Average Review Score</h3>
+    </div>
+    <div class="col-md-4">
+    <h3>Last Review</h3>
+    </div>
+  </div>
+  <div class="col-md-1">
+
+  </div>
+</div>
+
+  <%@artist_songs_ordered_by_review.each do |song, score|%>
+    <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+      <div class="row artist_show_content">
+        <div class="col-md-4">
+          <h4>
+            <%= link_to song.name, song_path(song)%>
+          </h4>
+        </div>
+        <div class="col-md-4">
+          <h4><%= render partial: "/application/stars", locals: {score: score}%></h4>
+        </div>
+        <div class="col-md-4">
+          <p>Reviewer: <%=link_to song.reviews.last.account.user_name, show_profile_path(song.reviews.last.account)%></p>
+          <p>Score: <%=song.reviews.last.song_score%></p>
+          <p>Content: <%=song.reviews.last.content%></p>
+          <p>Posted On: <%=song.reviews.last.created_at.strftime("%l:%M %P, %B %-d, %Y")%></p>
+          <!-- <% if song != @artist_songs_ordered_by_review.keys.last %> -->
+           <!-- <hr class='artist_show_rule'> -->
+          <!-- <% end %> -->
+        </div>
+      </div>
+    </div>
+  <div class="col-md-1">
+  </div>
+</div>
+ <%end%>
+</div>
