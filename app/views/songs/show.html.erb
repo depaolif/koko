@@ -49,8 +49,8 @@
         <% end %>
 
         <% if !!my_review %>
-        <div id="review_<%= my_review.id %>" class="my_review">
           <h3>My Review:</h3><br>
+          <div id="review_<%= my_review.id %>" class="my_review">
             <div class="row">
               <div class="col-md-6 review_box_content">
                 <%= render partial: "/application/stars", locals: {score: my_review.song_score} %> <br><br>
