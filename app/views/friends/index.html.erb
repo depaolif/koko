@@ -1,7 +1,7 @@
 <div class="container-fluid blackout">
   <% if @friends.count == 0 %>
   <div class="col-md-12">
-    <h1 style="text-align: center;" id="no-friends"><%= @user.id == current_user.id ? "You have" : (link_to "#{@user.user_name} has", show_profile_path(@user))%> no friends yet.</h1> <br>
+    <h1 style="text-align: center;" id="no-friends"><%= @user.id == current_user.id ? "You have" : (link_to "#{@user.user_name}", show_profile_path(@user))%> has no friends yet.</h1> <br>
         <%= render 'search'%>
   </div>
   <%else%>
