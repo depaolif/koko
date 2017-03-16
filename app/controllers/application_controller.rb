@@ -66,8 +66,10 @@ class ApplicationController < ActionController::Base
   def friends_reviews
     current_user_friends_reviews = []
     current_user.friends.each do |friend|
-      friend.friend.reviews.each do |review|
-        current_user_friends_reviews << review
+      if friend.friend
+        friend.friend.reviews.each do |review|
+          current_user_friends_reviews << review
+        end 
       end
     end
     @friends_reviews = current_user_friends_reviews.sort
