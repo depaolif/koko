@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
       if friend.friend
         friend.friend.reviews.each do |review|
           current_user_friends_reviews << review
-        end 
+        end
       end
     end
     @friends_reviews = current_user_friends_reviews.sort
