@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312141304) do
+ActiveRecord::Schema.define(version: 20170321141304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,13 @@ ActiveRecord::Schema.define(version: 20170312141304) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "account_id" #index
-    t.integer  "song_id" #index
+    t.integer  "account_id"
+    t.integer  "song_id"
     t.string   "content"
     t.integer  "song_score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.float    "weighted_score"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -64,8 +65,8 @@ ActiveRecord::Schema.define(version: 20170312141304) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "review_id" #index
-    t.integer  "account_id" #index
+    t.integer  "review_id"
+    t.integer  "account_id"
     t.integer  "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

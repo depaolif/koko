@@ -47,6 +47,8 @@ class SongsController < ApplicationController
         review_id: vote.review_id,
         prev: prev
       head :ok
+      @review = Review.find_by(id: vote.review_id)
+      @review.calculate_weighted_score
     end
     # redirect_to song_path(params[:song_id])
   end
