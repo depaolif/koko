@@ -10,13 +10,13 @@ class Review < ApplicationRecord
     self.votes.sum('score')
   end
 
-  def weighted_score
-    if (self.votes.sum(:score).abs) == 0 && self.votes.count != 0
-      (1/self.votes.count).to_f
-    elsif self.votes.count == 0 && (self.votes.sum(:score).abs) == 0
-      1
+  def calculate_weighted_score
+    if (self.votes.sum(:score).abs) == 0
+      self.weighted_score = self.song_score
+      self.save
     else
-    ((self.votes.sum(:score).abs)/self.votes.count).to_f
+      self.weighted_score = self.song_score + (self.votes.sum(:score))/self.votes.count)
+      self.save
     end
   end
 

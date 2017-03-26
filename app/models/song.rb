@@ -21,18 +21,18 @@ class Song < ApplicationRecord
     end
   end
 
-  def weighted_review_average
-    weighted_averages = []
-    self.reviews.each do |review|
-      if review.song_score
-        weighted_averages << (review.song_score * review.weighted_score)
-      end
-    end
-    summed_score = weighted_averages.inject(0){|sum,x| sum + x }
-    review_count = self.reviews.count
-    weighted_average = summed_score/review_count
-    weighted_average.to_f
-  end
 
+  def weighted_average
+    if self.reviews
+      weighted_scores = self.reviews.map do |review|
+        review.weighted_score
+      end
+      total_weighted_scores = weighted_scores.reduce(:+)
+      count_weighted_scores = weighted_scores.count
+      average_weighted_score = total_weighted_scores / count_weighted_scores
+    else
+      0
+    end
+  end
 
 end
