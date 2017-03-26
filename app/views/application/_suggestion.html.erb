@@ -2,18 +2,18 @@
       <div class="row">
       <div class="col-md-4">
         <p class="dashboard-text">
-        <%= link_to reviewer[1].song.name, song_path(reviewer[1].song)%>
+        <%= link_to reviewer.reviews.last.song.name, song_path(reviewer.reviews.last.song)%>
         </p>
       </div>
         <div class="col-md-5">
         <p class="dashboard-text">
-          <%= reviewer[1].content == "" ? "[No content]": reviewer[1].content %><br>
-          Reviewer: <%= link_to reviewer[0].user_name, show_profile_path(reviewer[0]) %>
+          <%= reviewer.reviews.last.content == "" ? "[No content]": reviewer.reviews.last.content %><br>
+          Reviewer: <%= link_to reviewer.user_name, show_profile_path(reviewer) %>
         </p>
         </div>
         <div class="col-md-3">
         <p style="font-size: 10px" class="dashboard-text">
-          <%= render partial: "stars", locals: {score: reviewer[1].song_score} %>
+          <%= render partial: "stars", locals: {score: reviewer.reviews.last.song_score} %>
         </p>
         </div>
       </div>

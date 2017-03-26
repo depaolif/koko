@@ -1,5 +1,4 @@
 class Account < ApplicationRecord
-  #password - length (min 6)
   has_secure_password
   has_one :profile, dependent: :destroy
   has_many :reviews, dependent: :destroy
@@ -36,8 +35,12 @@ class Account < ApplicationRecord
     Account.joins(:votes).where(votes: {account_id: current_user.id})
   end
 
-  def upvoted_accounts
-    Account.joins(:votes).where(votes: {account_id: current_user.id}).where(votes: {score: 1})
+  def self.suggested
+    Account.joins(reviews: :votes).having("SUM(votes.score) > 2").where(votes: {account_id: current_user.id}).group("accounts.id").order("SUM(votes.score) DESC LIMIT 30")
+  end
+
+  def self.upvoted_accounts
+    Account.joins(:votes).where(votes: {account_id: current_user.id}).where(votes: {score: 1}).order("SUM(votes.score) DESC LIMIT 30")
   end
 
   ### Reviews_I_have_voted

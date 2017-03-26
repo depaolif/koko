@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
     if @review.save && @review.valid?
       vote = Vote.new(score: 1, review_id: @review.id, account_id: current_user.id)
       vote.save
+      @review.calculate_weighted_score
       redirect_to @song
     else
       redirect_to @song, alert: "Please make sure you give your review 1 to 5 stars."
