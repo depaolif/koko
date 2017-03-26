@@ -8,9 +8,9 @@ class SongsController < ApplicationController
     unordered_songs = Song.joins(:reviews)
     @unordered_songs_hash = {}
     unordered_songs.each do |song|
-      if song.reviews.count > 0 && (song.weighted_review_average.round(2) >= 3)
+      if song.reviews.count > 0 && (song.weighted_average.round(2) >= 3)
         if song.reviews.any?{|review| review.created_at > 2.weeks.ago}
-          @unordered_songs_hash[song] = song.weighted_review_average.round(2)
+          @unordered_songs_hash[song] = song.weighted_average.round(2)
         end
       end
     end
