@@ -36,4 +36,8 @@ class Song < ApplicationRecord
     end
   end
 
+  def self.delete_unused
+    Song.where('id NOT IN (SELECT DISTINCT (song_id) FROM reviews)').delete_all
+  end
+
 end

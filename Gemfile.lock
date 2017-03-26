@@ -50,6 +50,9 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
+    clockwork (2.0.2)
+      activesupport
+      tzinfo
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -189,6 +192,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   bullet
   byebug
+  clockwork
   coffee-rails (~> 4.2)
   font-awesome-sass (~> 4.7.0)
   jbuilder (~> 2.5)
