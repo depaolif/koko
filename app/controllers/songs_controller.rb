@@ -5,7 +5,7 @@ class SongsController < ApplicationController
   end
 
   def trending_songs
-    unordered_songs = Song.joins(:reviews)
+    unordered_songs = Song.includes(:reviews)
     @unordered_songs_hash = {}
     unordered_songs.each do |song|
       if song.reviews.count > 0 && (song.weighted_average.round(2) >= 3)

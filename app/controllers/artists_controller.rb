@@ -5,18 +5,18 @@ class ArtistsController < ApplicationController
 
   def index
     # binding.pry
-    artists = Artist.joins(songs: :reviews)
+    # artists = Artist.joins(songs: :reviews)
+    songs = Song.includes(:reviews)
     @trending_artists = {}
-    artists.each do |artist|
-      artist.songs.each do |song|
-
+    # artists.each do |artist|
+      songs.each do |song|
         # Song.where("weighted_review_average > 3").includes(:artist)
         if song.reviews.count > 0 && (song.weighted_average.round(2) > 3)
           if song.reviews.any?{|review| review.created_at > 2.weeks.ago}
             @trending_artists[song.artist] = song.weighted_average.round(2)
           end
         end
-      end
+      # end
     end
     # Artist.joins(:songs).where("songs.weighted_review_average > 3").order("songs.weighted_review_average")
     @trending_artists = Hash[@trending_artists.sort_by{|k, v| v}.reverse]
