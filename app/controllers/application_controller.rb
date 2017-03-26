@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def home
       influencers_picks
     if logged_in?
-      @suggested_picks = Account.suggested
+      @suggested_picks = current_user.suggested
       friends_reviews
     end
   end

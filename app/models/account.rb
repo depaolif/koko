@@ -35,8 +35,8 @@ class Account < ApplicationRecord
     Account.joins(:votes).where(votes: {account_id: current_user.id})
   end
 
-  def self.suggested
-    Account.joins(reviews: :votes).having("SUM(votes.score) > 2").where(votes: {account_id: current_user.id}).group("accounts.id").order("SUM(votes.score) DESC LIMIT 30")
+  def suggested
+    Account.joins(reviews: :votes).having("SUM(votes.score) > 2").where(votes: {account_id: self.id}).group("accounts.id").order("SUM(votes.score) DESC LIMIT 30")
   end
 
   def self.upvoted_accounts

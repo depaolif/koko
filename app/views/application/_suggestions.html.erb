@@ -21,6 +21,8 @@
         </h4>
     </div>
     </div>
+    <% if !final_array.empty?%>
       <%= render partial: 'suggestion', locals: {final_array: final_array} %>
+    <% end %>
   </div>
 </div>

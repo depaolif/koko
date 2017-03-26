@@ -15,7 +15,7 @@ class Review < ApplicationRecord
       self.weighted_score = self.song_score
       self.save
     else
-      self.weighted_score = self.song_score + (self.votes.sum(:score))/self.votes.count)
+      self.weighted_score = self.song_score + ((self.votes.sum(:score))/self.votes.count)
       self.save
     end
   end
