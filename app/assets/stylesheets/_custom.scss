@@ -850,3 +850,17 @@ html, body {
 #no_friend_link{
   text-decoration: underline;
 }
+
+.results-header {
+  color: $color1;
+}
+
+.friend-search-results {
+  background: $color1;
+  margin-left: 2em;
+  border-radius: 4px;
+}
+
+#delete-confirm {
+  color: $color1;
+}
