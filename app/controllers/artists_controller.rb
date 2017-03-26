@@ -8,10 +8,8 @@ class ArtistsController < ApplicationController
     @trending_artists = {}
     artists.each do |artist|
       artist.songs.each do |song|
-        if song.reviews.count > 0 && (song.weighted_review_average.round(2) > 3)
-          if song.reviews.any?{|review| review.created_at > 2.weeks.ago}
-            @trending_artists[song.artist] = song.weighted_review_average.round(2)
-          end
+        if song.weighted_average.round(2) > 3 && song.reviews.any?{|review| review.created_at > 2.weeks.ago}
+            @trending_artists[song.artist] = song.weighted_average.round(2)
         end
       end
     end
@@ -23,7 +21,7 @@ class ArtistsController < ApplicationController
     @artist_songs_ordered_by_review = {}
     @artist.songs.each do |song|
       if song.reviews.count > 0
-        @artist_songs_ordered_by_review[song] = song.weighted_review_average.round(2)
+        @artist_songs_ordered_by_review[song] = song.weighted_average.round(2)
       end
     end
     @artist_songs_ordered_by_review = Hash[@artist_songs_ordered_by_review.sort_by{|k, v| v}.reverse]

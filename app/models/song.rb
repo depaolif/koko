@@ -26,10 +26,11 @@ class Song < ApplicationRecord
     if self.reviews
       weighted_scores = self.reviews.map do |review|
         review.weighted_score
-      end
+     end
       total_weighted_scores = weighted_scores.reduce(:+)
       count_weighted_scores = weighted_scores.count
       average_weighted_score = total_weighted_scores / count_weighted_scores
+      average_weighted_score
     else
       0
     end
