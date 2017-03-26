@@ -14,8 +14,8 @@ App.upvotes = App.cable.subscriptions.create('UpvotesChannel', {
     };
 
     if (data.score == -1) {
-      upvote.last().addClass("votes-form selected-down")
       upvote.first().each(function(index){
+      upvote.last().addClass("votes-form selected-down")
         this[3].value = 1
       })
     };
