@@ -20,5 +20,5 @@ class SpotifyApi
       song
     end
   end
-  
+
 end
