@@ -18,24 +18,15 @@ class ApplicationController < ActionController::Base
   end
 
   def influencers_picks
-    influencers =  Account.joins(reviews: :votes).having("SUM(votes.score) > 2").group("accounts.id").order("SUM(votes.score) DESC LIMIT 30")
+    influencers = Account.influencers
       last_good_review = []
-      influencers.each do |influencer|
+      influencers.includes(:songs).each do |influencer|
         if influencer != current_user
           last_good_review << influencer.reviews.where("song_score > ?", 2).find{|review| review.vote_sum > 1}
         end
     end
       @influencers_last_good_review = last_good_review.compact
   end
-
-  def logged_in?
-    !!session[:account_id]
-  end
-
-  def current_user
-    @account ||= Account.find_by_id(session[:account_id])
-  end
-
 
   def friends_reviews
     current_user_friends_reviews = []
@@ -48,5 +39,12 @@ class ApplicationController < ActionController::Base
     @friends_reviews = @friends_reviews[0..100].reverse
   end
 
+  def logged_in?
+    !!session[:account_id]
+  end
+
+  def current_user
+    @account ||= Account.find_by_id(session[:account_id])
+  end
 
 end

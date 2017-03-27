@@ -43,6 +43,8 @@ class Account < ApplicationRecord
     Account.joins(:votes).where(votes: {account_id: current_user.id}).where(votes: {score: 1}).order("SUM(votes.score) DESC LIMIT 30")
   end
 
-  ### Reviews_I_have_voted
-
+  def self.influencers
+    Account.joins(reviews: :votes).having("SUM(votes.score) > 2").group("accounts.id").order("SUM(votes.score) DESC LIMIT 30")
+  end
+  
 end
