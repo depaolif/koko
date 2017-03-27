@@ -11,11 +11,11 @@ class Review < ApplicationRecord
   end
 
   def calculate_weighted_score
-    if (self.votes.sum(:score).abs) == 0
-      self.weighted_score = self.song_score
+    if self.votes.sum(:score) < 0 && self.song_score > 3
+      self.weighted_score = 2.9
       self.save
     else
-      self.weighted_score = self.song_score + (self.votes.sum(:score)/self.votes.count)
+      self.weighted_score = self.song_score
       self.save
     end
   end

@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <%@ordered_songs_hash.each do |song, score| %>
+      <%@ordered_songs_array.each do |song| %>
         <div class="row search-result-songs">
           <div class="col-md-4">
             <h4><%= link_to song.name, song_path(song) %></h4>
@@ -30,7 +30,7 @@
             <h4><%= link_to song.artist.name, artist_path(song.artist)  %></h4>
           </div>
           <div class="col-md-4">
-            <h4><%=render partial: "application/stars", locals: {score: score}%></h4>
+            <h4><%=render partial: "application/stars", locals: {score: song.avg}%></h4>
           </div>
         </div>
       <% end %>
