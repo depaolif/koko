@@ -36,6 +36,10 @@ class Song < ApplicationRecord
     end
   end
 
+  def self.trending
+    Song.select("songs.*, AVG(weighted_score)").joins(:reviews).group("songs.id").having('AVG(weighted_score) > ?', 3).order('AVG(weighted_score) DESC')
+  end
+
   def self.delete_unused
     Song.where('id NOT IN (SELECT DISTINCT (song_id) FROM reviews)').delete_all
   end
