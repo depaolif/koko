@@ -11,4 +11,8 @@ class Artist < ApplicationRecord
     Song.where("songs.artist_id = ?", self.id).select("songs.*, AVG(weighted_score)").joins(:reviews).group("songs.id").having('AVG(weighted_score) > ?', 3).order('AVG(weighted_score) DESC')
   end
 
+  def self.delete_unused
+    Artist.includes(:songs).where('id NOT IN (SELECT DISTINCT (song_id) FROM reviews)').delete_all
+  end
+
 end
