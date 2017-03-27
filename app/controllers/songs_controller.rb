@@ -6,16 +6,6 @@ class SongsController < ApplicationController
 
   def trending_songs
     @ordered_songs_array = Song.trending
-    # unordered_songs = Song.includes(:reviews)
-    # @unordered_songs_hash = {}
-    # unordered_songs.each do |song|
-    #   if song.reviews.count > 0 && (song.weighted_average.round(2) >= 3)
-    #     if song.reviews.any?{|review| review.created_at > 2.weeks.ago}
-    #       @unordered_songs_hash[song] = song.weighted_average.round(2)
-    #     end
-    #   end
-    # end
-    # @ordered_songs_hash = Hash[@unordered_songs_hash.sort_by{|k, v| v}.reverse]
     render :trending
   end
 

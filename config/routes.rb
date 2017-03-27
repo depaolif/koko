@@ -9,11 +9,12 @@ Rails.application.routes.draw do
       patch '/vote', to: 'songs#change_vote'
     end
   end
-  resources :artists, only: [:index, :create, :show]
+  resources :artists, only: [:create, :show]
   resources :registrations, only: [:new,:create]
   resources :sessions, only: [:new,:create]
 
   get '/trendingsongs', to: 'songs#trending_songs'
+  get '/trendingartists', to: 'artists#trending'
   post '/friends/search', to: 'friends#search'
   get '/friends/search', to: 'application#home'
   get '/friends/:id', to: 'friends#index', as: 'friends'
