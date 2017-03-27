@@ -22,7 +22,10 @@ class FriendsController < ApplicationController
   def index
     @user = Account.find_by(id: params[:id])
     if @user
-      @friends = @user.friends
+      @friends = []
+      @user.friends.each do |friend|
+        @friends << friend if friend.friend
+      end
     else
       redirect_to root_path, alert: "Sorry, this user does not exist"
     end

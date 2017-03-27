@@ -1,4 +1,16 @@
-Are you sure you want to delete your account? This cannot be undone!
-<br><br>
-<p><%= link_to "Cancel", home_path %></p>
-<p><%= link_to "Permanently Delete Account", registrations_path, method: "Delete" %></p>
+<div class="container-fluid blackout">
+<div class="col-md-4">
+
+</div>
+  <div class="col-md-4 text-center">
+  <p id="delete-confirm">
+  Are you sure you want to delete your account?
+  <br>
+  This cannot be undone!
+  </p>
+  <br><br>
+  <p><%= link_to "Permanently Delete Account", registrations_path, method: "Delete" %></p>
+  <br><br><br>
+  <p><%= link_to "Cancel", home_path %></p>
+  </div>
+</div>
