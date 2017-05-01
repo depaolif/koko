@@ -2,7 +2,7 @@
 
 KokoMusic was Jeffrey Hechler, Frederico De Paoli, and Ian Boynton’s first Ruby on Rails application.
 
-Demo available at http://kokomusic.herokuapp.com/
+Demo available at https://kokomusic.herokuapp.com/
 
 <h3>About KokoMusic</h3>
 
