@@ -2,8 +2,6 @@
 
 KokoMusic was Jeffrey Hechler, Frederico De Paoli, and Ian Boynton’s first Ruby on Rails application.
 
-Demo available at https://kokomusic.herokuapp.com/
-
 <h3>About KokoMusic</h3>
 
 KokoMusic is a music discovery application that utilizes Spotify’s API to allow users to search for songs, add reviews and up/down vote other users’ reviews. The application leverages a users’ voting data to provide them with a dashboard of curated suggestions, as well as views for the songs and artists trending across the site.
