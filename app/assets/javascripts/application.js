@@ -16,3 +16,19 @@
 //= require turbolinks
 //= require_tree .
 //= require_tree ./channels
+
+$(document).ready(function() {
+   $('#search-field').keydown(function() {
+     var empty = false;
+     if ($('#search-field').val().length == 0) {
+       empty = true;
+     }
+     if (empty) {
+       $('#search-submit').attr('disabled', 'disabled');
+       $('#search-submit').removeAttr('class', 'pulse');
+     } else {
+       $('#search-submit').removeAttr('disabled');
+       $('#search-submit').attr('class', 'pulse');
+     }
+   });
+});
