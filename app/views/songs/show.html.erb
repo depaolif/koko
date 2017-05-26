@@ -81,11 +81,12 @@
               </div>
         </div>
           <div id="edit_form" style="display:none">
-            <h3>Edit Your Review:</h3><br>
             <%= render partial: '/reviews/form', locals: {song: @song, review: my_review} %>
           </div>
         <% end %>
 
+        <br>
+        <br>
         <h3>Reviews:</h3>
         <br>
         <%@song.reviews.each do |review|%>

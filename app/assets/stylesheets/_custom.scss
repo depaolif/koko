@@ -51,12 +51,7 @@ a:hover, a:active, a:visited {
     outline:none;
 }
 
-/* navbar */
 
-// #search-submit:hover {
-//   background-color: #eee;
-//   color: #333;
-// }
 /* title */
 .navbar-default .navbar-brand {
     color: #2A2B2A;
@@ -121,6 +116,12 @@ a:hover, a:active, a:visited {
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #CCC;
 }
+
+.navbar-nav > li > .dropdown-menu {
+  background-color: $color1;
+  border-radius: 4px;
+}
+
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color: #777;
@@ -270,7 +271,7 @@ a:hover, a:active, a:visited {
 	width:285px;
 	outline: none;
 	border:none;
-	border-bottom: 4px solid rgb(80,185,72);
+	border-bottom: 4px solid $color2;
 }
 
 // .search-form > button {
@@ -339,12 +340,10 @@ form.votes-form { display: inline; }
 }
 
 .search-header-box {
-  background: $color2;
+  background: $color1;
   color: $color5;
   text-align:center;
   vertical-align: middle;
-  border-radius: 8px;
-  border: 1px dotted $color5;
   margin-left: 1.5em;
   margin-right: 1.5em;
   padding-bottom: .25em;
@@ -372,8 +371,8 @@ form.votes-form { display: inline; }
 .dashboard-no-result {
   font-size:150%;
   text-align: center;
-  margin-top: 50px;
   color: $color4;
+  margin-top: 4px;
 }
 
 .dashboard-text-left {
@@ -385,7 +384,7 @@ form.votes-form { display: inline; }
 }
 
 .trending-songs-wrapper {
-  background-color: $color3;
+  background-color: $color1;
   height: 85%;
   min-height: 85%;
   // border: solid;
@@ -397,7 +396,7 @@ form.votes-form { display: inline; }
 }
 
 .dashboard-right-col {
-  background-color: $color2;
+  background-color: $color1;
   height: 100%;
   min-height: 100%;
   // border: solid;
@@ -521,7 +520,7 @@ form.votes-form { display: inline; }
 }
 
 #search-submit-simple {
-  color: $color1;
+  color: $color4;
   background-color: Transparent;
   background-repeat:no-repeat;
   border: none;
@@ -642,14 +641,14 @@ form.votes-form { display: inline; }
   transition-duration: .4s;
 	outline: none;
 	border:none;
-	border-bottom: 4px solid $color3;
+	border-bottom: 4px solid $color2;
 }
 
 .search-field-simple:active {
   transition-duration: .4s;
 	width:285px;
 	outline: none;
-	border-bottom: 4px solid $color3;
+	border-bottom: 4px solid $color2;
 }
 
 
@@ -701,13 +700,13 @@ form.votes-form { display: inline; }
   transition-duration: .4s;
 	outline: none;
 	border:none;
-	border-bottom: 4px solid $color3;
+	border-bottom: 4px solid $color2;
 }
 
 #search-field-2:active {
   transition-duration: .4s;
 	outline: none;
-	border-bottom: 4px solid $color3;
+	border-bottom: 4px solid $color2;
 }
 
 .search-header-box > h2 {
@@ -780,6 +779,7 @@ input[type=submit] {
 
 #artist_show_name {
   color: $color1;
+  margin-left: 1em;
 }
 
 .friends-search {
@@ -788,13 +788,12 @@ input[type=submit] {
 }
 
 .friends-headers > h3 {
-  background: $color2;
-    color: $color5;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 8px;
-    border: 1px dotted #2a2b2a;
-    height: 35px;
+  background: $color1;
+  color: $color5;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 8px;
+  height: 35px;
 }
 
 html, body {

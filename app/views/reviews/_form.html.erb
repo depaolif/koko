@@ -41,6 +41,7 @@
     <input type="radio" id="rating2" name="review[song_score]" value="2" /><label for="rating2" title="2 stars"></label>
     <input type="radio" id="rating1" name="review[song_score]" value="1" /><label for="rating1" title="1 stars"></label>
   </div>
-  <p>Review: <br><%= f.text_area :content %></p>
+  <p>Review: <br><%= f.text_area :content, size: "50x5" %></p>
   <%= f.submit id: "review_submit" %>
+  <br>
 <% end %>
