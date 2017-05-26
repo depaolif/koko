@@ -22,33 +22,33 @@
 
       </ul>
 
-    <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
 
-      <li class="search-form">
-       <%= form_tag('/search', id: "search-form") do %>
-         <%= text_field_tag "query", nil, id: "search-field", placeholder: "Search for Music!", class: "search-field" %>
-         <%= button_tag type: 'submit', id: "search-submit", disabled: "disabled" do %>
-          <%= icon('search', class: "fa-2x") %>
+        <li class="search-form">
+         <%= form_tag('/search', id: "search-form") do %>
+           <%= text_field_tag "query", nil, id: "search-field", placeholder: "Search for Music!", class: "search-field" %>
+           <%= button_tag type: 'submit', id: "search-submit", disabled: "disabled" do %>
+            <%= icon('search', class: "fa-2x") %>
+           <% end %>
          <% end %>
-       <% end %>
-     </li>
+       </li>
 
 
-      <% if logged_in? %>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= Profile.find_by(account_id: current_user.id) ? current_user.user_name : current_user.profile.name %><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="/my_profile">View Profile</a></li>
-          <li role="separator" class="divider"></li>
-          <li><%= link_to "Log Out", session_path, method: :delete %></li>
-        </ul>
-      </li>
+        <% if logged_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= Profile.find_by(account_id: current_user.id) ? current_user.user_name : current_user.profile.name %><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/my_profile">View Profile</a></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Log Out", session_path, method: :delete %></li>
+          </ul>
+        </li>
 
-      <% else %>
-      <li><a href="#" data-toggle="modal" data-target=".bd-signup-modal-sm"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#" data-toggle="modal" data-target=".bd-login-modal-sm"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <% end %>
-    </ul>
-  </div>
+        <% else %>
+        <li><a href="#" data-toggle="modal" data-target=".bd-signup-modal-sm"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#" data-toggle="modal" data-target=".bd-login-modal-sm"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
