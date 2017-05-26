@@ -17,58 +17,25 @@
 //= require_tree .
 //= require_tree ./channels
 
-$(document).ready(function() {
-   $('#search-field').keydown(function() {
+function searchPulse(field, submit) {
+  $(`#${field}`).keydown(function() {
      var empty = false;
-     if ($('#search-field').val().length == 0) {
+     if ($(`#${field}`).val().length == 0) {
        empty = true;
      }
      if (empty) {
-       $('#search-submit').attr('disabled', 'disabled');
-       $('#search-submit').removeAttr('class', 'pulse');
+       $(`#${submit}`).attr('disabled', 'disabled');
+       $(`#${submit}`).removeAttr('class', 'pulse');
      } else {
-       $('#search-submit').removeAttr('disabled');
-       $('#search-submit').attr('class', 'pulse');
+       $(`#${submit}`).removeAttr('disabled');
+       $(`#${submit}`).attr('class', 'pulse');
      }
-   });
-   $('#search-field-simple').keydown(function() {
-    var empty = false;
-    if ($('#search-field-simple').val().length == 0) {
-      empty = true;
-    }
-    if (empty) {
-      $('#search-submit-simple').attr('disabled', 'disabled');
-      $('#search-submit').removeAttr('class', 'pulse');
-    } else {
-      $('#search-submit-simple').removeAttr('disabled');
-      $('#search-submit-simple').attr('class', 'pulse');
-    }
   });
-   $('#search-field-2').keydown(function() {
-    debugger
-    var empty = false;
-    if ($('#search-field-2').val().length == 0) {
-      empty = true;
-    }
-    if (empty) {
-      $('#search-submit-2').attr('disabled', 'disabled');
-      $('#search-submit-2').removeAttr('class', 'pulse');
-    } else {
-      $('#search-submit-2').removeAttr('disabled');
-      $('#search-submit-2').attr('class', 'pulse');
-    }
-  });
-   $('#search-field-3').keydown(function() {
-    var empty = false;
-    if ($('#search-field-3').val().length == 0) {
-      empty = true;
-    }
-    if (empty) {
-      $('#search-submit-3').attr('disabled', 'disabled');
-      $('#search-submit-3').removeAttr('class', 'pulse');
-    } else {
-      $('#search-submit-3').removeAttr('disabled');
-      $('#search-submit-3').attr('class', 'pulse');
-    }
-  });
+}
+
+$(document).ready(function() {
+  searchPulse('search-field', 'search-submit')
+  searchPulse('search-field-2', 'search-submit-2')
+  searchPulse('search-field-3', 'search-submit-3')
+  searchPulse('search-field-simple', 'search-submit-simple')
 });
