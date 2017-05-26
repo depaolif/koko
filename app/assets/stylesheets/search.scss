@@ -1,0 +1,182 @@
+@import "palette";
+
+// search results page
+#search-submit {
+	position: relative;
+  float: right;
+}
+
+
+.search-form {
+	color: black;
+  float: right;
+  padding: 15px;
+  margin-top: 2.6em;
+  margin-right: 0px;
+}
+
+.search-form-center {
+	color: black;
+  float: left;
+  padding: 15px;
+  margin-right: 70px;
+  border-style: solid;
+  border: black;
+  border-width: 2px;
+}
+
+.search-form-centered {
+	color: black;
+  float: left;
+  padding: 15px;
+  border-style: solid;
+  border: black;
+  border-width: 2px;
+  margin: 0 auto;
+}
+
+
+
+.search-field {
+	width: 180px;
+	height: 32px;
+	border-radius: 5px;
+	border: none;
+	background: $color1;
+	text-align: center;
+}
+
+.search-field:focus {
+	transition-duration: .4s;
+	width:285px;
+	outline: none;
+	border:none;
+	border-bottom: 4px solid $color2;
+}
+
+
+.search-field:active {
+  transition-duration: .4s;
+  width:285px;
+  outline: none;
+  border:none;
+  border-bottom: 4px solid rgb(80,185,72);
+}
+
+.search-field-simple {
+  width: 400px;
+  height: 32px;
+  border-radius: 10px;
+  border: solid;
+  border-width: thin;
+  text-align: center;
+  border-color: #ddd;
+  margin: auto;
+  background: $color1;
+}
+
+#search-submit-simple {
+  color: $color4;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+  float: right;
+}
+
+#search-submit-2 {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+  color: $color3;
+}
+
+#search-submit-3 {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+  color: $color4;
+  vertical-align: middle;
+}
+
+.friends-re-search {
+  margin-left: 50px;
+}
+
+.search-field-simple:focus {
+  transition-duration: .4s;
+	outline: none;
+	border:none;
+	border-bottom: 4px solid $color2;
+}
+
+.search-field-simple:active {
+  transition-duration: .4s;
+	width:285px;
+	outline: none;
+	border-bottom: 4px solid $color2;
+}
+
+#search-field-2 {
+  width: 400px;
+  height: 32px;
+  border-radius: 10px;
+  border: solid;
+  border-width: thin;
+  text-align: center;
+  border-color: #ddd;
+}
+
+#search-field-2:focus {
+  transition-duration: .4s;
+	outline: none;
+	border:none;
+	border-bottom: 4px solid $color2;
+}
+
+#search-field-2:active {
+  transition-duration: .4s;
+	outline: none;
+	border-bottom: 4px solid $color2;
+}
+
+.search-header-box > h2 {
+  margin: 0px;
+}
+
+.search {
+  background: $color1;
+  border-radius: 4px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height:100%;
+  min-height: 100%;
+  padding:1em;
+  border-color: $color5;
+  margin-right: 6em;
+  margin-left: 6em;
+}
+
+.search-header-box {
+  background: $color1;
+  color: $color5;
+  text-align:center;
+  vertical-align: middle;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  padding-bottom: .25em;
+}
+
+.search-result-songs {
+  text-align:center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}

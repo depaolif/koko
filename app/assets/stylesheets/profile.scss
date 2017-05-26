@@ -1,0 +1,75 @@
+@import "palette";
+
+// profile show
+
+.profile_box {
+  margin-top: 15px;
+}
+
+.profile_title {
+  color: $color1;
+  text-align: center;
+}
+
+.profile_info {
+  border-radius: 4px;
+  background-color: $color1;
+  margin-top: 50px;
+  padding: 0.35em 1em 1em 1em;
+
+  .info {
+  }
+}
+
+.review_title {
+  margin-bottom: 50px;
+}
+
+// end profile show
+
+// friends
+#no-friends {
+  color: $color1
+}
+
+#prof_edit_submit > input{
+  width: 8em;
+}
+
+#no_friend_link{
+  text-decoration: underline;
+}
+
+#delete-confirm {
+  color: $color1;
+}
+
+.results-header {
+  color: $color1;
+  margin-left: 1em;
+}
+
+.friend-search-results {
+  background: $color1;
+  margin-left: 2em;
+  border-radius: 4px;
+}
+
+.friends-search {
+  text-align: center;
+  padding-bottom: 2em;
+}
+
+.friends-headers > h3 {
+  background: $color1;
+  color: $color5;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 8px;
+  height: 35px;
+}
+
+h4.friends-no-results {
+  color: $color4;
+  margin-left: 36px;
+}

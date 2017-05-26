@@ -17,25 +17,27 @@
 //= require_tree .
 //= require_tree ./channels
 
-function searchPulse(field, submit) {
-  $(`#${field}`).keydown(function() {
-     var empty = false;
-     if ($(`#${field}`).val().length == 0) {
-       empty = true;
-     }
-     if (empty) {
-       $(`#${submit}`).attr('disabled', 'disabled');
-       $(`#${submit}`).removeAttr('class', 'pulse');
-     } else {
-       $(`#${submit}`).removeAttr('disabled');
-       $(`#${submit}`).attr('class', 'pulse');
-     }
-  });
-}
 
-$(document).ready(function() {
-  searchPulse('search-field', 'search-submit')
-  searchPulse('search-field-2', 'search-submit-2')
-  searchPulse('search-field-3', 'search-submit-3')
-  searchPulse('search-field-simple', 'search-submit-simple')
-});
+// *** FOR SOME REASON, NOT WORKING IN THE NAVBAR OUTSIDE OF ROOT DIRECTORY ***
+// function searchPulse(field, submit) {
+//   $(`#${field}`).keydown(function() {
+//      var empty = false;
+//      if ($(`#${field}`).val().length == 0) {
+//        empty = true;
+//      }
+//      if (empty) {
+//        $(`#${submit}`).attr('disabled', 'disabled');
+//        $(`#${submit}`).removeAttr('class', 'pulse');
+//      } else {
+//        $(`#${submit}`).removeAttr('disabled');
+//        $(`#${submit}`).attr('class', 'pulse');
+//      }
+//   });
+// }
+
+// $(document).ready(function() {
+//   searchPulse('search-field', 'search-submit')
+//   searchPulse('search-field-2', 'search-submit-2')
+//   searchPulse('search-field-3', 'search-submit-3')
+//   searchPulse('search-field-simple', 'search-submit-simple')
+// });
