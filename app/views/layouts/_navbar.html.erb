@@ -9,15 +9,12 @@
       <a class="navbar-brand navbar-img" href="/" data-turbolinks="false"><img alt="Koko" src="/images/logo.png" height:"100" width:"150"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-    <!-- <ul class="nav navbar-nav">
-      <li <%= 'class=active' if request.path.split('/')[1] == 'topics' || request.path == '/' %>><a href="/topics">Message Board</a></li>
-    </ul> -->
       <ul class="nav navbar-nav">
 
         <li><a href="/trendingartists">Trending Artists</a></li>
         <li><a href="/trendingsongs">Trending Songs</a></li>
         <%if logged_in?%>
-        <li><%=link_to "Your Friends", friends_path(current_user.id)%></li>
+          <li><%=link_to "Your Friends", friends_path(current_user.id)%></li>
         <%end%>
 
       </ul>
@@ -45,8 +42,8 @@
         </li>
 
         <% else %>
-        <li><a href="#" data-toggle="modal" data-target=".bd-signup-modal-sm"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#" data-toggle="modal" data-target=".bd-login-modal-sm"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href="#" data-toggle="modal" data-target=".bd-signup-modal-sm"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#" data-toggle="modal" data-target=".bd-login-modal-sm"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         <% end %>
       </ul>
     </div>
