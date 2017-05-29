@@ -16,16 +16,15 @@
     </div>
 
     <!-- If User Not Logged In -->
-
-
     <%else%>
 
-      <!--- Trending Songs --->
+      <!-- - Trending Songs -->
 
       <div class="col-md-3 trending-songs-wrapper">
         <%= render partial: "influencer_picks", locals: {influencers_last_good_review: @influencers_last_good_review} %>
       </div>
-      <!--- log in --->
+
+      <!-- Ask to Log In -->
 
       <div class="col-md-9 right-div">
         <div class="col-md-12">
@@ -50,4 +49,4 @@
 
 
     <% end %>
-</div> <!-- container fluid -->
+</div>
